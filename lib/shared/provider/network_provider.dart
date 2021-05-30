@@ -1,12 +1,12 @@
 /*
    DEVELOPED BY: KAMLESH LAKHANI
-   ABSTRACT CLASS DEFINE THE TOTAL API OF APP
+   DEFINE THE TOTAL API OF APP
 */
 
 import '../common/dio_helper.dart';
 
-abstract class NetworkProvider {
-  late DioHelper _dioHelper;
+class NetworkProvider {
+  final DioHelper _dioHelper;
 
   NetworkProvider(this._dioHelper);
 

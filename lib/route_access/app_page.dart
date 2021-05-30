@@ -16,5 +16,14 @@ class AppPage {
         name: AppRoute.HOME,
         page: () => SplashPage(),
         binding: SplashBinding()),
+
+    GetPage(
+        name: AppRoute.HOME,
+        page: () => HomePage(),
+        binding: HomeBinding()),
+
+    GetPage(
+        name: AppRoute.LOGIN,
+        page: () => LoginPage()),
   ];
 }

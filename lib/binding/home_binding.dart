@@ -5,9 +5,9 @@
 import '../controller/controller_package.dart';
 import '../import_package.dart';
 
-class SplashBinding extends Bindings {
+class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    GetInstanceAccess.lazyPut<SplashController>(() => SplashController(GetInstanceAccess.find()));
+    GetInstanceAccess.lazyPut<HomeController>(() => HomeController(GetInstanceAccess.find()));
   }
 }

@@ -35,7 +35,7 @@ class DioHelper {
   Future request<T>({
     String? baseUrl = '',
     Method? method = Method.GET,
-    String? path,
+    String? path = '',
     String contentType = Headers.jsonContentType,
     dynamic data,
     Map<String, dynamic>? parameter,
@@ -47,12 +47,13 @@ class DioHelper {
       final baseOptions = BaseOptions(
           baseUrl: baseUrl!,
           contentType: contentType,
-          responseType: ResponseType.bytes,
+          //responseType: ResponseType.bytes,
           receiveDataWhenStatusError: false,
           connectTimeout: 60000,
           receiveTimeout: 3000,
           headers: {});
 
+      print(baseOptions);
       final dio = Dio(baseOptions);
 
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =

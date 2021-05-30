@@ -25,3 +25,7 @@ export 'package:ecommerce/util/extensions.dart';
 
 //VALIDATION
 export 'package:ecommerce/resource/validators.dart';
+
+//SESSION
+export 'package:ecommerce/shared/common/get_storage.dart';
+export 'package:ecommerce/resource/strings_session.dart';

@@ -9,6 +9,11 @@ class Strings {
   //APPLICATION NAME
   static const String appName = 'Ecommerce';
 
+  //API
+  static const String baseURL = 'https://jsonplaceholder.typicode.com/';
+  static const String postUrl = '${baseURL}posts';
+
+
   //DIO API RESPONSE STATUS
 
   //DIO ERROR

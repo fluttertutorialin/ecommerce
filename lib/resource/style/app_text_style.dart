@@ -33,4 +33,14 @@ class AppTextStyle {
     color: Colors.black,
     fontSize: Dimens.fontSize14,
   );
+
+  static final TextStyle appBarTitleStyle = _textStyle.copyWith(
+    fontSize: Dimens.fontSize22,
+    fontWeight: FontWeight.w700,
+  );
+
+  static final TextStyle splashTitleStyle = _textStyle.copyWith(
+    fontSize: Dimens.fontSize22,
+    fontWeight: FontWeight.w700,
+  );
 }

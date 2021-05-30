@@ -25,9 +25,7 @@ class AppTheme {
       accentColor: AppColors.kPrimaryColor,
       buttonColor: AppColors.kPrimaryColor,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      appBarTheme: const AppBarTheme(
-        color: AppColors.kPrimaryColor
-      ),
+      appBarTheme: const AppBarTheme(color: AppColors.kPrimaryColor),
       buttonTheme: ButtonThemeData(
         buttonColor: AppColors.kPrimaryColor,
         height: 45.h,

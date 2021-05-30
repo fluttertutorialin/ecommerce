@@ -18,7 +18,7 @@ class GetInstanceAccess {
           {String? tag, bool permanent = false}) async =>
       GetInstance().putAsync<S>(builder, tag: tag, permanent: permanent);
 
-  static S find<S>({String? tag}) => GetInstance().find<S>(tag: tag!);
+  static S find<S>({String? tag}) => GetInstance().find<S>(tag: tag);
 
   static S put<S>(S dependency,
           {String? tag,

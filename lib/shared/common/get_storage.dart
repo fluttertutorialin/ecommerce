@@ -6,12 +6,9 @@
 import 'package:get_storage/get_storage.dart';
 
 class Storage {
-  GetStorage _getStorage;
+  final GetStorage _getStorage;
 
   Storage(this._getStorage);
-
-  //ACCESS SESSION
-  get getStorage => _getStorage;
 
   //SESSION INSERT THE VALUE
   Future<void> saveValue(String key, dynamic value) =>
