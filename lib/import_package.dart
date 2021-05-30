@@ -23,3 +23,5 @@ export 'route_access/app_page.dart';
 //EXTENSIONS
 export 'package:ecommerce/util/extensions.dart';
 
+//VALIDATION
+export 'package:ecommerce/resource/validators.dart';

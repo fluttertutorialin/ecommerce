@@ -17,6 +17,9 @@ class Strings {
   static const String doNotHaveAccount = 'Don\'t have account?';
   
   //VALIDATION
+  static const String cantBeEmpty = "can't be empty.";
+
+  static const String fieldCantBeEmpty = 'Field $cantBeEmpty';
 
   //VALIDATION LENGTH (MOBILE NO, EMAIL LENGTH ETC.)
   static int mobileLength = 10;
