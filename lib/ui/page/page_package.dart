@@ -1,1 +1,6 @@
+/*
+   DEVELOPED BY: KAMLESH LAKHANI
+   FOR ALL UI ACCESS ONLY SINGLE PACKAGE NAME
+*/
+
 export 'splash_page.dart';

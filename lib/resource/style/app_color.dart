@@ -1,3 +1,8 @@
+/*
+   DEVELOPED BY: KAMLESH LAKHANI
+   FOR COLOR DEFINE
+*/
+
 import 'package:flutter/material.dart';
 
 class AppColors {

@@ -1,7 +1,18 @@
+/*
+   DEVELOPED BY: KAMLESH LAKHANI
+   FOR WITHOUT ACCESS CLASS NAME
+   - NUM EXTENSION: (BORDER RADIUS)
+   - STRING EXTENSION: (HEX COLOR, IMAGE, DEBUG LOG)
+   - DATETIME EXTENSION: ()
+   - WIDGET EXTENSION: ()
+   - INT EXTENSION: ()
+*/
+
 import 'package:intl/intl.dart';
 import '../../import_package.dart';
 
-extension BorderRadiusExt on num {
+// NUM (BORDER RADIUS) EXTENSION
+extension NumExt on num {
   BorderRadius get borderRadius => BorderRadius.circular(this.r);
 
   InputBorder outlineInputBorder({
@@ -24,7 +35,9 @@ extension BorderRadiusExt on num {
       );
 }
 
-extension HexColorExt on String {
+// STRING (HEX COLOR, IMAGE, DEBUG LOG) EXTENSION
+extension StringExt on String {
+  //HEX COLOR
   Color get fromHex {
     final buffer = StringBuffer();
     if (this.length == 6 || this.length == 7) {
@@ -36,33 +49,9 @@ extension HexColorExt on String {
     }
     return Color(int.parse(buffer.toString(), radix: 16));
   }
-}
 
-extension DateTimeFormatterExt on DateTime {
-  String formatedDate({
-    String dateFormat = 'yyyy-MM-dd',
-  }) {
-    final formatter = DateFormat(dateFormat);
-    return formatter.format(this);
-  }
-}
-
-extension TimeOfDayExt on String {
-  TimeOfDay getTimeOfDay({
-    int addMinutes = 0,
-  }) =>
-      TimeOfDay.fromDateTime(
-        DateFormat.jm().parse(this).add(
-          Duration(
-            minutes: addMinutes,
-          ),
-        ),
-      );
-}
-
-extension ImageExt on String {
+  //IMAGE
   String get image => 'assets/images/$this.png';
-
   Image imageAsset({
     Size? size,
     BoxFit? fit,
@@ -75,9 +64,29 @@ extension ImageExt on String {
         height: size?.height,
         fit: fit,
       );
+
+  void debugLog() {
+    return debugPrint(
+      '\n******************************* DebugLog *******************************\n'
+      ' $this'
+      '\n******************************* DebugLog *******************************\n',
+      wrapWidth: 1024,
+    );
+  }
 }
 
-extension AlignWidgetExt on Widget {
+// DATETIME EXTENSION
+extension DateTimeFormatterExt on DateTime {
+  String formatedDate({
+    String dateFormat = 'yyyy-MM-dd',
+  }) {
+    final formatter = DateFormat(dateFormat);
+    return formatter.format(this);
+  }
+}
+
+// WIDGET EXTENSION
+extension WidgetExt on Widget {
   Widget align({
     Alignment alignment = Alignment.center,
   }) =>
@@ -87,21 +96,11 @@ extension AlignWidgetExt on Widget {
       );
 }
 
-extension FormatDurationExt on int {
+// INT EXTENSION
+extension IntExt on int {
   String formatDuration() {
     final min = this ~/ 60;
     final sec = this % 60;
     return "${min.toString().padLeft(2, "0")}:${sec.toString().padLeft(2, "0")} min";
-  }
-}
-
-extension DebugLog on String {
-  void debugLog() {
-    return debugPrint(
-      '\n******************************* DebugLog *******************************\n'
-          ' $this'
-          '\n******************************* DebugLog *******************************\n',
-      wrapWidth: 1024,
-    );
   }
 }

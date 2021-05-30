@@ -3,7 +3,7 @@
    FOR FONT SIZE DEFINE
 */
 
-import '../import_package.dart';
+import '../../import_package.dart';
 
 class Dimens {
   const Dimens._();

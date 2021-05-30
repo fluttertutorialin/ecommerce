@@ -10,8 +10,8 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 //RESOURCE
 export 'package:ecommerce/resource/strings.dart';
 export 'package:ecommerce/resource/style/app_text_style.dart';
-export 'package:ecommerce/resource/style/app_theme.dart';
-export 'package:ecommerce/resource/dimen.dart';
+export 'package:ecommerce/resource/app_theme.dart';
+export 'package:ecommerce/resource/style/dimen.dart';
 export 'package:ecommerce/resource/style/app_color.dart';
 
 export 'route_access/app_page.dart';
