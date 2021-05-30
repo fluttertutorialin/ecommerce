@@ -5,7 +5,7 @@
 
 import 'package:get/get.dart';
 
-class GetInstanceAccess  {
+class GetInstanceAccess {
   const GetInstanceAccess._();
 
   static void lazyPut<S>(InstanceBuilderCallback<S>? builder,
