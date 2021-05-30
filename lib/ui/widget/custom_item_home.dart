@@ -1,5 +1,9 @@
+/*
+   DEVELOPED BY: KAMLESH LAKHANI
+*/
+
 import 'package:ecommerce/import_package.dart';
-import 'package:ecommerce/model/get/home/home_response.dart';
+import '../../model/get/home/home_response.dart';
 
 class CustomItemHome extends StatelessWidget {
   final HomeResponse homeResponse;

@@ -3,8 +3,6 @@
 
 */
 
-import 'dart:convert';
-
 import '../model/get/home/home_response.dart';
 import '../import_package.dart';
 import '../shared/repository/network_repository.dart';
