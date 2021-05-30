@@ -1,4 +1,9 @@
-import 'package:ecommerce/import_package.dart';
+/*
+   DEVELOPED BY: KAMLESH LAKHANI
+
+*/
+
+import '../../import_package.dart';
 
 class HomePage extends StatelessWidget {
   @override

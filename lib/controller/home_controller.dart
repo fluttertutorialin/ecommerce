@@ -3,7 +3,7 @@
 
 */
 
-import 'package:ecommerce/import_package.dart';
+import '../import_package.dart';
 import '../shared/repository/network_repository.dart';
 
 class HomeController extends GetxController {
