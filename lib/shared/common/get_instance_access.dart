@@ -8,6 +8,9 @@ import 'package:get/get.dart';
 class GetInstanceAccess {
   const GetInstanceAccess._();
 
+  //ACCESS
+  get getInstanceAccess => GetInstanceAccess;
+
   static void lazyPut<S>(InstanceBuilderCallback<S>? builder,
       {String? tag, bool? fenix, bool permanent = false}) {
     return GetInstance()

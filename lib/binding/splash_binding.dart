@@ -4,6 +4,6 @@ import 'package:ecommerce/import_package.dart';
 class SplashBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SplashController>(() => SplashController());
+    GetInstanceAccess.lazyPut<SplashController>(() => SplashController());
   }
 }

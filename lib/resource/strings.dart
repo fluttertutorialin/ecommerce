@@ -14,7 +14,8 @@ class Strings {
   //DIO ERROR
 
   //LABEL
-
+  static const String doNotHaveAccount = 'Don\'t have account?';
+  
   //VALIDATION
 
   //VALIDATION LENGTH (MOBILE NO, EMAIL LENGTH ETC.)
