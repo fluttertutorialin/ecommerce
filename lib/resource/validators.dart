@@ -11,7 +11,7 @@ class Validators {
     }
   }
 /*
-  static String? validateTEmpty<T>(T? v) {
+  static String? validateDropDownEmpty<T>(T? v) {
     if (v == null) {
       return Strings.fieldCantBeEmpty;
     } else {
@@ -67,9 +67,9 @@ class Validators {
     } else {
       return null;
     }
-  }
+  }*/
 
-  static String? validateCheckbox({
+/*  static String? validateCheckbox({
     bool v = false,
     String error = Strings.checkboxValidation,
   }) {
