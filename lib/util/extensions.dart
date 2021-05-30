@@ -6,7 +6,7 @@
    - DATETIME EXTENSION: ()
    - WIDGET EXTENSION: ()
    - INT EXTENSION: ()
-   - BuildContext EXTENSION: (showCircularProgressIndicator, hideProgress)
+   - BuildContext EXTENSION: ()
 */
 
 import 'package:intl/intl.dart';
