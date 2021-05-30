@@ -12,8 +12,21 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+
+  #FOR DYNAMIC UI
+  flutter_screenutil:
+
+  #FOR STATE MANAGEMENT AND SESSION MANAGE
   get:
   get_storage:
+
+  image_picker:
+  image_cropper:
+
+  #FOR DATE FORMATTING
+  intl:
+
+  #FOR API CALLING
   dio:
 
 dev_dependencies:
