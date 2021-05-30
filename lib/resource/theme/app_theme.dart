@@ -4,7 +4,7 @@
 */
 
 import 'package:flutter/material.dart';
-import '../import_package.dart';
+import '../../import_package.dart';
 
 class AppTheme {
   const AppTheme._();
