@@ -36,6 +36,7 @@ class DioHelper {
     String? baseUrl = '',
     Method? method = Method.GET,
     String? path = '',
+    Map<String, String>? headers,
     String contentType = Headers.jsonContentType,
     dynamic data,
     Map<String, dynamic>? parameter,
@@ -47,11 +48,11 @@ class DioHelper {
       final baseOptions = BaseOptions(
           baseUrl: Uri.encodeFull(baseUrl!),
           contentType: contentType,
+          headers: headers,
           //responseType: ResponseType.bytes,
           receiveDataWhenStatusError: false,
           connectTimeout: 60000,
-          receiveTimeout: 3000,
-          headers: {});
+          receiveTimeout: 3000);
 
       final dio = Dio(baseOptions);
 
