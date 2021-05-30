@@ -45,7 +45,7 @@ class DioHelper {
   }) async {
     try {
       final baseOptions = BaseOptions(
-          baseUrl: baseUrl!,
+          baseUrl: Uri.encodeFull(baseUrl!),
           contentType: contentType,
           //responseType: ResponseType.bytes,
           receiveDataWhenStatusError: false,
@@ -53,7 +53,6 @@ class DioHelper {
           receiveTimeout: 3000,
           headers: {});
 
-      print(baseOptions);
       final dio = Dio(baseOptions);
 
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =

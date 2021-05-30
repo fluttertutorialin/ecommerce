@@ -6,6 +6,7 @@
    - DATETIME EXTENSION: ()
    - WIDGET EXTENSION: ()
    - INT EXTENSION: ()
+   - BuildContext EXTENSION: (showCircularProgressIndicator, hideProgress)
 */
 
 import 'package:intl/intl.dart';
@@ -87,13 +88,12 @@ extension DateTimeFormatterExt on DateTime {
 
 // WIDGET EXTENSION
 extension WidgetExt on Widget {
-  Widget align({
-    Alignment alignment = Alignment.center,
-  }) =>
-      Align(
-        alignment: alignment,
-        child: this,
-      );
+  circularProgressIndicator() => Container(
+      alignment: FractionalOffset.center,
+      child: CircularProgressIndicator(strokeWidth: 1));
+
+  align({Alignment alignment = Alignment.center}) =>
+      Align(alignment: alignment, child: this);
 }
 
 // INT EXTENSION
@@ -104,3 +104,6 @@ extension IntExt on int {
     return "${min.toString().padLeft(2, "0")}:${sec.toString().padLeft(2, "0")} min";
   }
 }
+
+// BuildContext EXTENSION
+extension BuildContextExt on BuildContext {}

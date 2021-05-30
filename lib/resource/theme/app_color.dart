@@ -15,4 +15,6 @@ class AppColors {
   static const Color amaranth = Color(0xFFea435d);
   static const Color black = Colors.black;
   static const Color white = Colors.white;
+
+  static const Color whiteCardBackground = Colors.white;
 }

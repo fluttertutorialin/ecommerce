@@ -3,10 +3,20 @@
 
 */
 
+import '../widget/custom_appbar_widget.dart';
+import '../widget/custom_item_home.dart';
+import '../../controller/controller_package.dart';
 import '../../import_package.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends GetView<HomeController> {
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(body: Center(child: Text('Home Page')));
+  Widget build(BuildContext context) => Scaffold(
+      appBar: CustomAppbarWidget(title: 'Home', showBackButton: false),
+      body: Obx(() => controller.statusProgressBar == StatusProgressBar.LOADING
+          ? circularProgressIndicator()
+          : ListView(children: [
+              ...controller.homeList
+                  .map((value) => CustomItemHome(homeResponse: value))
+                  .toList()
+            ])));
 }

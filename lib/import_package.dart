@@ -29,3 +29,5 @@ export 'package:ecommerce/resource/validators.dart';
 //SESSION
 export 'package:ecommerce/shared/common/get_storage.dart';
 export 'package:ecommerce/resource/strings_session.dart';
+
+export 'package:ecommerce/shared/common/status_progress_bar.dart';

@@ -13,13 +13,13 @@ class CustomAppbarWidget extends PreferredSize {
   final Function()? onActionButtonTap, onBackPress;
   final double? actionButtonWidth;
   final Widget? leading, bottom;
-  final bool addBackButton;
+  final bool showBackButton;
 
   CustomAppbarWidget({
     Key? key,
     required this.title,
     this.leading,
-    this.addBackButton = true,
+    this.showBackButton = true,
     this.onBackPress,
     this.backgroundColor = AppColors.kPrimaryColor,
     this.backButtonColor = Colors.white,
@@ -51,7 +51,7 @@ class CustomAppbarWidget extends PreferredSize {
                 preferredSize: Size.fromHeight(100.h),
                 child: bottom!,
               ),
-        leading: addBackButton
+        leading: showBackButton
             ? CustomBackButton(leading: leading, onBackTap: onBackPress)
             : null,
         leadingWidth: 45.w,
