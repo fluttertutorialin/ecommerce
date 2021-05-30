@@ -14,7 +14,7 @@ class GetInstanceAccess {
   static void lazyPut<S>(InstanceBuilderCallback<S>? builder,
       {String? tag, bool? fenix, bool permanent = false}) {
     return GetInstance()
-        .lazyPut<S>(builder!, tag: tag!, fenix: fenix!, permanent: permanent);
+        .lazyPut<S>(builder!, tag: tag, fenix: fenix, permanent: permanent);
   }
 
   static Future<S> putAsync<S>(AsyncInstanceBuilderCallback<S> builder,
@@ -37,10 +37,10 @@ class GetInstanceAccess {
           clearFactory: clearFactory, clearRouteBindings: clearRouteBindings);
 
   static Future<bool> delete<S>({String? tag, required String key}) async =>
-      GetInstance().delete<S>(tag: tag!, key: key);
+      GetInstance().delete<S>(tag: tag, key: key);
 
   static bool isRegistered<S>({String? tag}) =>
-      GetInstance().isRegistered<S>(tag: tag!);
+      GetInstance().isRegistered<S>(tag: tag);
 
   static S putOrFind<S>(S Function() dep, {required String tag}) {
     if (GetInstance().isRegistered<S>(tag: tag) ||
