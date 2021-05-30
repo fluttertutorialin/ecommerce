@@ -2,6 +2,7 @@
     package="com.jdkgroup.ecommerce">
    <application
         android:label="ecommerce"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
