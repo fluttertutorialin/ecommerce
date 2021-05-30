@@ -78,17 +78,19 @@ class DioHelper {
       if (success != null) {
         success(response.data);
       }
+
       return response.data;
     } on DioError catch (e) {
-      error!(_createErrorEntity(e));
+      error!(_getError(e));
     }
   }
 
-  void cancelRequests(CancelToken token) {
+  // REQUEST CANCEL
+  cancelRequests(CancelToken token) {
     token.cancel("cancelled");
   }
 
-  ErrorEntity _createErrorEntity(DioError error) {
+  _getError(DioError error) {
     switch (error.type) {
       case DioErrorType.cancel:
         {
@@ -161,6 +163,7 @@ class DioHelper {
   }
 }
 
+//GET THE ERROR FROM API
 class ErrorEntity {
   final int? code;
   final String? message;
