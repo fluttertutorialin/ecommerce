@@ -96,22 +96,18 @@ class DioHelper {
         {
           return ErrorEntity(code: -1, message: 'dioRequestCancellation'.tr);
         }
-        break;
       case DioErrorType.connectTimeout:
         {
           return ErrorEntity(code: -1, message: 'dioConnectionTimeOut'.tr);
         }
-        break;
       case DioErrorType.sendTimeout:
         {
           return ErrorEntity(code: -1, message: 'dioRequestTimeOut'.tr);
         }
-        break;
       case DioErrorType.receiveTimeout:
         {
           return ErrorEntity(code: -1, message: 'dioResponseTimeout'.tr);
         }
-        break;
       case DioErrorType.response:
         {
           try {
@@ -120,34 +116,33 @@ class DioHelper {
               case 400:
                 return ErrorEntity(
                     code: errCode, message: 'dioRequestSyntaxError'.tr);
-                break;
+
               case 403:
                 return ErrorEntity(
                     code: errCode, message: 'dioServerRefusedToExecute'.tr);
-                break;
+
               case 404:
                 return ErrorEntity(
                     code: errCode, message: 'dioNotConnectServer'.tr);
-                break;
+
               case 405:
                 return ErrorEntity(
                     code: errCode, message: 'dioRequestForbidden'.tr);
-                break;
+
               case 500:
                 return ErrorEntity(
                     code: errCode, message: 'dioServerInternalError'.tr);
-                break;
+
               case 502:
                 return ErrorEntity(
                     code: errCode, message: 'dioInvalidRequest'.tr);
-                break;
+
               case 503:
                 return ErrorEntity(code: errCode, message: 'dioServerDown'.tr);
-                break;
+
               case 505:
                 return ErrorEntity(
                     code: errCode, message: 'dioHttpNotSupport'.tr);
-                break;
               default:
                 return ErrorEntity(
                     code: errCode, message: 'dioUnknownMistake'.tr);
@@ -156,7 +151,7 @@ class DioHelper {
             return ErrorEntity(code: -1, message: 'dioUnknownError'.tr);
           }
         }
-        break;
+
       default:
         return ErrorEntity(code: -1, message: error.message);
     }
