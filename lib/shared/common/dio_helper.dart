@@ -10,13 +10,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
-enum Method { GET, POST, DELETE, PUT }
+enum Method { GET, POST, DELETE, PUT, HEAD, PATCH }
 
 const MethodValues = {
   Method.GET: 'get',
   Method.POST: 'post',
   Method.DELETE: 'delete',
-  Method.PUT: 'put'
+  Method.PUT: 'put',
+  Method.HEAD: 'head',
+  Method.PATCH: 'patch'
 };
 
 typedef HttpSuccessCallback<T> = void Function(T data);
@@ -32,18 +34,17 @@ _parseJson(String text) {
 }
 
 class DioHelper {
-  Future request<T>({
-    String? baseUrl = '',
-    Method? method = Method.GET,
-    String? path = '',
-    Map<String, String>? headers,
-    String contentType = Headers.jsonContentType,
-    dynamic data,
-    Map<String, dynamic>? parameter,
-    RequestOptions? requestOptions,
-    required HttpSuccessCallback<T>? success,
-    required HttpFailureCallback? error,
-  }) async {
+  Future request<T>(
+      {String? baseUrl = '',
+      Method? method = Method.GET,
+      String? path = '',
+      Map<String, String>? headers,
+      String contentType = Headers.jsonContentType,
+      dynamic data,
+      Map<String, dynamic>? parameter,
+      RequestOptions? requestOptions,
+      required HttpSuccessCallback<T>? success,
+      required HttpFailureCallback? error}) async {
     try {
       final baseOptions = BaseOptions(
           baseUrl: Uri.encodeFull(baseUrl!),
@@ -54,7 +55,14 @@ class DioHelper {
           connectTimeout: 60000,
           receiveTimeout: 3000);
 
-      final dio = Dio(baseOptions);
+      final dio = Dio(baseOptions)
+        ..interceptors.addAll(getDefaultInterceptor());
+
+      // TODO COOKIE MANAGE
+      /*
+        CookieJar cookieJar = CookieJar();
+        dio.interceptors.add(CookieManager(cookieJar));
+      */
 
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (client) {
@@ -89,6 +97,10 @@ class DioHelper {
   // REQUEST CANCEL
   cancelRequests(CancelToken token) {
     token.cancel("cancelled");
+  }
+
+  List<Interceptor> getDefaultInterceptor() {
+    return [LogInterceptor(requestBody: true, responseBody: true)];
   }
 
   _getError(DioError error) {

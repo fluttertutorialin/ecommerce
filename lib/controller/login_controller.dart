@@ -12,6 +12,9 @@ class LoginController extends GetxController {
 
   User? user;
 
+  final TextEditingController accountController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   LoginController(this._networkRepository, this._firebaseRepository);
 
   //LOGIN BY FACEBOOK
@@ -60,5 +63,12 @@ class LoginController extends GetxController {
     } catch (error) {
       fail!(error.toString());
     }
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    accountController.dispose();
+    passwordController.dispose();
   }
 }

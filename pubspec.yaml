@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.14.0-136.0 <3.0.0"
+  sdk: '>=2.13.1 <3.0.0' #">=2.14.0-136.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -44,8 +44,14 @@ dependencies:
   # FOR EVENT HANDLE
   event_bus:
 
+  # FOR LOGGING
+  logging:
+
   # ICON
   font_awesome_flutter:
+
+  # IMAGE
+  cached_network_image:
 
   # FOR KEYSTORE GENERATE ANDROID (GET SH1)
   flutter_automation:

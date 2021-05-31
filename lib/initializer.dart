@@ -54,7 +54,7 @@ class Initializer {
 
   //GET STORAGE INIT
   _initGetStorage() async {
-    await GetStorage.init();
+    await GetStorage.init(); /// OPTIONAL STORAGE (CONTAINER) NAME
   }
 
   //SCREEN ORIENTATIONS INIT

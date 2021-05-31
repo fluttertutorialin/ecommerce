@@ -66,7 +66,7 @@ extension StringExt on String {
         fit: fit,
       );
 
-  void debugLog() {
+  debugLog() {
     return debugPrint(
       '\n******************************* DebugLog *******************************\n'
       ' $this'
@@ -74,6 +74,20 @@ extension StringExt on String {
       wrapWidth: 1024,
     );
   }
+
+  /// crypto library
+/*
+   getHMacMd5Str(String secret, String message) {
+    List<int> secretBytes = utf8.encode(secret);
+    List<int> messageBytes = utf8.encode(message);
+
+    //  var hmac = new Hmac(sha256.newInstance(), secretBytes); // sha256
+    //  var hmac = new Hmac(sha1, secretBytes); // sha1
+    var hmac = new Hmac(md5, secretBytes); // md5
+    var bytes = hmac.convert(messageBytes).toString();
+    return bytes;
+  }*/
+
 }
 
 // DATETIME EXTENSION
