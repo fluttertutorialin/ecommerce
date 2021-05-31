@@ -90,9 +90,9 @@ extension StringExt on String {
     return bytes;
   }
 
-  duSHA256(String input) {
+  duSHA256() {
     String salt = 'EIpWsyfiy@R@X#qn17!StJNdZK1fFF8iV6ffN!goZkqt#JxO';
-    var bytes = utf8.encode(input + salt);
+    var bytes = utf8.encode(this + salt);
     var digest = sha256.convert(bytes);
 
     return digest.toString();

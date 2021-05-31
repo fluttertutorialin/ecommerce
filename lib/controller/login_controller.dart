@@ -1,9 +1,11 @@
 import 'package:ecommerce/import_package.dart';
+import 'package:ecommerce/model/sent/login_parameter.dart';
 import 'package:ecommerce/shared/repository/firebase_repository.dart';
 import 'package:ecommerce/shared/repository/network_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+export 'package:ecommerce/util/extensions.dart';
 
 class LoginController extends GetxController {
   late NetworkRepository _networkRepository;
@@ -12,7 +14,7 @@ class LoginController extends GetxController {
 
   User? user;
 
-  final TextEditingController accountController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   LoginController(this._networkRepository, this._firebaseRepository);
@@ -65,10 +67,26 @@ class LoginController extends GetxController {
     }
   }
 
+  //LOGIN BY APPLICATION
+  loginApplication() async {
+    // if (!duIsEmail(_emailController.value.text)) {
+    //   toastInfo(msg: '请正确输入邮件');
+    //   return;
+    // }
+    // if (!duCheckStringLength(_passController.value.text, 6)) {
+    //   toastInfo(msg: '密码不能小于6位');
+    //   return;
+    // }
+
+    var loginParameter = LoginParameter(
+      email: emailController.value.text,
+      password: passwordController.value.text.duSHA256());
+  }
+
   @override
   void onClose() {
     super.onClose();
-    accountController.dispose();
+    emailController.dispose();
     passwordController.dispose();
   }
 }
