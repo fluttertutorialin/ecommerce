@@ -3,8 +3,10 @@
    START THE APPLICATION
 */
 
+import 'binding/splash_binding.dart' show SplashBinding;
 import 'import_package.dart';
 import 'initializer.dart';
+import 'lang/translation_service.dart';
 
 void main() {
   //APPLICATION RUN AND INIT THE INSTANCE
@@ -25,12 +27,22 @@ class MyApp extends StatelessWidget {
     );
 
     return GetMaterialApp(
+      // FOR THEME, TITLE, BANNER TOP FALSE
       title: Strings.appName,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
+
+      //FOR LANGUAGE TRANSLATION
+      locale: TranslationService.locale,
+      fallbackLocale: TranslationService.fallbackLocale,
+      translations: TranslationService(),
+
+      //FOR FIRST CALL THE SPLASH AND BINDING
+      initialBinding: SplashBinding(),
       initialRoute: AppRoute.SPLASH,
-      getPages: AppPage.routes,
+
+      //FOR COLLECTION OF APPLICATION PAGES
+      getPages: AppPage.routes
     );
   }
 }
-

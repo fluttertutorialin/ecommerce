@@ -14,8 +14,7 @@ class AppPage {
   static final routes = [
     GetPage(
         name: AppRoute.SPLASH,
-        page: () => SplashPage(),
-        binding: SplashBinding()),
+        page: () => SplashPage()),
 
     GetPage(
         name: AppRoute.HOME,
