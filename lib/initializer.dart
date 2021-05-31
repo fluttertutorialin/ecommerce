@@ -52,7 +52,7 @@ class Initializer {
 
   //GET STORAGE INIT
   Future<void> _initGetStorage() async {
-    await GetStorage.init();
+    //await GetStorage.init();
   }
 
   //SCREEN ORIENTATIONS INIT

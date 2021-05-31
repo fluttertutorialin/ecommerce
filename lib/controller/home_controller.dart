@@ -8,8 +8,8 @@ import '../import_package.dart';
 import '../shared/repository/network_repository.dart';
 
 class HomeController extends GetxController {
-  late NetworkRepository? _networkRepository;
-  late Storage? _storage;
+  late NetworkRepository _networkRepository;
+  late Storage _storage;
 
   HomeController(this._networkRepository, this._storage);
 
@@ -32,7 +32,7 @@ class HomeController extends GetxController {
   _postResponseApi() {
     statusProgressBarRx.value = StatusProgressBar.LOADING;
 
-    _networkRepository!.getMethod(
+    _networkRepository.getMethod(
         baseUrl: Strings.postUrl,
         success: (value) {
           statusProgressBarRx.value = StatusProgressBar.SUCCESS;

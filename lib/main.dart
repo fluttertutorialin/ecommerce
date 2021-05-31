@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       title: Strings.appName,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      initialRoute: AppRoute.HOME,
+      initialRoute: AppRoute.SPLASH,
       getPages: AppPage.routes,
     );
   }

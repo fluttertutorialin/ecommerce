@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jdkgroup.ecommerce">
    <application
-        android:name="androidx.multidex.MultiDexApplication"
         android:label="ecommerce"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">

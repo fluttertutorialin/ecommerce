@@ -6,9 +6,9 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginController extends GetxController {
-  late NetworkRepository? _networkRepository;
-  late Storage? _storage;
-  late FirebaseRepository? _firebaseRepository;
+  late NetworkRepository _networkRepository;
+  late Storage _storage;
+  late FirebaseRepository _firebaseRepository;
 
   User? user;
 
@@ -21,7 +21,7 @@ class LoginController extends GetxController {
       switch (result.status) {
         case LoginStatus.success:
           final accessToken = await FacebookAuth.instance.accessToken;
-          _firebaseRepository!.loginFirebaseFacebook(token: accessToken!.token);
+          _firebaseRepository.loginFirebaseFacebook(token: accessToken!.token);
           success!(user);
           break;
 
@@ -46,7 +46,7 @@ class LoginController extends GetxController {
         fail!(Strings.loginCancelToast);
       } else {
         var auth = await _signIn.authentication;
-        _firebaseRepository!.loginFirebaseGoogle(token: auth.accessToken);
+        _firebaseRepository.loginFirebaseGoogle(token: auth.accessToken);
 
         success!(user);
       }
