@@ -38,6 +38,12 @@ dependencies:
   flutter_facebook_auth:
   google_sign_in:
 
+  # FOR FONT
+  google_fonts:
+
+  # FOR EVENT HANDLE
+  event_bus:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
