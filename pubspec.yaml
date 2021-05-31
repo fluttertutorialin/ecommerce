@@ -44,9 +44,6 @@ dependencies:
   # FOR EVENT HANDLE
   event_bus:
 
-  # FOR LOGGING
-  logging:
-
   # ICON
   font_awesome_flutter:
 

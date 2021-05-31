@@ -14,12 +14,12 @@ class HomeController extends GetxController {
   HomeController(this._networkRepository, this._storage);
 
   // PROGRESSBAR
-  final statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
-  get statusProgressBar => statusProgressBarRx.value; //GET DATA
+  final _statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
+  get statusProgressBar => _statusProgressBarRx.value; //GET DATA
 
   //FROM API DATA STORE AND GET LIST
-  var homeListRx = RxList<HomeResponse>([]); // SET DATA
-  get homeList => homeListRx; // GET DATA
+  var _homeListRx = RxList<HomeResponse>([]); // SET DATA
+  get homeList => _homeListRx; // GET DATA
 
   @override
   void onInit() {
@@ -30,19 +30,19 @@ class HomeController extends GetxController {
 
   //API CALL
   _postResponseApi() {
-    statusProgressBarRx.value = StatusProgressBar.LOADING;
+    _statusProgressBarRx.value = StatusProgressBar.LOADING;
 
     _networkRepository.getMethod(
         baseUrl: Strings.postUrl,
         success: (value) {
-          statusProgressBarRx.value = StatusProgressBar.SUCCESS;
+          _statusProgressBarRx.value = StatusProgressBar.SUCCESS;
 
-          var list = value as List;
-          List<HomeResponse> _homeListFromJson = list.map((i) => HomeResponse.fromJson(i)).toList();
-          homeListRx.value = _homeListFromJson;
+          var listAsConvert = value as List;
+          List<HomeResponse> _homeListFromJson = listAsConvert.map((i) => HomeResponse.fromJson(i)).toList();
+          _homeListRx.value = _homeListFromJson;
         },
         error: (error) {
-          statusProgressBarRx.value = StatusProgressBar.SUCCESS;
+          _statusProgressBarRx.value = StatusProgressBar.SUCCESS;
         });
   }
 }
