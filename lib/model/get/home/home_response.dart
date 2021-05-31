@@ -10,11 +10,14 @@ class HomeResponse {
 
   HomeResponse({this.userId, this.id, this.title, this.body});
 
-  HomeResponse.fromJson(Map<String, dynamic> json) {
-    userId = json['userId'];
-    id = json['id'];
-    title = json['title'];
-    body = json['body'];
+  factory HomeResponse.fromJson(Map<String, dynamic>? json) {
+    if (json != null)
+      return (HomeResponse(
+          userId: json['userId'] ?? 0,
+          id: json['id'] ?? '',
+          title: json['title'] ?? '',
+          body: json['body'] ?? ''));
+    return HomeResponse();
   }
 
   Map<String, dynamic> toJson() {
