@@ -10,6 +10,7 @@ import '../provider/network_provider.dart';
 class NetworkRepository implements NetworkProvider {
   final _networkProvider = Get.find<NetworkProvider>();
 
+  //GET API CALLING
   @override
   void getMethod(
       {String? baseUrl,
@@ -23,6 +24,7 @@ class NetworkRepository implements NetworkProvider {
         error: error);
   }
 
+  //POST API CALLING
   @override
   void postMethod(
       {String? baseUrl,

@@ -10,6 +10,7 @@ class NetworkProvider {
 
   NetworkProvider(this._dioHelper);
 
+  //POST API CALLING
   void postMethod(
       {String? baseUrl,
       Map<String, dynamic>? parameter,
@@ -23,6 +24,7 @@ class NetworkProvider {
         error: error);
   }
 
+  //GET API CALLING
   void getMethod(
       {String? baseUrl,
       Map<String, dynamic>? parameter,
