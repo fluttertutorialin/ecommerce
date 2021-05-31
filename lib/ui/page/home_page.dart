@@ -12,6 +12,7 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: CustomAppbarWidget(title: 'Home', showBackButton: false),
+
       body: Obx(() => controller.statusProgressBar == StatusProgressBar.LOADING
           ? circularProgressIndicator()
           : ListView(children: [

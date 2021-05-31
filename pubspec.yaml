@@ -29,6 +29,10 @@ dependencies:
   #FOR API CALLING
   dio:
 
+  #FOR FIREBASE
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

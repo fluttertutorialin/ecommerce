@@ -17,6 +17,8 @@ class CustomItemHome extends StatelessWidget {
           child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             CircleAvatar(child: Text('${homeResponse.userId!}')),
             SizedBox(width: 10),
+
+            //EXPANDED REMOVE RENDER LINE
             Expanded(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

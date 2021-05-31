@@ -38,7 +38,7 @@ class HomeController extends GetxController {
           statusProgressBarRx.value = StatusProgressBar.SUCCESS;
 
           var list = value as List;
-          List<HomeResponse> _homeListFromJson = list.map((i)=>HomeResponse.fromJson(i)).toList();
+          List<HomeResponse> _homeListFromJson = list.map((i) => HomeResponse.fromJson(i)).toList();
           homeListRx.value = _homeListFromJson;
         },
         error: (error) {
