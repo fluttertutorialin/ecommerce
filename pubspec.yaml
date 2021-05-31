@@ -68,7 +68,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  #FOR IMAGE
-
-  #FOR FONT
+  # FOR IMAGE
+  assets:
+    - assets/images/
+  
+  # FOR FONT
 

@@ -1,6 +1,13 @@
+/*
+   DEVELOPED BY: KAMLESH LAKHANI
+   FOR ICON FONT
+*/
+
 import 'package:flutter/material.dart';
 
-class Iconfont {
+class IconFont {
+  const IconFont._();
+
   // iconName: share
   static const share =
       IconData(0xe60d, fontFamily: 'Iconfont', matchTextDirection: true);
