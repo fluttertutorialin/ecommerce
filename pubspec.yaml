@@ -33,10 +33,11 @@ dependencies:
   firebase_core: 1.2.0
   firebase_auth: 1.2.0
   cloud_firestore: 2.2.0
+  firebase_core_platform_interface:
 
   # AUTHENTICATION
   flutter_facebook_auth:
-  google_sign_in:
+  google_sign_in: 5.0.3
 
   # FOR FONT
   google_fonts:

@@ -53,7 +53,7 @@ class Initializer {
   }
 
   //GET STORAGE INIT
-  Future<void> _initGetStorage() async {
+  _initGetStorage() async {
     await GetStorage.init();
   }
 
@@ -65,7 +65,7 @@ class Initializer {
     ]);
   }
 
-  void _initLazyPut(){
+  void _initLazyPut() {
     //DIO
     Get.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
 

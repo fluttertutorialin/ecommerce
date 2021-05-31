@@ -39,20 +39,23 @@ class LoginController extends GetxController {
   //LOGIN BY GOOGLE
   Future<void> loginGoogle({Function? success, Function? fail, context}) async {
     try {
-      var _googleSignIn = GoogleSignIn(scopes: ['email']);
+      var _googleSignIn = GoogleSignIn(scopes: [
+        'email',
+        'https://www.googleapis.com/auth/contacts.readonly'
+      ]);
       var _signIn = await _googleSignIn.signIn();
 
       if (_signIn == null) {
         fail!(Strings.loginCancelToast);
       } else {
+        print('111');
         var auth = await _signIn.authentication;
         _firebaseRepository.loginFirebaseGoogle(token: auth.accessToken);
 
         success!(user);
       }
     } catch (error) {
-      print(error);
-     // fail!(error.toString());
+       fail!(error.toString());
     }
   }
 }
