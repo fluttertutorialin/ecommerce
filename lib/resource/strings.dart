@@ -17,6 +17,9 @@ class Strings {
 
   // DIO API RESPONSE STATUS
 
+  // TOAST MESSAGE
+  static const String loginCancelToast = 'The login is cancel';
+
   // DIO ERROR
 
   // LABEL

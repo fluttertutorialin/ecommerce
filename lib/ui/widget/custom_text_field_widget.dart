@@ -19,7 +19,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final bool readOnly, addHint, enabled;
   final Function()? onTap;
   final InputBorder? border;
-  final AutovalidateMode autovalidateMode;
+  final AutovalidateMode autoValidateMode;
   final BoxConstraints? suffixIconConstraints;
 
   const CustomTextFieldWidget({
@@ -40,7 +40,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.onTap,
     this.border,
     this.enabled = true,
-    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.autoValidateMode = AutovalidateMode.onUserInteraction,
     this.addHint = false,
     this.suffixIconConstraints,
   }) : super(key: key);
@@ -52,7 +52,7 @@ class CustomTextFieldWidget extends StatelessWidget {
       readOnly: readOnly,
       initialValue: initialValue,
       keyboardType: keyboardType,
-      autovalidateMode: autovalidateMode,
+      autovalidateMode: autoValidateMode,
       controller: controller,
       validator: validator,
       onChanged: onChanged,

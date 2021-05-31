@@ -21,12 +21,12 @@ class LoginController extends GetxController {
       switch (result.status) {
         case LoginStatus.success:
           final accessToken = await FacebookAuth.instance.accessToken;
-
           _firebaseRepository!.loginFirebaseFacebook(token: accessToken!.token);
           success!(user);
           break;
 
         case LoginStatus.cancelled:
+          fail!(Strings.loginCancelToast);
           break;
         default:
           break;
@@ -40,12 +40,12 @@ class LoginController extends GetxController {
   Future<void> loginGoogle({Function? success, Function? fail, context}) async {
     try {
       var _googleSignIn = GoogleSignIn(scopes: ['email']);
-      var res = await _googleSignIn.signIn();
+      var _signIn = await _googleSignIn.signIn();
 
-      if (res == null) {
-        fail!('Cancel Login');
+      if (_signIn == null) {
+        fail!(Strings.loginCancelToast);
       } else {
-        var auth = await res.authentication;
+        var auth = await _signIn.authentication;
         _firebaseRepository!.loginFirebaseGoogle(token: auth.accessToken);
 
         success!(user);
@@ -54,6 +54,4 @@ class LoginController extends GetxController {
       fail!(error.toString());
     }
   }
-
-
 }
