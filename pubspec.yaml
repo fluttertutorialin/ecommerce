@@ -30,8 +30,13 @@ dependencies:
   dio:
 
   #FOR FIREBASE
+  firebase_core:
+  firebase_auth:
+  cloud_firestore:
 
-
+  # AUTHENTICATION
+  flutter_facebook_auth:
+  google_sign_in:
 
 dev_dependencies:
   flutter_test:

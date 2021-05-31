@@ -4,6 +4,9 @@
 */
 
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -39,6 +42,8 @@ class Initializer {
     try {
       await _initGetStorage();
       _initScreenOrientations();
+      _fireBaseInit();
+
       _initLazyPut();
     } catch (err) {
       rethrow;
@@ -62,12 +67,21 @@ class Initializer {
     //DIO
     Get.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
 
+    //FIREBASE
+    Get.lazyPut<FirebaseAuth>(() => FirebaseAuth.instance, fenix: false);
+    Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance, fenix: false);
+
     //NETWORK BINDING
-    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()), fenix: true);
-    Get.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: true);
+    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()), fenix: false);
+    Get.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: false);
 
     //LOCAL STORAGE SESSION
-    Get.lazyPut<GetStorage>(() => GetStorage(), fenix: true);
+    Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
     Get.lazyPut<Storage>(() => Storage(Get.find()), fenix: false);
+  }
+
+  //FIREBASE INIT
+  void _fireBaseInit() async{
+    await Firebase.initializeApp();
   }
 }
