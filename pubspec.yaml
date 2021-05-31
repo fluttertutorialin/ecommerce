@@ -44,6 +44,8 @@ dependencies:
   # FOR EVENT HANDLE
   event_bus:
 
+  font_awesome_flutter:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

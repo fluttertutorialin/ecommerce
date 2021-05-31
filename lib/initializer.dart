@@ -42,7 +42,7 @@ class Initializer {
     try {
       await _initGetStorage();
       _initScreenOrientations();
-      _fireBaseInit();
+      _initFireBase();
 
       _initLazyPut();
     } catch (err) {
@@ -81,7 +81,7 @@ class Initializer {
   }
 
   //FIREBASE INIT
-  void _fireBaseInit() async{
+  void _initFireBase() async{
     await Firebase.initializeApp();
   }
 }

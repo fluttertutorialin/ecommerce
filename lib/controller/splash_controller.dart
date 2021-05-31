@@ -25,9 +25,8 @@ class SplashController extends GetxController {
   _launchPage() async {
     await Future.delayed(const Duration(seconds: 3), () {});
     bool isLogin = _storage.hasData(StringsSession.isLoginSession);
-    print(isLogin);
 
     //OFFALLNAME FOR CLEAR BACK SCREEN
-    Get.offAllNamed(isLogin ? AppRoute.LOGIN : AppRoute.LOGIN);
+    Get.offAllNamed(isLogin ? AppRoute.HOME : AppRoute.LOGIN);
   }
 }

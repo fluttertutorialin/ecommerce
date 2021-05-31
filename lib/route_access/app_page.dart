@@ -24,6 +24,8 @@ class AppPage {
 
     GetPage(
         name: AppRoute.LOGIN,
-        page: () => LoginPage()),
+        page: () => LoginPage(),
+        binding: LoginBinding()
+    )
   ];
 }
