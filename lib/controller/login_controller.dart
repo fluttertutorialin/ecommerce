@@ -43,19 +43,22 @@ class LoginController extends GetxController {
         'email',
         'https://www.googleapis.com/auth/contacts.readonly'
       ]);
-      var _signIn = await _googleSignIn.signIn();
+      final GoogleSignInAccount? _signIn = await _googleSignIn.signIn();
 
       if (_signIn == null) {
         fail!(Strings.loginCancelToast);
       } else {
-        print('111');
         var auth = await _signIn.authentication;
-        _firebaseRepository.loginFirebaseGoogle(token: auth.accessToken);
-
-        success!(user);
+        _firebaseRepository
+            .loginFirebaseGoogle(
+                idToken: auth.idToken, accessToken: auth.accessToken)
+            .then((value) => success!(user));
       }
+    } on FirebaseAuthException catch (error) {
+      if (error.code == 'account-exists-with-different-credential') {
+      } else if (error.code == 'invalid-credential') {}
     } catch (error) {
-       fail!(error.toString());
+      fail!(error.toString());
     }
   }
 }

@@ -9,21 +9,20 @@ import '../../import_package.dart';
 
 class LoginPage extends GetView<LoginController> {
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(body: Center(child: InkWell(
-        onTap: () => controller.loginGoogle(),
-        child: Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            borderRadius:
-            BorderRadius.circular(40),
-            color: const Color(0xFFEA4336),
-          ),
-          child: const Icon(
-            FontAwesomeIcons.google,
-            color: Colors.white,
-            size: 24.0,
-          ),
-        ),
-      )));
+  Widget build(BuildContext context) => Scaffold(
+      body: Center(
+          child: InkWell(
+              onTap: () => controller.loginGoogle(
+                  success: (user) {},
+                  fail: (error) {
+                    print(error);
+                  }),
+              child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: const Color(0xFFEA4336),
+                  ),
+                  child: const Icon(FontAwesomeIcons.google,
+                      color: Colors.white, size: 24.0)))));
 }

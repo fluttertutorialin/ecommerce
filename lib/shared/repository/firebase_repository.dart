@@ -16,10 +16,13 @@ class FirebaseRepository implements FireBaseProvider {
   }
 
   @override
-  void loginFirebaseGoogle({token}) async {
-    AuthCredential credential =
-        GoogleAuthProvider.credential(accessToken: token);
-    await _firebaseAuth.signInWithCredential(credential);
+  Future<User?> loginFirebaseGoogle(
+      {String? idToken, String? accessToken}) async {
+    AuthCredential authCredential = GoogleAuthProvider.credential(
+        accessToken: accessToken, idToken: idToken);
+    final UserCredential userCredential =
+        await _firebaseAuth.signInWithCredential(authCredential);
+    return userCredential.user;
   }
 
   @override
@@ -34,13 +37,9 @@ class FirebaseRepository implements FireBaseProvider {
     await _firebaseAuth.signOut();
   }
 
-
 /*  void saveUserToFirestore({user}) async {
-    await _fireStore!
-        .collection('users')
-        .doc(user!.email)
-        .set(
-      {'deviceToken': token, 'isOnline': true},
+    await _fireStore.collection('users').doc(user!.email).set(
+      {'deviceToken': '', 'isOnline': true},
       SetOptions(merge: true),
     );
   }*/

@@ -3,12 +3,14 @@
    FOR FIREBASE SERVICE
 */
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 class FireBaseProvider {
   dynamic getCurrentUser() => null;
 
   /// Login Firebase with social account
   void loginFirebaseFacebook({token}) {}
-  void loginFirebaseGoogle({token}) {}
+  Future<User?> loginFirebaseGoogle({String? idToken, String? accessToken}) async {}
 
   void signOut() {}
 }
