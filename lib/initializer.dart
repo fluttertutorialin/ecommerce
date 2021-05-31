@@ -13,7 +13,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'shared/common/dio_helper.dart';
 import 'shared/common/get_storage.dart';
+import 'shared/provider/firebase_provider.dart';
 import 'shared/provider/network_provider.dart';
+import 'shared/repository/firebase_repository.dart';
 import 'shared/repository/network_repository.dart';
 
 class Initializer {
@@ -40,7 +42,7 @@ class Initializer {
   //ALL INIT DEFINE
   Future<void> _initServices() async {
     try {
-      await _initGetStorage();
+      _initGetStorage();
       _initScreenOrientations();
       _initFireBase();
 
@@ -52,7 +54,7 @@ class Initializer {
 
   //GET STORAGE INIT
   Future<void> _initGetStorage() async {
-    //await GetStorage.init();
+    await GetStorage.init();
   }
 
   //SCREEN ORIENTATIONS INIT
@@ -78,10 +80,13 @@ class Initializer {
     //LOCAL STORAGE SESSION
     Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
     Get.lazyPut<Storage>(() => Storage(Get.find()), fenix: false);
+
+    Get.lazyPut<FireBaseProvider>(() => FireBaseProvider());
+    Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(Get.find(), Get.find()), fenix: false);
   }
 
   //FIREBASE INIT
-  void _initFireBase() async{
+  void _initFireBase() async {
     await Firebase.initializeApp();
   }
 }

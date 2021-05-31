@@ -12,7 +12,7 @@ class LoginController extends GetxController {
 
   User? user;
 
-  LoginController(this._networkRepository, this._storage, this._firebaseRepository);
+  LoginController(this._networkRepository, this._firebaseRepository);
 
   //LOGIN BY FACEBOOK
   Future<void> loginFB({Function? success, Function? fail, context}) async {
@@ -51,7 +51,8 @@ class LoginController extends GetxController {
         success!(user);
       }
     } catch (error) {
-      fail!(error.toString());
+      print(error);
+     // fail!(error.toString());
     }
   }
 }

@@ -10,7 +10,6 @@ class LoginBinding extends Bindings {
   void dependencies() {
     GetInstanceAccess.lazyPut<LoginController>(() => LoginController(
         GetInstanceAccess.find(),
-        GetInstanceAccess.find(),
         GetInstanceAccess.find()));
   }
 }
