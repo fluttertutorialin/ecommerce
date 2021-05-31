@@ -27,6 +27,6 @@ class SplashController extends GetxController {
     bool isLogin = _storage.hasData(StringsSession.isLoginSession);
 
     //OFFALLNAME FOR CLEAR BACK SCREEN
-    Get.offAllNamed(isLogin ? AppRoute.LOGIN : AppRoute.LOGIN);
+    Get.offAllNamed(isLogin ? AppRoute.HOME : AppRoute.LOGIN);
   }
 }

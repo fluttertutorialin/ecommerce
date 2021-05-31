@@ -10,6 +10,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
+import 'inteceptor/log_inteceptor.dart';
+
 enum Method { GET, POST, DELETE, PUT, HEAD, PATCH }
 
 const MethodValues = {
@@ -99,8 +101,11 @@ class DioHelper {
     token.cancel("cancelled");
   }
 
+  // LOG DISPLAY
   List<Interceptor> getDefaultInterceptor() {
-    return [LogInterceptor(requestBody: true, responseBody: true)];
+    // return [LogInterceptor(requestBody: true, responseBody: true)];
+
+    return [DefaultLogInterceptor(requestBody: true, responseBody: true)];
   }
 
   _getError(DioError error) {

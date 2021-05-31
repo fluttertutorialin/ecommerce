@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
 
-class LogInterceptor extends Interceptor {
-  LogInterceptor({
+class DefaultLogInterceptor extends Interceptor {
+  DefaultLogInterceptor({
     this.request = true,
     this.requestHeader = true,
     this.requestBody = false,

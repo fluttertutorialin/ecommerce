@@ -9,6 +9,9 @@
    - BuildContext EXTENSION: ()
 */
 
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 import 'package:intl/intl.dart';
 import '../../import_package.dart';
 
@@ -76,8 +79,7 @@ extension StringExt on String {
   }
 
   /// crypto library
-/*
-   getHMacMd5Str(String secret, String message) {
+  getHMacMd5Str(String secret, String message) {
     List<int> secretBytes = utf8.encode(secret);
     List<int> messageBytes = utf8.encode(message);
 
@@ -86,8 +88,15 @@ extension StringExt on String {
     var hmac = new Hmac(md5, secretBytes); // md5
     var bytes = hmac.convert(messageBytes).toString();
     return bytes;
-  }*/
+  }
 
+  duSHA256(String input) {
+    String salt = 'EIpWsyfiy@R@X#qn17!StJNdZK1fFF8iV6ffN!goZkqt#JxO';
+    var bytes = utf8.encode(input + salt);
+    var digest = sha256.convert(bytes);
+
+    return digest.toString();
+  }
 }
 
 // DATETIME EXTENSION
