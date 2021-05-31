@@ -13,11 +13,9 @@ class LoginPage extends GetView<LoginController> {
   Widget build(BuildContext context) => Scaffold(
       body: Center(
           child: InkWell(
-              onTap: () => controller.loginGoogle(
-                  success: (User user) {
-                    print(user.displayName);
-                  },
-                  fail: (error) {
+              onTap: () => controller.loginGoogle(success: (User? user) {
+                    print(user!.displayName);
+                  }, fail: (error) {
                     print(error);
                   }),
               child: Container(

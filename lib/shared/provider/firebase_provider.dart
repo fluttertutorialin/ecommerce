@@ -10,7 +10,9 @@ class FireBaseProvider {
 
   /// Login Firebase with social account
   void loginFirebaseFacebook({token}) {}
-  Future<User?> loginFirebaseGoogle({String? idToken, String? accessToken}) async {}
+  Future<User?> loginFirebaseGoogle(
+      {String? idToken, String? accessToken}) async {}
 
+  void updateUser({required user}) {}
   void signOut() {}
 }

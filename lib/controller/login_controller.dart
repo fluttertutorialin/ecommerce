@@ -39,9 +39,7 @@ class LoginController extends GetxController {
   //LOGIN BY GOOGLE
   Future<void> loginGoogle({Function? success, Function? fail, context}) async {
     try {
-      var _googleSignIn = GoogleSignIn(scopes: [
-        'email'
-      ]);
+      var _googleSignIn = GoogleSignIn(scopes: ['email']);
       final GoogleSignInAccount? _signIn = await _googleSignIn.signIn();
 
       if (_signIn == null) {
@@ -51,7 +49,10 @@ class LoginController extends GetxController {
         _firebaseRepository
             .loginFirebaseGoogle(
                 idToken: auth.idToken, accessToken: auth.accessToken)
-            .then((value) => success!(value));
+            .then((value) {
+          _firebaseRepository.updateUser(user: value);
+          success!(value);
+        });
       }
     } on FirebaseAuthException catch (error) {
       if (error.code == 'account-exists-with-different-credential') {
