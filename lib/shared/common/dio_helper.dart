@@ -7,9 +7,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:ecommerce/shared/common/global.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-
 import 'inteceptor/log_inteceptor.dart';
 
 enum Method { GET, POST, DELETE, PUT, HEAD, PATCH }
@@ -41,10 +41,10 @@ class DioHelper {
       Method? method = Method.GET,
       String? path = '',
       Map<String, String>? headers,
+      Options? options,
       String contentType = Headers.jsonContentType,
       dynamic data,
       Map<String, dynamic>? parameter,
-      RequestOptions? requestOptions,
       required HttpSuccessCallback<T>? success,
       required HttpFailureCallback? error}) async {
     try {
@@ -59,6 +59,15 @@ class DioHelper {
 
       final dio = Dio(baseOptions)
         ..interceptors.addAll(getDefaultInterceptor());
+
+      Options requestOptions = options ?? Options();
+      requestOptions.headers = requestOptions.headers ?? Map();
+
+      // GLOBAL OR COMMON AUTHORIZATION HEADER
+      Map<String, dynamic>? authorization = getAuthorizationHeader();
+      if (authorization != null) {
+        requestOptions.headers!.addAll(authorization);
+      }
 
       // TODO COOKIE MANAGE
       /*
@@ -75,7 +84,6 @@ class DioHelper {
       };
 
       (dio.transformer as DefaultTransformer).jsonDecodeCallback = _parseJson;
-
       var response = await dio.request(path!, data: data,
           onSendProgress: (received, total) {
         if (total != -1) {
@@ -83,7 +91,7 @@ class DioHelper {
         }
       },
           queryParameters: parameter,
-          options: Options(method: MethodValues[method!]),
+          options: Options(method: MethodValues[method!], headers: authorization),
           cancelToken: _cancelToken);
 
       if (success != null) {
@@ -106,6 +114,16 @@ class DioHelper {
     // return [LogInterceptor(requestBody: true, responseBody: true)];
 
     return [DefaultLogInterceptor(requestBody: true, responseBody: true)];
+  }
+
+  /// AUTHORIZATION HEADER
+  Map<String, dynamic>? getAuthorizationHeader() {
+    var headers;
+
+    if (Global.accessToken != null) {
+      headers = {'Authorization': 'Bearer ${Global.accessToken}'};
+    }
+    return headers;
   }
 
   _getError(DioError error) {

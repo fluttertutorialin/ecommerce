@@ -55,6 +55,12 @@ dependencies:
   # FOR KEYSTORE GENERATE ANDROID (GET SH1)
   flutter_automation:
 
+  # FOR WEB URL OPEN
+  webview_flutter:
+
+  # FOR DEVICE INFORMATION
+  device_info:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
