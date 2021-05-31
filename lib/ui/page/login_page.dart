@@ -4,6 +4,7 @@
 */
 
 import 'package:ecommerce/controller/controller_package.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../import_package.dart';
 
@@ -13,7 +14,9 @@ class LoginPage extends GetView<LoginController> {
       body: Center(
           child: InkWell(
               onTap: () => controller.loginGoogle(
-                  success: (user) {},
+                  success: (User user) {
+                    print(user.displayName);
+                  },
                   fail: (error) {
                     print(error);
                   }),

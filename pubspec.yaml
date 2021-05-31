@@ -44,7 +44,11 @@ dependencies:
   # FOR EVENT HANDLE
   event_bus:
 
+  # ICON
   font_awesome_flutter:
+
+  # FOR KEYSTORE GENERATE ANDROID (GET SH1)
+  flutter_automation:
 
 dev_dependencies:
   flutter_test:

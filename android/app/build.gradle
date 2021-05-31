@@ -26,6 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+            
     compileSdkVersion 30
 
     sourceSets {
@@ -42,7 +43,8 @@ android {
         multiDexEnabled true
     }
 
-    buildTypes {
+  buildTypes {
+            
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
@@ -56,7 +58,6 @@ flutter {
 }
 
 dependencies {
-    implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:multidex:1.0.3'
 }

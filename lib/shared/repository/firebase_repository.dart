@@ -16,12 +16,9 @@ class FirebaseRepository implements FireBaseProvider {
   }
 
   @override
-  Future<User?> loginFirebaseGoogle(
-      {String? idToken, String? accessToken}) async {
-    AuthCredential authCredential = GoogleAuthProvider.credential(
-        accessToken: accessToken, idToken: idToken);
-    final UserCredential userCredential =
-        await _firebaseAuth.signInWithCredential(authCredential);
+  Future<User?> loginFirebaseGoogle({String? idToken, String? accessToken}) async {
+    AuthCredential authCredential = GoogleAuthProvider.credential(accessToken: accessToken, idToken: idToken);
+    final UserCredential userCredential = await _firebaseAuth.signInWithCredential(authCredential);
     return userCredential.user;
   }
 
