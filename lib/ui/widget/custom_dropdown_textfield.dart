@@ -2,7 +2,6 @@
    DEVELOPED BY: KAMLESH LAKHANI
 */
 
-
 import '../../import_package.dart';
 
 class CustomDropdownTextField<T> extends StatelessWidget {
