@@ -9,14 +9,17 @@ import '../shared/repository/network_repository.dart';
 
 class HomeController extends GetxController {
   late NetworkRepository _networkRepository;
+  late Storage _storage;
 
-  HomeController(this._networkRepository);
+  HomeController(this._networkRepository, this._storage);
 
-  final statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL);
-  StatusProgressBar get statusProgressBar => statusProgressBarRx.value;
+  // PROGRESSBAR
+  final statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
+  get statusProgressBar => statusProgressBarRx.value; //GET DATA
 
-  var homeListRx = RxList<HomeResponse>([]);
-  List<HomeResponse> get homeList => homeListRx;
+  //FROM API DATA STORE AND GET LIST
+  var homeListRx = RxList<HomeResponse>([]); // SET DATA
+  get homeList => homeListRx; // GET DATA
 
   @override
   void onInit() {

@@ -6,27 +6,28 @@
 class Strings {
   const Strings._();
 
-  //APPLICATION NAME
+  // APPLICATION NAME
   static const String appName = 'Ecommerce';
 
-  //API
+  // API
   static const String baseURL = 'https://jsonplaceholder.typicode.com/';
   static const String postUrl = '${baseURL}posts';
 
+  // PARAMETER
 
-  //DIO API RESPONSE STATUS
+  // DIO API RESPONSE STATUS
 
-  //DIO ERROR
+  // DIO ERROR
 
-  //LABEL
+  // LABEL
   static const String doNotHaveAccount = 'Don\'t have account?';
   
-  //VALIDATION
+  // VALIDATION
   static const String cantBeEmpty = "can't be empty.";
 
   static const String fieldCantBeEmpty = 'Field $cantBeEmpty';
 
-  //VALIDATION LENGTH (MOBILE NO, EMAIL LENGTH ETC.)
+  // VALIDATION LENGTH (MOBILE NO, EMAIL LENGTH ETC.)
   static int mobileLength = 10;
   static int emailLength = 50;
   static int userNameLength = 10;
