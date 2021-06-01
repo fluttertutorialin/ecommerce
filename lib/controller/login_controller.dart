@@ -19,6 +19,7 @@ class LoginController extends GetxController {
   Rxn<User> _firebaseUser = Rxn<User>();
   String? get email => _firebaseUser.value?.email;
 
+  //PAGE LAUNCH FIRST SCROLL
   @override
   void onInit() {
     super.onInit();
@@ -79,10 +80,14 @@ class LoginController extends GetxController {
       email: emailController.value.text,
       password: passwordController.value.text.duSHA256());
 
+    // SENT API PARAMETER (FOR EXAMPLE BODY) JSON FORMAT
+    loginParameter.toJson();
+
     //LOGIN SUCCESS GO TO MAIN SCREEN
     AppRoute.HOME.changeScreen();
   }
 
+  //CLEAR RESOURCE
   @override
   void onClose() {
     super.onClose();
