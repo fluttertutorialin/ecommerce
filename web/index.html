@@ -23,13 +23,34 @@
   <meta name="apple-mobile-web-app-title" content="ecommerce">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
+
+
   <title>ecommerce</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
+<script src="main.dart.js" type="application/javascript"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyBhuIOwuwYdnT3abxX-_YlnvK-TZPejnLY",
+    authDomain: "ecommerce-c67ae.firebaseapp.com",
+    projectId: "ecommerce-c67ae",
+    storageBucket: "ecommerce-c67ae.appspot.com",
+    messagingSenderId: "826948347739",
+    appId: "1:826948347739:web:0bb478ece070b99d409c7e",
+    measurementId: "G-H5TYHDK3HV"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
   <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;

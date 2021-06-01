@@ -33,7 +33,6 @@ dependencies:
   firebase_core: 1.2.0
   firebase_auth: 1.2.0
   cloud_firestore: 2.2.0
-  firebase_messaging: ^10.0.0
 
   # onesignal_flutter:
 
