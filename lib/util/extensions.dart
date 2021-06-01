@@ -70,7 +70,7 @@ extension StringExt on String {
         wrapWidth: 1024);
   }
 
-   concatWithSpace(String right){
+  concatWithSpace(String right) {
     return '$this $right';
   }
 
@@ -142,5 +142,31 @@ extension GlobalKeyExtension on GlobalKey {
     } else {
       return null;
     }
+  }
+}
+
+extension voidExt on void{
+  back() {
+    Get.back();
+  }
+}
+
+extension DynamicExt on dynamic {
+  offAllNamed(){
+    Get.offAllNamed(this);
+  }
+
+  changeScreen() {
+    Get.toNamed(this);
+  }
+
+  getArgument(){
+    return Get.arguments;
+  }
+}
+
+extension futureExt on Future{
+  changeScreenGetArgument(String routeName, {dynamic arguments}) async {
+    return Get.toNamed(routeName, arguments: arguments)!.then((value) => value);
   }
 }

@@ -14,11 +14,20 @@ export 'package:ecommerce/shared/common/get_instance_access.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //RESOURCE
+//STRING RESOURCE
 export 'package:ecommerce/resource/strings/strings.dart';
+export 'package:ecommerce/resource/strings/server_strings.dart';
+export 'package:ecommerce/resource/strings/session_strings.dart';
+
 export 'package:ecommerce/resource/style/app_text_style.dart';
-export 'package:ecommerce/resource/theme/app_theme.dart';
+export 'package:ecommerce/resource/style/font.dart';
 export 'package:ecommerce/resource/style/dimen.dart';
+
 export 'package:ecommerce/resource/theme/app_color.dart';
+export 'package:ecommerce/resource/theme/app_theme.dart';
+
+export 'package:ecommerce/resource/icon_font.dart';
+export 'package:ecommerce/resource/image_asset.dart';
 
 // GET PAGES
 export 'route_access/app_page.dart';
@@ -34,3 +43,7 @@ export 'package:ecommerce/shared/common/get_storage.dart';
 export 'package:ecommerce/resource/strings/session_strings.dart';
 
 export 'package:ecommerce/shared/common/status_progress_bar.dart';
+
+//COMMON
+export 'package:ecommerce/shared/repository/network_repository.dart';
+export 'package:ecommerce/shared/repository/firebase_repository.dart';

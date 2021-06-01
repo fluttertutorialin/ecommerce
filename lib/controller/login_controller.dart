@@ -1,11 +1,8 @@
 import 'package:ecommerce/import_package.dart';
-import 'package:ecommerce/model/sent/login_parameter.dart';
-import 'package:ecommerce/shared/repository/firebase_repository.dart';
-import 'package:ecommerce/shared/repository/network_repository.dart';
+import 'package:ecommerce/model/sent/sent_package.dart' show LoginParameter;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:ecommerce/util/extensions.dart';
 
 class LoginController extends GetxController {
   late NetworkRepository _networkRepository;
@@ -81,6 +78,9 @@ class LoginController extends GetxController {
     var loginParameter = LoginParameter(
       email: emailController.value.text,
       password: passwordController.value.text.duSHA256());
+
+    //LOGIN SUCCESS GO TO MAIN SCREEN
+    AppRoute.HOME.changeScreen();
   }
 
   @override
