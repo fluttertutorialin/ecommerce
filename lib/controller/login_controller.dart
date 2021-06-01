@@ -19,6 +19,15 @@ class LoginController extends GetxController {
 
   LoginController(this._networkRepository, this._firebaseRepository);
 
+  Rxn<User> _firebaseUser = Rxn<User>();
+  String? get email => _firebaseUser.value?.email;
+
+  @override
+  void onInit() {
+    super.onInit();
+    _firebaseUser.bindStream(_firebaseRepository.authStateChange());
+  }
+
   //LOGIN BY FACEBOOK
   Future<void> loginFB({Function? success, Function? fail, context}) async {
     try {

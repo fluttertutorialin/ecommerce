@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
    keyboardType: TextInputType.number,
    builder: CodeInputBuilders.lightCircle(),
    onFilled: (value) => print('Your input is $value.'),
-   onDone: (value) => print('Your input is $value.'),
+   onDone: (value) => print('Your input is $value.')
  )*/
 
 typedef CodeInputBuilder = Widget Function(bool hasFocus, String char);

@@ -1,12 +1,19 @@
 /*
    DEVELOPED BY: KAMLESH LAKHANI
    FOR WITHOUT ACCESS CLASS NAME
+
+   CREATE EXTENSION SYNTAX
+   extension <extension name> on <type> {
+     (<member definition>)*
+   }
+
    - NUM EXTENSION: (BORDER RADIUS)
    - STRING EXTENSION: (HEX COLOR, IMAGE, DEBUG LOG)
    - DATETIME EXTENSION: ()
    - WIDGET EXTENSION: ()
    - INT EXTENSION: ()
    - BuildContext EXTENSION: ()
+   - GlobalKeyExtension EXTENSION: (RENDER-OBJECT KEY)
 */
 
 import 'dart:convert';
@@ -23,9 +30,7 @@ extension NumExt on num {
     BorderSide borderSide = BorderSide.none,
   }) =>
       OutlineInputBorder(
-        borderRadius: this.borderRadius,
-        borderSide: borderSide,
-      );
+          borderRadius: this.borderRadius, borderSide: borderSide);
 
   BorderSide borderSide({
     Color? color,
@@ -33,10 +38,9 @@ extension NumExt on num {
     BorderStyle? style,
   }) =>
       BorderSide(
-        color: color ?? Colors.white,
-        width: this.toDouble(),
-        style: style ?? BorderStyle.solid,
-      );
+          color: color ?? Colors.white,
+          width: this.toDouble(),
+          style: style ?? BorderStyle.solid);
 }
 
 // STRING (HEX COLOR, IMAGE, DEBUG LOG) EXTENSION
@@ -56,26 +60,15 @@ extension StringExt on String {
 
   //IMAGE
   String get image => 'assets/images/$this.png';
-  Image imageAsset({
-    Size? size,
-    BoxFit? fit,
-    Color? color,
-  }) =>
-      Image.asset(
-        this,
-        color: color,
-        width: size?.width,
-        height: size?.height,
-        fit: fit,
-      );
+  Image imageAsset({Size? size, BoxFit? fit, Color? color}) => Image.asset(this,
+      color: color, width: size?.width, height: size?.height, fit: fit);
 
   debugLog() {
     return debugPrint(
-      '\n******************************* DebugLog *******************************\n'
-      ' $this'
-      '\n******************************* DebugLog *******************************\n',
-      wrapWidth: 1024,
-    );
+        '\n******************************* DebugLog *******************************\n'
+        ' $this'
+        '\n******************************* DebugLog *******************************\n',
+        wrapWidth: 1024);
   }
 
   /// crypto library
@@ -130,3 +123,17 @@ extension IntExt on int {
 
 // BuildContext EXTENSION
 extension BuildContextExt on BuildContext {}
+
+// GLOBAL KEY FOR RENDER OBJECT
+extension GlobalKeyExtension on GlobalKey {
+  Rect? get globalPaintBounds {
+    final renderObject = currentContext?.findRenderObject();
+    final translation = renderObject?.getTransformTo(null).getTranslation();
+    if (translation != null && renderObject != null) {
+      return renderObject.paintBounds
+          .shift(Offset(translation.x, translation.y));
+    } else {
+      return null;
+    }
+  }
+}

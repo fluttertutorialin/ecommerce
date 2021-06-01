@@ -36,6 +36,10 @@ class FirebaseRepository implements FireBaseProvider {
     await _firebaseAuth.signOut();
   }
 
+  Stream<User?> authStateChange(){
+    return _firebaseAuth.authStateChanges();
+  }
+
   @override
   void updateUser({required user}) async {
     await _fireStore
