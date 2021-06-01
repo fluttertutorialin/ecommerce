@@ -12,7 +12,6 @@ import 'package:ecommerce/controller/controller_package.dart';
 import 'package:ecommerce/ui/widget/custom_text_field_widget.dart';
 import 'package:ecommerce/ui/widget/stagger_animation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../import_package.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -26,41 +25,59 @@ class LoginPage extends GetView<LoginController> {
                   child: Form(
                       key: controller.formKey,
                       child: Column(children: [
+                        SizedBox(height: 90.h),
+                        SizedBox(height: 90.h),
+
                         //EMAIL AND PASSWORD
                         CustomTextFieldWidget(
+                            validator: (value) =>
+                                Validator.validateEmail(value),
                             labelText: ValueString.emailTextLabel),
-                        SizedBox(height: 5.h),
+                        SizedBox(height: 10.h),
                         CustomTextFieldWidget(
                             labelText: ValueString.passwordLabel),
                         SizedBox(height: 20.h),
+
                         //LOGIN ANIMATION BUTTON
                         StaggerAnimation(
                             key: const Key('loginSubmitButton'),
                             titleButton: 'Login',
                             buttonController: controller.loginButtonController,
                             onTap: () {
-                              controller.loginButtonController.forward();
-                              controller.loginValidateCheck((loading) => loading
-                                  ? controller.loginButtonController.forward()
-                                  : controller.loginButtonController.reverse());
+                              controller.loginValidateCheck((loading) {
+                                if (loading) {
+                                  controller.loginButtonController.forward();
+                                } else {
+                                  controller.loginButtonController.reverse();
+                                }
+                              });
                             }),
                         SizedBox(height: 40.h),
+
                         //SOCIAL LOGIN (GOOGLE, FACEBOOK)
-                        Center(
-                            child: InkWell(
-                                onTap: () => controller.loginGoogle(
-                                        success: (User? user) {
-                                      print(user!.displayName);
-                                    }, fail: (error) {
-                                      print(error);
-                                    }),
-                                child: Container(
-                                    padding: const EdgeInsets.all(12),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(40),
-                                      color: const Color(0xFFEA4336),
-                                    ),
-                                    child: const Icon(FontAwesomeIcons.google,
-                                        color: Colors.white, size: 24.0))))
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                  onTap: () => controller.loginGoogle(
+                                          success: (User? user) {
+                                        print(user!.displayName);
+                                      }, fail: (error) {
+                                        print(error);
+                                      }),
+                                  child: CircleAvatar(
+                                      backgroundColor: Colors.red.shade50,
+                                      child: IconFont.google)),
+                              SizedBox(width: 20.h),
+                              InkWell(
+                                  onTap: () => controller.loginGoogle(
+                                      success: (User? user) {},
+                                      fail: (error) {
+                                        print(error);
+                                      }),
+                                  child: CircleAvatar(
+                                      backgroundColor: Colors.blue.shade50,
+                                      child: IconFont.facebook))
+                            ])
                       ]))))));
 }

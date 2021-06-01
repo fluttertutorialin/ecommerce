@@ -10,6 +10,16 @@ class Validator {
       return null;
     }
   }
+
+  static String? validateEmail(String? v) {
+    if (v!.isEmpty) {
+      return ValueString.emailCantBeEmpty;
+    } else if (!GetUtils.isEmail(v)) {
+      return ValueString.enterValidEmail;
+    } else {
+      return null;
+    }
+  }
 /*
   static String? validateDropDownEmpty<T>(T? v) {
     if (v == null) {
@@ -19,15 +29,7 @@ class Validator {
     }
   }
 
-  static String? validateEmail(String? v) {
-    if (v!.isEmpty) {
-      return Strings.emailCantBeEmpty;
-    } else if (!GetUtils.isEmail(v)) {
-      return Strings.enterValidEmail;
-    } else {
-      return null;
-    }
-  }
+
 
   static String? validatePhone(String? v) {
     if (v!.isEmpty) {

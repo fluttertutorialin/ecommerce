@@ -53,7 +53,7 @@ dependencies:
   crypto:
 
   # ICON
-  font_awesome_flutter:
+  line_icons:
 
   # IMAGE
   cached_network_image:
