@@ -1,6 +1,8 @@
 /*
    DEVELOPED BY: KAMLESH LAKHANI
 
+   GetView - STATLESS WIDGET
+   GetWidget - STATEFULL WIDGET
 */
 
 import '../../controller/controller_package.dart';
