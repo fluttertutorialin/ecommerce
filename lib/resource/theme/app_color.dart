@@ -38,5 +38,8 @@ class AppColors {
   static const Color black = Colors.black;
   static const Color white = Colors.white;
 
+  static Color googleRed = Colors.red;
+  static Color facebookBlue = Colors.blue;
+
   static const Color whiteCardBackground = Colors.white;
 }

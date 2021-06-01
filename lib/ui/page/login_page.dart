@@ -66,7 +66,7 @@ class LoginPage extends GetView<LoginController> {
                                         print(error);
                                       }),
                                   child: CircleAvatar(
-                                      backgroundColor: Colors.red.shade50,
+                                      backgroundColor: AppColors.googleRed.withOpacity(0.2),
                                       child: IconFont.google)),
                               SizedBox(width: 20.h),
                               InkWell(
@@ -76,7 +76,7 @@ class LoginPage extends GetView<LoginController> {
                                         print(error);
                                       }),
                                   child: CircleAvatar(
-                                      backgroundColor: Colors.blue.shade50,
+                                      backgroundColor: AppColors.facebookBlue.withOpacity(0.2),
                                       child: IconFont.facebook))
                             ])
                       ]))))));

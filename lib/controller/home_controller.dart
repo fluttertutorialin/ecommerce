@@ -62,6 +62,9 @@ class HomeController extends GetxController {
   _postResponseApi() {
     _statusProgressBarRx.value = StatusProgressBar.LOADING;
 
+    //CURRENT USER ID
+    _storage.getValue(SessionString.userIdSession);
+
     _networkRepository.getMethod(
         baseUrl: ServerString.postUrl,
         success: (value) {
