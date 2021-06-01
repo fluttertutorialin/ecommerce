@@ -16,9 +16,6 @@ class SplashController extends GetxController {
     super.onInit();
     appName = ValueString.appName;
 
-    //TODO TESTING FOR LOGIN SESSION TRUE
-    _storage.saveValue(SessionString.isLoginSession, false);
-
     _launchPage();
   }
 
