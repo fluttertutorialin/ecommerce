@@ -27,8 +27,7 @@ class CustomReadMore extends StatefulWidget {
     this.delimiter = '... ',
     this.delimiterStyle,
     this.onTap,
-  })  : assert(data != null),
-        super(key: key);
+  }) : super(key: key);
 
   final String delimiter;
   final String data;

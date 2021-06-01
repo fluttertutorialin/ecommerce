@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce/shared/common/global.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'inteceptor/log_inteceptor.dart';
 
 enum Method { GET, POST, DELETE, PUT, HEAD, PATCH }
 
@@ -111,9 +110,7 @@ class DioHelper {
 
   // LOG DISPLAY
   List<Interceptor> getDefaultInterceptor() {
-    // return [LogInterceptor(requestBody: true, responseBody: true)];
-
-    return [DefaultLogInterceptor(requestBody: true, responseBody: true)];
+    return [LogInterceptor(requestBody: true, responseBody: true)];
   }
 
   /// AUTHORIZATION HEADER

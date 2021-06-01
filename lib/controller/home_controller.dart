@@ -44,7 +44,8 @@ class HomeController extends GetxController {
   HomeController(this._networkRepository, this._storage);
 
   // PROGRESSBAR
-  final _statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
+  final _statusProgressBarRx =
+      Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
   get statusProgressBar => _statusProgressBarRx.value; //GET DATA
 
   //FROM API DATA STORE AND GET LIST
@@ -68,7 +69,7 @@ class HomeController extends GetxController {
           _statusProgressBarRx.value = StatusProgressBar.SUCCESS;
 
           var listAsConvert = value as List;
-          List<HomeResponse> _homeListFromJson = listAsConvert.map((i) => HomeResponse.fromJson(i)).toList();
+          final List<HomeResponse> _homeListFromJson = listAsConvert.map((i) => HomeResponse.fromJson(i)).toList();
           _homeListRx.value = _homeListFromJson;
         },
         error: (error) {
