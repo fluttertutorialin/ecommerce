@@ -8,7 +8,7 @@
    }
 
    - NUM EXTENSION: (BORDER RADIUS)
-   - STRING EXTENSION: (HEX COLOR, IMAGE, DEBUG LOG)
+   - STRING EXTENSION: (HEX COLOR, IMAGE, DEBUG LOG, CONCATWITHSPACE ('left'.concatWithSpace('right')), )
    - DATETIME EXTENSION: ()
    - WIDGET EXTENSION: ()
    - INT EXTENSION: ()
@@ -17,7 +17,6 @@
 */
 
 import 'dart:convert';
-
 import 'package:crypto/crypto.dart';
 import 'package:intl/intl.dart';
 import '../../import_package.dart';
@@ -71,14 +70,19 @@ extension StringExt on String {
         wrapWidth: 1024);
   }
 
+   concatWithSpace(String right){
+    return '$this $right';
+  }
+
   /// crypto library
-  getHMacMd5Str(String secret, String message) {
-    List<int> secretBytes = utf8.encode(secret);
+  getHMacMd5Str(String message) {
+    //'secretKey'.getHMacMd5Str('message');
+    List<int> secretBytes = utf8.encode(this);
     List<int> messageBytes = utf8.encode(message);
 
     //  var hmac = new Hmac(sha256.newInstance(), secretBytes); // sha256
     //  var hmac = new Hmac(sha1, secretBytes); // sha1
-    var hmac = new Hmac(md5, secretBytes); // md5
+    var hmac = Hmac(md5, secretBytes); // md5
     var bytes = hmac.convert(messageBytes).toString();
     return bytes;
   }
@@ -94,7 +98,7 @@ extension StringExt on String {
 
 // DATETIME EXTENSION
 extension DateTimeFormatterExt on DateTime {
-  String formatedDate({
+  String formatDate({
     String dateFormat = 'yyyy-MM-dd',
   }) {
     final formatter = DateFormat(dateFormat);
@@ -122,7 +126,10 @@ extension IntExt on int {
 }
 
 // BuildContext EXTENSION
-extension BuildContextExt on BuildContext {}
+extension BuildContextExt on BuildContext {
+  /// FOR PROVIDER USE
+  //T provide<T>() => Provider.of<T>(this);
+}
 
 // GLOBAL KEY FOR RENDER OBJECT
 extension GlobalKeyExtension on GlobalKey {
