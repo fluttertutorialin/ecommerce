@@ -64,6 +64,9 @@ dependencies:
   # FOR INTERNET CHECK
   internet_connection_checker:
 
+  # FOR UNIQUE ID
+  uuid:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
