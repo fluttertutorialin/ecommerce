@@ -20,6 +20,16 @@ class Validator {
       return null;
     }
   }
+
+  static String? validatePassword(String? v) {
+    if (v!.isEmpty) {
+      return ValueString.passwordCantBeEmpty;
+    } else if (v.length < 8) {
+      return ValueString.enterValidPassword;
+    } else {
+      return null;
+    }
+  }
 /*
   static String? validateDropDownEmpty<T>(T? v) {
     if (v == null) {

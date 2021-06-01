@@ -29,8 +29,10 @@ class ValueString {
 
   static const String fieldCantBeEmpty = 'Field $cantBeEmpty';
   static const String emailCantBeEmpty = 'email $cantBeEmpty';
+  static const String passwordCantBeEmpty = 'email $cantBeEmpty';
   static const String fieldOnlyLetterAndNumberAllowed = 'Only letters and numbers allowed';
   static const String enterValidEmail = 'Enter the valid email';
+  static const String enterValidPassword = 'Enter the password minimum 8 characters.';
 
   // BUTTON
   static const String loginButton = 'Login';

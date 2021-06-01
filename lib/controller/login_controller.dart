@@ -44,6 +44,8 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
   String? emailValidation(String? value) => Validator.validateEmail(value);
 
+  String? validatePassword(String? value) => Validator.validatePassword(value);
+
   // LOGIN VALIDATION CHECK THE FORM
   Future<void> loginValidateCheck(Function loading) async {
 

@@ -35,6 +35,7 @@ class LoginPage extends GetView<LoginController> {
                             labelText: ValueString.emailTextLabel),
                         SizedBox(height: 10.h),
                         CustomTextFieldWidget(
+                            validator: controller.validatePassword,
                             maxLength: ValueString.passwordLength,
                             labelText: ValueString.passwordLabel),
                         SizedBox(height: 20.h),
