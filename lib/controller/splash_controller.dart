@@ -17,14 +17,14 @@ class SplashController extends GetxController {
     appName = Strings.appName;
 
     //TODO TESTING FOR LOGIN SESSION TRUE
-    _storage.saveValue(StringsSession.isLoginSession, true);
+    _storage.saveValue(SessionStrings.isLoginSession, true);
 
     _launchPage();
   }
 
   _launchPage() async {
     await Future.delayed(const Duration(seconds: 3), () {});
-    bool isLogin = _storage.hasData(StringsSession.isLoginSession);
+    bool isLogin = _storage.hasData(SessionStrings.isLoginSession);
 
     //OFFALLNAME FOR CLEAR BACK SCREEN
     Get.offAllNamed(isLogin ? AppRoute.HOME : AppRoute.LOGIN);

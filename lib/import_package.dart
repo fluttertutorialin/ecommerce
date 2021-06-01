@@ -14,7 +14,7 @@ export 'package:ecommerce/shared/common/get_instance_access.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //RESOURCE
-export 'package:ecommerce/resource/strings.dart';
+export 'package:ecommerce/resource/strings/strings.dart';
 export 'package:ecommerce/resource/style/app_text_style.dart';
 export 'package:ecommerce/resource/theme/app_theme.dart';
 export 'package:ecommerce/resource/style/dimen.dart';
@@ -31,6 +31,6 @@ export 'package:ecommerce/resource/validators.dart';
 
 //SESSION
 export 'package:ecommerce/shared/common/get_storage.dart';
-export 'package:ecommerce/resource/strings_session.dart';
+export 'package:ecommerce/resource/strings/session_strings.dart';
 
 export 'package:ecommerce/shared/common/status_progress_bar.dart';
