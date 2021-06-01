@@ -3,8 +3,8 @@
    FOR REGULAR EXPRESSION
 */
 
-class RegularExpStrings {
-  const RegularExpStrings._();
+class RegularExpString {
+  const RegularExpString._();
 
   static const String emailRegularExp = '';
   static const String userNameRegularExp = '';

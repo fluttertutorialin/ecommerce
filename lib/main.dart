@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       // FOR THEME, TITLE, BANNER TOP FALSE
-      title: Strings.appName,
+      title: ValueString.appName,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
 

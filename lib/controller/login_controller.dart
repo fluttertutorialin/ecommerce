@@ -38,7 +38,7 @@ class LoginController extends GetxController {
           break;
 
         case LoginStatus.cancelled:
-          fail!(Strings.loginCancelToast);
+          fail!(ValueString.loginCancelToast);
           break;
         default:
           break;
@@ -55,7 +55,7 @@ class LoginController extends GetxController {
       final GoogleSignInAccount? _signIn = await _googleSignIn.signIn();
 
       if (_signIn == null) {
-        fail!(Strings.loginCancelToast);
+        fail!(ValueString.loginCancelToast);
       } else {
         var auth = await _signIn.authentication;
         _firebaseRepository

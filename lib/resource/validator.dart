@@ -1,11 +1,11 @@
 import '../../import_package.dart';
 
-class Validators {
-  const Validators._();
+class Validator {
+  const Validator._();
 
   static String? validateEmpty(String? v) {
     if (v!.isEmpty) {
-      return Strings.fieldCantBeEmpty;
+      return ValueString.fieldCantBeEmpty;
     } else {
       return null;
     }

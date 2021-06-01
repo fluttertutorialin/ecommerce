@@ -3,8 +3,8 @@
    STRING AND INT VALUE (APPLICATION NAME, DIO API RESPONSE STATUS, DIO ERROR, LABEL, VALIDATION, VALIDATION LENGTH)
 */
 
-class Strings {
-  const Strings._();
+class ValueString {
+  const ValueString._();
 
   // APPLICATION NAME
   static const String appName = 'Ecommerce';

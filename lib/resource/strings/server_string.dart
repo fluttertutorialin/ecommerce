@@ -3,8 +3,8 @@
    FOR API URL AND STATUS
 */
 
-class ServerStrings {
-  const ServerStrings._();
+class ServerString {
+  const ServerString._();
 
   // API
   static const String baseURL = 'https://jsonplaceholder.typicode.com/';

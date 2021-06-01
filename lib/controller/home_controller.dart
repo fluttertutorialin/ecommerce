@@ -63,7 +63,7 @@ class HomeController extends GetxController {
     _statusProgressBarRx.value = StatusProgressBar.LOADING;
 
     _networkRepository.getMethod(
-        baseUrl: ServerStrings.postUrl,
+        baseUrl: ServerString.postUrl,
         success: (value) {
           _statusProgressBarRx.value = StatusProgressBar.SUCCESS;
 

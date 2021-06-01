@@ -3,8 +3,8 @@
    FOR LOCAL STORAGE SESSION
 */
 
-class SessionStrings {
-  const SessionStrings._();
+class SessionString {
+  const SessionString._();
 
   static const String isLoginSession = 'isLogin';
   static const String userIdSession = 'userId';

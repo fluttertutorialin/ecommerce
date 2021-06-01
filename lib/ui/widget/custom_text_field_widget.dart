@@ -29,7 +29,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.keyboardType = TextInputType.text,
-    this.validator = Validators.validateEmpty,
+    this.validator = Validator.validateEmpty,
     this.onChanged,
     this.onSaved,
     this.maxLength,
