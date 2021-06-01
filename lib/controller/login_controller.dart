@@ -52,7 +52,6 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
       _networkRepository.postMethod(
           baseUrl: ServerString.postUrl,
           success: (value) {
-            print(value.toString());
             loading(false);
 
             //SESSION STORE DATA
