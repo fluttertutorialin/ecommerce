@@ -12,6 +12,7 @@ class SplashPage extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.whiteCardBackground,
         body: Center(
             child: Text(controller.appName!,
                 style: AppTextStyle.splashTitleStyle)));

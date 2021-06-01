@@ -37,10 +37,7 @@ class AppTextStyle {
     fontWeight: FontWeight.w700,
   );
 
-  static final TextStyle splashTitleStyle = _textStyle.copyWith(
-    fontSize: Dimens.fontSize22,
-    fontWeight: FontWeight.w700,
-  );
+  static final TextStyle splashTitleStyle = GoogleFonts.lato(fontStyle: FontStyle.normal, fontWeight: FontWeight.bold, fontSize: Dimens.fontSize24);
 
   static final TextStyle textFieldStyle = GoogleFonts.lato(fontStyle: FontStyle.normal, fontSize: Dimens.fontSize16);
 

@@ -25,12 +25,15 @@ class ValueString {
   static const String doNotHaveAccount = 'Don\'t have account?';
   
   // VALIDATION
-  static const String cantBeEmpty = "can't be empty.";
+  static const String cantBeEmpty = "can't be empty";
 
   static const String fieldCantBeEmpty = 'Field $cantBeEmpty';
   static const String emailCantBeEmpty = 'email $cantBeEmpty';
   static const String fieldOnlyLetterAndNumberAllowed = 'Only letters and numbers allowed';
   static const String enterValidEmail = 'Enter the valid email';
+
+  // BUTTON
+  static const String loginButton = 'Login';
 
   // VALIDATION LENGTH (MOBILE NO, EMAIL LENGTH ETC.)
   static int mobileLength = 10;

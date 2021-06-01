@@ -17,7 +17,7 @@ import '../../import_package.dart';
 class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) => Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.whiteCardBackground,
       body: SafeArea(
           child: SingleChildScrollView(
               child: Padding(
@@ -30,18 +30,19 @@ class LoginPage extends GetView<LoginController> {
 
                         //EMAIL AND PASSWORD
                         CustomTextFieldWidget(
-                            validator: (value) =>
-                                Validator.validateEmail(value),
+                            validator: controller.emailValidation,
+                            maxLength: ValueString.emailLength,
                             labelText: ValueString.emailTextLabel),
                         SizedBox(height: 10.h),
                         CustomTextFieldWidget(
+                            maxLength: ValueString.passwordLength,
                             labelText: ValueString.passwordLabel),
                         SizedBox(height: 20.h),
 
                         //LOGIN ANIMATION BUTTON
                         StaggerAnimation(
                             key: const Key('loginSubmitButton'),
-                            titleButton: 'Login',
+                            titleButton: ValueString.loginButton,
                             buttonController: controller.loginButtonController,
                             onTap: () {
                               controller.loginValidateCheck((loading) {

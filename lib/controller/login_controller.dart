@@ -42,6 +42,8 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     _firebaseUser.bindStream(_firebaseRepository.authStateChange());
   }
 
+  String? emailValidation(String? value) => Validator.validateEmail(value);
+
   // LOGIN VALIDATION CHECK THE FORM
   Future<void> loginValidateCheck(Function loading) async {
 
