@@ -43,7 +43,7 @@ class DioHelper {
       Map<String, String>? headers,
       Options? options,
       String contentType = Headers.jsonContentType,
-      dynamic data,
+      dynamic data, //Stream.fromIterable(data.map((e) => [e]))
       Map<String, dynamic>? parameter,
       required HttpSuccessCallback<T>? success,
       required HttpFailureCallback? error}) async {

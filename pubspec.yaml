@@ -61,6 +61,9 @@ dependencies:
   # FOR DEVICE INFORMATION
   device_info:
 
+  # FOR INTERNET CHECK
+  internet_connection_checker:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
