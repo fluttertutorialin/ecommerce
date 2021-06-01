@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info/device_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -33,6 +34,15 @@ class Initializer {
         printInfo(info: details.stack.toString());
       };
 
+      //SET SYSTEM LIGHT MODE COLOR (FOR STATUS COLOR, NAVIGATION BAR COLOR ETC.)
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarDividerColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+          statusBarColor: Colors.white,
+          statusBarBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.dark));
+
       //ALL INIT ACCESS
       await _initServices();
       runApp();
@@ -51,6 +61,7 @@ class Initializer {
       _initFireBase();
 
       _initLazyPut();
+      //_oneSignalInit();
     } catch (err) {
       rethrow;
     }
@@ -58,7 +69,9 @@ class Initializer {
 
   //GET STORAGE INIT
   _initGetStorage() async {
-    await GetStorage.init(); /// OPTIONAL STORAGE (CONTAINER) NAME
+    await GetStorage.init();
+
+    /// OPTIONAL STORAGE (CONTAINER) NAME
   }
 
   //SCREEN ORIENTATIONS INIT
@@ -85,8 +98,7 @@ class Initializer {
     Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
     Get.lazyPut<Storage>(() => Storage(Get.find()), fenix: false);
 
-    Get.lazyPut<FireBaseProvider>(() => FireBaseProvider());
-    Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(Get.find(), Get.find()), fenix: false);
+    Get.lazyPut<FireBaseProvider>(() => FirebaseRepository(Get.find(), Get.find()), fenix: false);
   }
 
   //FIREBASE INIT
@@ -103,4 +115,45 @@ class Initializer {
       Global.androidDeviceInfo = await deviceInfoPlugin.androidInfo;
     }
   }
+
+  /*_oneSignalInit() async {
+    bool allowed =
+        await OneSignal.shared.promptUserForPushNotificationPermission();
+
+    if (allowed) {
+      await OneSignal.shared.init("c3c8eba8-fdd7-4d5a-935e-f479d48bd8bb");
+
+      OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+
+      OneSignal.shared
+          .setNotificationReceivedHandler((OSNotification notification) {
+        // will be called whenever a notification is received
+      });
+
+      OneSignal.shared
+          .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+        // will be called whenever a notification is opened/button pressed.
+      });
+
+      OneSignal.shared
+          .setPermissionObserver((OSPermissionStateChanges changes) {
+        // will be called whenever the permission changes
+        // (ie. user taps Allow on the permission prompt in iOS)
+      });
+
+      OneSignal.shared
+          .setSubscriptionObserver((OSSubscriptionStateChanges changes) {
+        // will be called whenever the subscription changes
+        //(ie. user gets registered with OneSignal and gets a user ID)
+      });
+
+      OneSignal.shared.setEmailSubscriptionObserver(
+          (OSEmailSubscriptionStateChanges emailChanges) {
+        // will be called whenever then user's email subscription changes
+        // (ie. OneSignal.setEmail(email) is called and the user gets registered
+      });
+
+      OneSignal.shared.removeExternalUserId();
+    }
+  }*/
 }

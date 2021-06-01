@@ -11,19 +11,32 @@ class LoginController extends GetxController {
 
   User? user;
 
+  //VALIDATION USE
+  final _formKey = GlobalKey<FormState>();
+
+  //TEXT CLEAR AND GET
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  LoginController(this._networkRepository, this._firebaseRepository);
-
-  Rxn<User> _firebaseUser = Rxn<User>();
+  //RX GET AND SET
+  final Rxn<User> _firebaseUser = Rxn<User>();
   String? get email => _firebaseUser.value?.email;
+
+  //CONSTRUCTOR
+  LoginController(this._networkRepository, this._firebaseRepository);
 
   //PAGE LAUNCH FIRST SCROLL
   @override
   void onInit() {
     super.onInit();
     _firebaseUser.bindStream(_firebaseRepository.authStateChange());
+  }
+
+  // LOGIN VALIDATION CHECK THE FORM
+  loginValidateCheck() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+    }
   }
 
   //LOGIN BY FACEBOOK
@@ -77,8 +90,8 @@ class LoginController extends GetxController {
   //LOGIN BY APPLICATION
   loginApplication() async {
     var loginParameter = LoginParameter(
-      email: emailController.value.text,
-      password: passwordController.value.text.duSHA256());
+        email: emailController.value.text,
+        password: passwordController.value.text.duSHA256());
 
     // SENT API PARAMETER (FOR EXAMPLE BODY) JSON FORMAT
     loginParameter.toJson();

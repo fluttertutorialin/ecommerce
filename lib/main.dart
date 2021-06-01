@@ -27,22 +27,21 @@ class MyApp extends StatelessWidget {
     );
 
     return GetMaterialApp(
-      // FOR THEME, TITLE, BANNER TOP FALSE
-      title: ValueString.appName,
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.theme,
+        // FOR THEME, TITLE, BANNER TOP FALSE
+        title: ValueString.appName,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.theme,
 
-      //FOR LANGUAGE TRANSLATION
-      locale: TranslationService.locale,
-      fallbackLocale: TranslationService.fallbackLocale,
-      translations: TranslationService(),
+        //FOR LANGUAGE TRANSLATION
+        locale: TranslationService.locale,
+        fallbackLocale: TranslationService.fallbackLocale,
+        translations: TranslationService(),
 
-      //FOR FIRST CALL THE SPLASH AND BINDING
-      initialBinding: SplashBinding(),
-      initialRoute: AppRoute.SPLASH,
+        //FOR FIRST CALL THE SPLASH AND BINDING
+        initialBinding: SplashBinding(),
+        initialRoute: AppRoute.SPLASH,
 
-      //FOR COLLECTION OF APPLICATION PAGES
-      getPages: AppPage.routes
-    );
+        //FOR COLLECTION OF APPLICATION PAGES
+        getPages: AppPage.routes);
   }
 }

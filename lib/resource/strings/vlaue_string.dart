@@ -11,6 +11,9 @@ class ValueString {
 
   // TOAST MESSAGE
   static const String loginCancelToast = 'The login is cancel';
+  static const String savedSuccessfullyToast = 'Saved successfully!';
+  static const String savedFailToast = 'Saving failed, please try again!';
+  static const String eventAlreadyFavouriteToast = 'This event is already in your favorite!';
 
   // DIO ERROR
 
@@ -21,7 +24,8 @@ class ValueString {
   static const String cantBeEmpty = "can't be empty.";
 
   static const String fieldCantBeEmpty = 'Field $cantBeEmpty';
-
+  static const String fieldOnlyLetterAndNumberAllowed = 'Only letters and numbers allowed';
+  
   // VALIDATION LENGTH (MOBILE NO, EMAIL LENGTH ETC.)
   static int mobileLength = 10;
   static int emailLength = 50;

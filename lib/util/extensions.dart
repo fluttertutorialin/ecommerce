@@ -73,7 +73,7 @@ extension StringExt on String {
   concatWithSpace(String right) {
     return '$this $right';
   }
-
+  
   /// crypto library
   getHMacMd5Str(String message) {
     //'secretKey'.getHMacMd5Str('message');

@@ -2,11 +2,13 @@
    DEVELOPED BY: KAMLESH LAKHANI
 */
 
-class HomeResponse {
-  int? userId;
-  int? id;
-  String? title;
-  String? body;
+import 'package:equatable/equatable.dart';
+
+class HomeResponse  extends Equatable{
+  final int? userId;
+  final int? id;
+  final String? title;
+  final String? body;
 
   HomeResponse({this.userId, this.id, this.title, this.body});
 
@@ -28,4 +30,13 @@ class HomeResponse {
     data['body'] = this.body;
     return data;
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [userId, id, body, title];
+
+  int? get getUserId => userId;
+  int? get getId => id;
+  String? get getBody => body;
+  String? get getTitle => title;
 }

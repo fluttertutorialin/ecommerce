@@ -1,6 +1,11 @@
 /*
    DEVELOPED BY: KAMLESH LAKHANI
 
+   autofillHints: const [AutofillHints.password],
+   autovalidateMode: AutovalidateMode.onUserInteraction
+
+    autofillHints: const [AutofillHints.email],
+    autovalidateMode: AutovalidateMode.onUserInteraction,
 */
 
 import 'package:ecommerce/controller/controller_package.dart';

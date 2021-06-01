@@ -47,4 +47,15 @@ class FirebaseRepository implements FireBaseProvider {
         .doc(user!.email)
         .set({'deviceToken': '', 'isOnline': true}, SetOptions(merge: true));
   }
+
+/*   Future<String> postFile(
+      {required File imageFile,
+        required String folderPath,
+        required String fileName}) async {
+    Reference reference = FirebaseStorage.instance.ref().child(folderPath).child(fileName);
+    TaskSnapshot storageTaskSnapshot = await reference.putFile(imageFile);
+    String downloadURL = await storageTaskSnapshot.ref.getDownloadURL();
+
+    return downloadURL;
+  }*/
 }

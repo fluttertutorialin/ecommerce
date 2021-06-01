@@ -15,7 +15,7 @@ class CustomItemHome extends StatelessWidget {
       child: Container(
           padding: EdgeInsets.all(5),
           child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            CircleAvatar(child: Text('${homeResponse.userId!}')),
+            CircleAvatar(child: Text('${homeResponse.getUserId!}')),
             SizedBox(width: 10),
 
             //EXPANDED REMOVE RENDER LINE
@@ -23,9 +23,9 @@ class CustomItemHome extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                  Text('${homeResponse.id!}'),
+                  Text('${homeResponse.getTitle!}'),
                   SizedBox(height: 3),
-                  Text('${homeResponse.body!}')
+                  Text('${homeResponse.getBody!}')
                 ]))
           ])));
 }
