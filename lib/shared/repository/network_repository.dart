@@ -33,7 +33,7 @@ class NetworkRepository implements NetworkProvider {
       required HttpFailureCallback error}) {
     _networkProvider.postMethod(
         baseUrl: baseUrl!,
-        parameter: parameter!,
+        parameter: parameter,
         success: success,
         error: error);
   }

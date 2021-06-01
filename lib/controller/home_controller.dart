@@ -44,8 +44,7 @@ class HomeController extends GetxController {
   HomeController(this._networkRepository, this._storage);
 
   // PROGRESSBAR
-  final _statusProgressBarRx =
-      Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
+  final _statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
   get statusProgressBar => _statusProgressBarRx.value; //GET DATA
 
   //FROM API DATA STORE AND GET LIST

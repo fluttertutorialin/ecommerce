@@ -17,6 +17,10 @@ class ValueString {
 
   // DIO ERROR
 
+  // TEXT-FIELD LABEL
+  static const String emailTextLabel = 'Email';
+  static const String passwordLabel = 'Passowrd';
+
   // LABEL
   static const String doNotHaveAccount = 'Don\'t have account?';
   

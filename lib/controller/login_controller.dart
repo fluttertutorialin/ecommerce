@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginController extends GetxController {
+class LoginController extends GetxController with SingleGetTickerProviderMixin {
   late NetworkRepository _networkRepository;
   late Storage _storage;
   late FirebaseRepository _firebaseRepository;
@@ -12,15 +12,22 @@ class LoginController extends GetxController {
   User? user;
 
   //VALIDATION USE
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
   //TEXT CLEAR AND GET
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  // PROGRESSBAR
+  /*final _statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
+    get statusProgressBar => _statusProgressBarRx.value; //GET DATA
+  */
+
   //RX GET AND SET
   final Rxn<User> _firebaseUser = Rxn<User>();
   String? get email => _firebaseUser.value?.email;
+
+  late AnimationController loginButtonController;
 
   //CONSTRUCTOR
   LoginController(this._networkRepository, this._firebaseRepository);
@@ -29,13 +36,36 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    loginButtonController = AnimationController(
+        duration: const Duration(milliseconds: 3000), vsync: this);
+
     _firebaseUser.bindStream(_firebaseRepository.authStateChange());
   }
 
   // LOGIN VALIDATION CHECK THE FORM
-  loginValidateCheck() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
+  Future<void> loginValidateCheck(Function loading) async {
+
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      loading(true);
+
+      _networkRepository.postMethod(
+          baseUrl: ServerString.postUrl,
+          success: (value) {
+            print(value.toString());
+            loading(false);
+
+            //SESSION STORE DATA
+            _storage.saveValue(SessionString.isLoginSession, true);
+            _storage.saveValue(SessionString.userIdSession, '');
+            _storage.saveValue(SessionString.userNameSession, '');
+            _storage.saveValue(SessionString.emailSession, '');
+
+            AppRoute.HOME.changeScreen();
+          },
+          error: (error) {
+            loading(false);
+          });
     }
   }
 
@@ -104,6 +134,8 @@ class LoginController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    loginButtonController.dispose();
+
     emailController.dispose();
     passwordController.dispose();
   }

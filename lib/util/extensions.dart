@@ -27,9 +27,7 @@ extension NumExt on num {
 
   InputBorder outlineInputBorder({
     BorderSide borderSide = BorderSide.none,
-  }) =>
-      OutlineInputBorder(
-          borderRadius: this.borderRadius, borderSide: borderSide);
+  }) => OutlineInputBorder(borderRadius: this.borderRadius, borderSide: borderSide,);
 
   BorderSide borderSide({
     Color? color,

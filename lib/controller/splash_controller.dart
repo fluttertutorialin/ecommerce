@@ -17,7 +17,7 @@ class SplashController extends GetxController {
     appName = ValueString.appName;
 
     //TODO TESTING FOR LOGIN SESSION TRUE
-    _storage.saveValue(SessionString.isLoginSession, true);
+    _storage.saveValue(SessionString.isLoginSession, false);
 
     _launchPage();
   }
@@ -26,7 +26,7 @@ class SplashController extends GetxController {
     await Future.delayed(const Duration(seconds: 3), () {});
     bool isLogin = _storage.hasData(SessionString.isLoginSession);
 
-    //OFFALLNAME FOR CLEAR BACK SCREEN
-    isLogin ? AppRoute.HOME.offAllNamed() : AppRoute.LOGIN.offAllNamed();
+    //FOR CLEAR SPLASH SCREEN AND CHANGE THE PAGE HOME
+    isLogin ? AppRoute.LOGIN.offAllNamed() : AppRoute.LOGIN.offAllNamed();
   }
 }

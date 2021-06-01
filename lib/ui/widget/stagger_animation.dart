@@ -3,6 +3,7 @@
    FOR BUTTON PRESS ANIMATION
 */
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StaggerAnimation extends StatelessWidget {
   final VoidCallback? onTap;
@@ -40,11 +41,11 @@ class StaggerAnimation extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(25.0))),
             child: buttonSqueezeAnimation.value > 75.0
                 ? Text(titleButton,
-                    style: const TextStyle(
+                    style: GoogleFonts.lato(
+                        fontStyle: FontStyle.normal,
                         color: Colors.white,
                         fontSize: 16.0,
-                        fontWeight: FontWeight.w300,
-                        letterSpacing: 0.3))
+                        letterSpacing: 0.2))
                 : const CircularProgressIndicator(
                     value: null,
                     strokeWidth: 1.0,

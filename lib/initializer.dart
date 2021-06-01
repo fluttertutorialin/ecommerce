@@ -88,17 +88,22 @@ class Initializer {
 
     //FIREBASE
     Get.lazyPut<FirebaseAuth>(() => FirebaseAuth.instance, fenix: false);
-    Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance, fenix: false);
+    Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance,
+        fenix: false);
 
     //NETWORK BINDING
-    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()), fenix: false);
+    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()),
+        fenix: false);
     Get.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: false);
 
     //LOCAL STORAGE SESSION
     Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
     Get.lazyPut<Storage>(() => Storage(Get.find()), fenix: false);
 
-    Get.lazyPut<FireBaseProvider>(() => FirebaseRepository(Get.find(), Get.find()), fenix: false);
+    Get.lazyPut<FireBaseProvider>(() => FireBaseProvider());
+    Get.lazyPut<FirebaseRepository>(
+        () => FirebaseRepository(Get.find(), Get.find()),
+        fenix: false);
   }
 
   //FIREBASE INIT

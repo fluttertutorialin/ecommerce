@@ -4,6 +4,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../import_package.dart';
 
 class AppTextStyle {
@@ -19,10 +20,7 @@ class AppTextStyle {
     fontWeight: FontWeight.w700,
   );
 
-  static final TextStyle regularStyle = _textStyle.copyWith(
-    fontSize: Dimens.fontSize18,
-    fontWeight: FontWeight.w400,
-  );
+  static final TextStyle regularStyle = GoogleFonts.lato(fontStyle: FontStyle.normal, fontSize: Dimens.fontSize18);
 
   static final TextStyle buttonTextStyle = _textStyle.copyWith(
     fontSize: Dimens.fontSize16,
@@ -43,4 +41,7 @@ class AppTextStyle {
     fontSize: Dimens.fontSize22,
     fontWeight: FontWeight.w700,
   );
+
+  static final TextStyle textFieldStyle = GoogleFonts.lato(fontStyle: FontStyle.normal, fontSize: Dimens.fontSize16);
+
 }

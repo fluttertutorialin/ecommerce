@@ -48,54 +48,35 @@ class CustomTextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onTap: onTap,
-      readOnly: readOnly,
-      initialValue: initialValue,
-      keyboardType: keyboardType,
-      autovalidateMode: autoValidateMode,
-      controller: controller,
-      validator: validator,
-      onChanged: onChanged,
-      minLines: minLines,
-      maxLines: maxLines,
-      onSaved: onSaved,
-      enabled: enabled,
-      inputFormatters: maxLength == null
-          ? null
-          : [
-              LengthLimitingTextInputFormatter(maxLength),
-              if (keyboardType == TextInputType.number)
-                FilteringTextInputFormatter.digitsOnly,
-            ],
-      decoration: InputDecoration(
-        filled: true,
-        border: border,
-        enabledBorder: border,
-        alignLabelWithHint: maxLines == null,
-        labelText: addHint
+        onTap: onTap,
+        readOnly: readOnly,
+        initialValue: initialValue,
+        keyboardType: keyboardType,
+        autovalidateMode: autoValidateMode,
+        controller: controller,
+        validator: validator,
+        onChanged: onChanged,
+        minLines: minLines,
+        maxLines: maxLines,
+        onSaved: onSaved,
+        enabled: enabled,
+        inputFormatters: maxLength == null
             ? null
-            : ((controller?.text != null || !readOnly) ? labelText : null),
-        hintText: addHint ? labelText : (readOnly ? labelText : null),
-        prefixIconConstraints: BoxConstraints(
-          maxHeight: 16.w,
-          maxWidth: 51.w,
-        ),
-        prefixIcon: prefixIcon == null
-            ? null
-            : SizedBox(
-                width: 51.w,
-                child: prefixIcon,
-              ),
-        suffixIcon: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: suffixIcon,
-        ),
-        suffixIconConstraints: suffixIconConstraints ??
-            BoxConstraints(
-              maxHeight: 40.h,
-              maxWidth: 40.w,
-            ),
-      ),
-    );
+            : [
+                LengthLimitingTextInputFormatter(maxLength),
+                if (keyboardType == TextInputType.number)
+                  FilteringTextInputFormatter.digitsOnly,
+              ],
+        decoration: InputDecoration(
+            //filled: true,
+            border: border,
+            enabledBorder: border,
+            alignLabelWithHint: maxLines == null,
+            labelText: addHint ? null : ((controller?.text != null || !readOnly) ? labelText : null),
+            hintText: addHint ? labelText : (readOnly ? labelText : null),
+            prefixIconConstraints: BoxConstraints(maxHeight: 16.w, maxWidth: 51.w),
+            prefixIcon: prefixIcon == null ? null : SizedBox(width: 51.w, child: prefixIcon),
+            suffixIcon: Container(padding: EdgeInsets.symmetric(horizontal: 10.w), child: suffixIcon),
+            suffixIconConstraints: suffixIconConstraints ?? BoxConstraints(maxHeight: 40.h, maxWidth: 40.w)));
   }
 }
