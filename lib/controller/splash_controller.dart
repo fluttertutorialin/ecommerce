@@ -24,6 +24,6 @@ class SplashController extends GetxController {
     bool isLogin = _storage.hasData(SessionString.isLoginSession);
 
     //FOR CLEAR SPLASH SCREEN AND CHANGE THE PAGE HOME
-    isLogin ? AppRoute.HOME.offAllNamed() : AppRoute.LOGIN.offAllNamed();
+    isLogin ? AppRoute.LOGIN.offAllNamed() : AppRoute.LOGIN.offAllNamed();
   }
 }
