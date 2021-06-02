@@ -101,24 +101,24 @@ class Initializer {
   }
 
   void _initLazyPut() {
-    //DIO
-    Get.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
+    //DIO HELPER
+    GetInstanceAccess.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
 
     //FIREBASE
-    Get.lazyPut<FirebaseAuth>(() => FirebaseAuth.instance, fenix: false);
-    Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance,
-        fenix: false);
+    GetInstanceAccess.lazyPut<FirebaseAuth>(() => FirebaseAuth.instance, fenix: false);
+    GetInstanceAccess.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance, fenix: false);
 
-    //NETWORK BINDING
-    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()), fenix: false);
-    Get.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: false);
+    //NETWORK BINDING PROVIDER AND REPOSITORY
+    GetInstanceAccess.lazyPut<NetworkProvider>(() => NetworkProvider(GetInstanceAccess.find()), fenix: false);
+    GetInstanceAccess.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: false);
 
-    //LOCAL STORAGE SESSION
-    Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
-    Get.lazyPut<Storage>(() => Storage(Get.find()), fenix: false);
+    //LOCAL STORAGE SESSION PROVIDER AND REPOSITORY
+    GetInstanceAccess.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
+    GetInstanceAccess.lazyPut<Storage>(() => Storage(GetInstanceAccess.find()), fenix: false);
 
-    Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()), fenix: false);
-    Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);
+    //FIREBASE PROVIDER AND REPOSITORY
+    GetInstanceAccess.lazyPut<FirebaseProvider>(() => FirebaseProvider(GetInstanceAccess.find(), GetInstanceAccess.find()), fenix: false);
+    GetInstanceAccess.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);
   }
 
   //FIREBASE INIT

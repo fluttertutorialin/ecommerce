@@ -2,7 +2,18 @@
    DEVELOPED BY: KAMLESH LAKHANI
 */
 
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
+
+List<HomeResponse> homeResponseWithoutDecode(dynamic str) =>
+    List<HomeResponse>.from(str.map((x) => HomeResponse.fromJson(x)));
+
+List<HomeResponse> homeResponseFromDecode(String str) =>
+    List<HomeResponse>.from(json.decode(str).map((x) => HomeResponse.fromJson(x)));
+
+String homeResponseToJson(List<HomeResponse> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class HomeResponse  extends Equatable{
   final int? userId;

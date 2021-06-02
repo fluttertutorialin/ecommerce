@@ -70,8 +70,10 @@ class HomeController extends GetxController {
         success: (value) {
           _statusProgressBarRx.value = StatusProgressBar.SUCCESS;
 
-          var listAsConvert = value as List;
-          final List<HomeResponse> _homeListFromJson = listAsConvert.map((i) => HomeResponse.fromJson(i)).toList();
+          //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();
+
+          final List<HomeResponse> _homeListFromJson = homeResponseWithoutDecode(value);
+
           _homeListRx.value = _homeListFromJson;
         },
         error: (error) {
