@@ -34,7 +34,6 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
 
   // SIGNUP VALIDATION CHECK THE FORM
   Future<void> signUpValidateCheck(Function loading) async {
-
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       loading(true);
