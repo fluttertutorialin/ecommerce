@@ -1,8 +1,5 @@
 import 'package:ecommerce/import_package.dart';
-import 'package:ecommerce/model/sent/sent_package.dart' show LoginParameter;
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUpController extends GetxController with SingleGetTickerProviderMixin {
   late final NetworkRepository _networkRepository;

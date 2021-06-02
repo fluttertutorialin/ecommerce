@@ -4,7 +4,6 @@
 */
 import 'package:ecommerce/resource/style/app_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class StaggerAnimation extends StatelessWidget {
   final VoidCallback? onTap;
