@@ -19,7 +19,7 @@ class FirebaseProvider  {
     AuthCredential authCredential = GoogleAuthProvider.credential(
         accessToken: accessToken, idToken: idToken);
     final UserCredential userCredential =
-        await _firebaseAuth.signInWithCredential(authCredential);
+    await _firebaseAuth.signInWithCredential(authCredential);
     return userCredential.user;
   }
 
@@ -53,7 +53,6 @@ class FirebaseProvider  {
     Reference reference = FirebaseStorage.instance.ref().child(folderPath).child(fileName);
     TaskSnapshot storageTaskSnapshot = await reference.putFile(imageFile);
     String downloadURL = await storageTaskSnapshot.ref.getDownloadURL();
-
     return downloadURL;
   }*/
 }

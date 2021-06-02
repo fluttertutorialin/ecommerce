@@ -18,7 +18,6 @@ import 'binding/splash_binding.dart' show SplashBinding;
 import 'import_package.dart';
 import 'initializer.dart';
 import 'lang/translation_service.dart';
-import 'shared/common/global.dart';
 
 void main() {
   //APPLICATION RUN AND INIT THE INSTANCE
@@ -59,7 +58,7 @@ class MyApp extends StatelessWidget {
         enableLog: true,
         navigatorKey: Get.key,
 
-        
+
         //FOR COLLECTION OF APPLICATION PAGES
         getPages: AppPage.routes);
   }

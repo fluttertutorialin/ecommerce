@@ -11,17 +11,17 @@ class FirebaseRepository implements FirebaseProvider {
 
   @override
   Stream<User?> authStateChange() {
-   return _firebaseProvider.authStateChange();
+    return _firebaseProvider.authStateChange();
   }
 
   @override
   User? getCurrentUser() {
-   return _firebaseProvider.getCurrentUser();
+    return _firebaseProvider.getCurrentUser();
   }
 
   @override
   void loginFirebaseFacebook({token}) {
-   _firebaseProvider.loginFirebaseFacebook(token: token);
+    _firebaseProvider.loginFirebaseFacebook(token: token);
   }
 
   @override

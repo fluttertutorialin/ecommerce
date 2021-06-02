@@ -46,6 +46,6 @@ export 'package:ecommerce/shared/common/status_progress_bar.dart';
 
 //COMMON
 export 'package:ecommerce/shared/repository/network_repository.dart';
-export 'package:ecommerce/shared/provider/firebase_provider.dart';
-
 export 'package:ecommerce/shared/repository/firebase_repository.dart';
+
+export 'package:ecommerce/shared/provider/firebase_provider.dart';

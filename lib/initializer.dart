@@ -14,13 +14,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'import_package.dart';
 import 'shared/common/dio_helper.dart';
 import 'shared/common/get_storage.dart';
 import 'shared/common/global.dart';
 import 'shared/notification/firebase_notification.dart';
-import 'shared/repository/firebase_repository.dart';
-import 'shared/provider/network_provider.dart';
 import 'shared/provider/firebase_provider.dart';
+import 'shared/provider/network_provider.dart';
 import 'shared/repository/network_repository.dart';
 
 class Initializer {
