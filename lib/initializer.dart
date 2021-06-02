@@ -65,6 +65,9 @@ class Initializer {
       _initFireBase();
 
       _initLazyPut();
+
+      //NOTIFICATION
+      _firebaseNotification();
       //_oneSignalInit();
     } catch (err) {
       rethrow;
