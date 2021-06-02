@@ -18,6 +18,7 @@ import 'package:get_storage/get_storage.dart';
 import 'shared/common/dio_helper.dart';
 import 'shared/common/get_storage.dart';
 import 'shared/common/global.dart';
+import 'shared/firebase_notification.dart';
 import 'shared/provider/firebase_provider.dart';
 import 'shared/provider/network_provider.dart';
 import 'shared/repository/firebase_repository.dart';
@@ -82,33 +83,14 @@ class Initializer {
   }
 
   _firebaseNotification() async {
-    FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
-    RemoteMessage? _initialMessage =
-        await firebaseMessaging.getInitialMessage();
-
-    try {
-      String? token = await firebaseMessaging.getToken(vapidKey: '');
-
-      /// Web Push certificate Key
-      print('token*****' + token.toString());
-    } on Exception catch (_) {
-      print('Token not available**********');
-    }
-
-    if (_initialMessage?.notification!.title != null ||
-        _initialMessage?.notification!.body != null) {
-      print(_initialMessage?.notification!.title.toString());
-      print(_initialMessage?.notification!.body.toString());
-    }
-
-    ///Handles pushes for apps running in the background/killed state
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {});
-
-    ///Handles push while the application is running in the foreground
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      message.notification!.title.toString();
-      message.notification!.body.toString();
-    });
+    await FirebaseNotification.initializeFCM(
+        onNotificationPressed: (Map<String, dynamic> data) {
+          print(data);
+        },
+        onTokenChanged: (String? token) {
+          print(token);
+        },
+        icon: 'icon');
   }
 
   //SCREEN ORIENTATIONS INIT
