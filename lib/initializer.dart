@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info/device_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -75,6 +76,36 @@ class Initializer {
     await GetStorage.init();
 
     /// OPTIONAL STORAGE (CONTAINER) NAME
+  }
+
+  _firebaseNotification() async {
+    FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
+    RemoteMessage? _initialMessage =
+        await firebaseMessaging.getInitialMessage();
+
+    try {
+      String? token = await firebaseMessaging.getToken(vapidKey: '');
+
+      /// Web Push certificate Key
+      print('token*****' + token.toString());
+    } on Exception catch (_) {
+      print('Token not available**********');
+    }
+
+    if (_initialMessage?.notification!.title != null ||
+        _initialMessage?.notification!.body != null) {
+      print(_initialMessage?.notification!.title.toString());
+      print(_initialMessage?.notification!.body.toString());
+    }
+
+    ///Handles pushes for apps running in the background/killed state
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {});
+
+    ///Handles push while the application is running in the foreground
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      message.notification!.title.toString();
+      message.notification!.body.toString();
+    });
   }
 
   //SCREEN ORIENTATIONS INIT
