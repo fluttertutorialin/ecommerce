@@ -10,9 +10,9 @@ enum SortByType {
 }
 
 class FilterByTypeController extends GetxController with EquatableMixin {
-  SortByType? sortByType;
-  String? title;
-  RxBool? isSelected = false.obs;
+  late SortByType? sortByType;
+  late String? title;
+  late RxBool? isSelected = false.obs;
 
   FilterByTypeController({this.sortByType, this.title, this.isSelected});
 

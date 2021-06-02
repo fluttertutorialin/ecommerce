@@ -57,12 +57,6 @@ class CustomAppbarWidget extends PreferredSize {
         leadingWidth: 45.w,
         backgroundColor: backgroundColor,
         title: Text(title,
-            style: textStyle ??
-                AppTextStyle.appBarTitleStyle.copyWith(
-                    color: textColor ??
-                        (backgroundColor == Colors.white
-                            ? AppColors.mineShaft
-                            : Colors.white),
-                    fontSize: Dimens.fontSize18)));
+            style: AppTextStyle.appBarTitleStyle));
   }
 }

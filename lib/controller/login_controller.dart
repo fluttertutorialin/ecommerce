@@ -5,11 +5,11 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginController extends GetxController with SingleGetTickerProviderMixin {
-  late NetworkRepository _networkRepository;
-  late Storage _storage;
-  late FirebaseRepository _firebaseRepository;
+  late final NetworkRepository _networkRepository;
+  late final Storage _storage;
+  late final FirebaseRepository _firebaseRepository;
 
-  User? user;
+  late User? user;
 
   //VALIDATION USE
   final formKey = GlobalKey<FormState>();

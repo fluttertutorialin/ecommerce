@@ -32,7 +32,7 @@ class AppTextStyle {
   );
 
   static final TextStyle appBarTitleStyle =
-      _textStyle.copyWith(fontSize: Dimens.fontSize20);
+      _textStyle.copyWith(fontSize: Dimens.fontSize18);
 
   static final TextStyle splashTitleStyle = GoogleFonts.notoSans(
       fontStyle: FontStyle.normal,

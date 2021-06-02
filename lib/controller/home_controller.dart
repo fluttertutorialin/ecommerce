@@ -38,8 +38,8 @@ import '../import_package.dart';
 import '../shared/repository/network_repository.dart';
 
 class HomeController extends GetxController {
-  late NetworkRepository _networkRepository;
-  late Storage _storage;
+  late final NetworkRepository _networkRepository;
+  late final Storage _storage;
 
   HomeController(this._networkRepository, this._storage);
 
