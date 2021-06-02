@@ -34,10 +34,12 @@ class ValueString {
   static const String emailCantBeEmpty = 'Email $cantBeEmpty';
   static const String passwordCantBeEmpty = 'Password $cantBeEmpty';
   static const String mobileCantBeEmpty = 'Mobile $cantBeEmpty';
+  static const String userNameCantBeEmpty = 'Username $cantBeEmpty';
   static const String fieldOnlyLetterAndNumberAllowed = 'Only letters and numbers allowed';
   static const String enterValidEmail = 'Enter the valid email';
   static const String enterValidPassword = 'Enter the password minimum 8 characters.';
   static const String enterValidMobile = 'Enter the mobile number must be 10 digit.';
+  static const String enterValidUserName = 'Enter the username not valid';
 
   // BUTTON
   static const String loginButton = 'Login';

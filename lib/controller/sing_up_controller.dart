@@ -40,7 +40,7 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
 
   String? passwordValidation(String? value) => Validator.validatePassword(value);
 
-  String? userNameValidation(String? value) => Validator.validateEmail(value);
+  String? userNameValidation(String? value) => Validator.validateUserName(value);
 
   String? mobileValidation(String? value) => Validator.validateMobile(value);
 

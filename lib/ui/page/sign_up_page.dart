@@ -27,9 +27,9 @@ class SignUpPage extends GetView<SignUpController> {
                         SizedBox(height: 90.h),
                         SizedBox(height: 90.h),
 
-                        //EMAIL AND PASSWORD
+                        //USERNAME, EMAIL, PASSWORD, MOBILE TEXTFIELD
                         CustomTextFieldWidget(
-                            validator: controller.emailValidation,
+                            validator: controller.userNameValidation,
                             maxLength: ValueString.userNameLength,
                             labelText: ValueString.userNameFormLabel),
                         SizedBox(height: 15.h),

@@ -11,6 +11,16 @@ class Validator {
     }
   }
 
+  static String? validateUserName(String? v) {
+    if (v!.isEmpty) {
+      return ValueString.userNameCantBeEmpty;
+    } else if (!GetUtils.isUsername(v)) {
+      return ValueString.enterValidUserName;
+    } else {
+      return null;
+    }
+  }
+
   static String? validateEmail(String? v) {
     if (v!.isEmpty) {
       return ValueString.emailCantBeEmpty;
@@ -45,29 +55,6 @@ class Validator {
   static String? validateDropDownEmpty<T>(T? v) {
     if (v == null) {
       return Strings.fieldCantBeEmpty;
-    } else {
-      return null;
-    }
-  }
-
-
-
-
-  static String? validateEmailPhone(String? v) {
-    if (v!.isEmpty) {
-      return Strings.fieldCantBeEmpty;
-    } else if (GetUtils.isNumericOnly(v)) {
-      return validatePhone(v);
-    } else {
-      return validateEmail(v);
-    }
-  }
-
-  static String? validatePassword(String? v) {
-    if (v!.isEmpty) {
-      return Strings.passwordCantBeEmpty;
-    } else if (v.length < 8) {
-      return Strings.passwordValidation;
     } else {
       return null;
     }
