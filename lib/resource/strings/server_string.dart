@@ -3,12 +3,13 @@
    FOR API URL AND STATUS
 */
 
+import 'package:flutter_config/flutter_config.dart';
+
 class ServerString {
   const ServerString._();
 
   // API
-  static const String baseURL = 'https://jsonplaceholder.typicode.com/';
-  static const String postUrl = '${baseURL}posts';
+  static String postUrl = '${FlutterConfig.get('FABRIC_ID')}posts';
 
   // PARAMETER
 

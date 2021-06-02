@@ -20,7 +20,8 @@ class FirebaseRepository implements FireBaseProvider {
       {String? idToken, String? accessToken}) async {
     AuthCredential authCredential = GoogleAuthProvider.credential(
         accessToken: accessToken, idToken: idToken);
-    final UserCredential userCredential = await _firebaseAuth.signInWithCredential(authCredential);
+    final UserCredential userCredential =
+        await _firebaseAuth.signInWithCredential(authCredential);
     return userCredential.user;
   }
 
@@ -36,7 +37,7 @@ class FirebaseRepository implements FireBaseProvider {
     await _firebaseAuth.signOut();
   }
 
-  Stream<User?> authStateChange(){
+  Stream<User?> authStateChange() {
     return _firebaseAuth.authStateChanges();
   }
 
@@ -45,7 +46,9 @@ class FirebaseRepository implements FireBaseProvider {
     await _fireStore
         .collection('users')
         .doc(user!.email)
-        .set({'deviceToken': '', 'isOnline': true}, SetOptions(merge: true));
+        .set({'deviceToken': '', 'isOnline': true}, SetOptions(merge: true))
+        .then((value) {})
+        .catchError((error) {});
   }
 
 /*   Future<String> postFile(

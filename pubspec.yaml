@@ -74,6 +74,8 @@ dependencies:
   # FOR UNIQUE ID
   uuid:
 
+  flutter_config:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

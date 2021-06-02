@@ -11,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'shared/common/dio_helper.dart';
@@ -54,6 +55,8 @@ class Initializer {
   //ALL INIT DEFINE
   Future<void> _initServices() async {
     try {
+      await FlutterConfig.loadEnvVariables();
+
       _deviceInformation();
 
       _initGetStorage();
