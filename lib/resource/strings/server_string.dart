@@ -9,7 +9,8 @@ class ServerString {
   const ServerString._();
 
   // API
-  static String postUrl = '${FlutterConfig.get('FABRIC_ID')}posts';
+  static String baseURL = FlutterConfig.get('BASE_URL');
+  static String postUrl = '${baseURL}posts';
 
   // PARAMETER
 

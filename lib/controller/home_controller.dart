@@ -33,6 +33,8 @@ class HomeController extends GetxController with StateMixin<List<dynamic>> {
 }
 */
 
+import 'package:flutter_config/flutter_config.dart';
+
 import '../model/get/home/home_response.dart';
 import '../import_package.dart';
 import '../shared/repository/network_repository.dart';
