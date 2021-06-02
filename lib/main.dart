@@ -1,6 +1,17 @@
 /*
    DEVELOPED BY: KAMLESH LAKHANI
    START THE APPLICATION
+
+   //GETxSERVICE USE ASYNC
+  class AppSpController extends GetxService {
+  Future<SharedPreferences> init() async {
+    return await SharedPreferences.getInstance(); }}
+
+   //ACCESS SHAREDPREFERENCES
+   var sp = Get.find<SharedPreferences>();
+
+   //ADD INITIALIZER
+    await Get.putAsync(() => AppSpController().init());
 */
 
 import 'binding/splash_binding.dart' show SplashBinding;
@@ -40,6 +51,8 @@ class MyApp extends StatelessWidget {
         //FOR FIRST CALL THE SPLASH AND BINDING
         initialBinding: SplashBinding(),
         initialRoute: AppRoute.SPLASH,
+
+        defaultTransition: Transition.fade,
 
         //FOR COLLECTION OF APPLICATION PAGES
         getPages: AppPage.routes);

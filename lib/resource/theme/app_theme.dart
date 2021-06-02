@@ -11,6 +11,7 @@ class AppTheme {
 
   static ThemeData get theme {
     return ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         brightness: Brightness.light,
         primaryColor: AppColors.kPrimaryColor,
         accentColor: AppColors.kPrimaryColor,
