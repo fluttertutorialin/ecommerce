@@ -25,8 +25,6 @@ class SignUpPage extends GetView<SignUpController> {
                       key: controller.formKey,
                       child: Column(children: [
                         SizedBox(height: 90.h),
-                        SizedBox(height: 90.h),
-
                         //USERNAME, EMAIL, PASSWORD, MOBILE TEXTFIELD
                         CustomTextFieldWidget(
                             validator: controller.userNameValidation,

@@ -2,7 +2,6 @@ import 'package:ecommerce/import_package.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpController extends GetxController with SingleGetTickerProviderMixin {
-  late final NetworkRepository _networkRepository;
   late final Storage _storage;
   late final FirebaseRepository _firebaseRepository;
 
@@ -23,7 +22,7 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
   late AnimationController singUpButtonController;
 
   //CONSTRUCTOR
-  SignUpController(this._networkRepository, this._firebaseRepository);
+  SignUpController(this._firebaseRepository);
 
   //PAGE LAUNCH FIRST SCROLL
   @override
@@ -33,6 +32,16 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
         duration: const Duration(milliseconds: 3000), vsync: this);
   }
 
+  // SIGNUP VALIDATION CHECK THE FORM
+  Future<void> signUpValidateCheck(Function loading) async {
+
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      loading(true);
+    }
+  }
+
+  //VALIDATION
   String? emailValidation(String? value) => Validator.validateEmail(value);
 
   String? passwordValidation(String? value) => Validator.validatePassword(value);
@@ -41,31 +50,6 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
 
   String? mobileValidation(String? value) => Validator.validateMobile(value);
 
-  // LOGIN VALIDATION CHECK THE FORM
-  Future<void> signUpValidateCheck(Function loading) async {
-
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
-      loading(true);
-
-      _networkRepository.postMethod(
-          baseUrl: ServerString.postUrl,
-          success: (value) {
-            loading(false);
-
-            //SESSION STORE DATA
-            _storage.saveValue(SessionString.isLoginSession, true);
-            _storage.saveValue(SessionString.userIdSession, '');
-            _storage.saveValue(SessionString.userNameSession, '');
-            _storage.saveValue(SessionString.emailSession, '');
-
-            AppRoute.HOME.changeScreen();
-          },
-          error: (error) {
-            loading(false);
-          });
-    }
-  }
 
 
   //CLEAR RESOURCE

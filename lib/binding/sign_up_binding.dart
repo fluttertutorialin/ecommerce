@@ -9,7 +9,6 @@ class SignUpBinding extends Bindings {
   @override
   void dependencies() {
     GetInstanceAccess.lazyPut<SignUpController>(() => SignUpController(
-        GetInstanceAccess.find(),
         GetInstanceAccess.find()));
   }
 }
