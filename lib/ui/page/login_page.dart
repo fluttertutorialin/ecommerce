@@ -12,6 +12,7 @@ import 'package:ecommerce/controller/controller_package.dart';
 import 'package:ecommerce/ui/widget/custom_text_field_widget.dart';
 import 'package:ecommerce/ui/widget/stagger_animation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:line_icons/line_icons.dart';
 import '../../import_package.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -35,6 +36,8 @@ class LoginPage extends GetView<LoginController> {
                             labelText: ValueString.emailTextLabel),
                         SizedBox(height: 10.h),
                         CustomTextFieldWidget(
+                            obscureText: true,
+                            suffixIcon: IconFont.passwordSecure,
                             validator: controller.validatePassword,
                             maxLength: ValueString.passwordLength,
                             labelText: ValueString.passwordLabel),
@@ -68,7 +71,8 @@ class LoginPage extends GetView<LoginController> {
                                         print(error);
                                       }),
                                   child: CircleAvatar(
-                                      backgroundColor: AppColors.googleRed.withOpacity(0.2),
+                                      backgroundColor:
+                                          AppColors.googleRed.withOpacity(0.2),
                                       child: IconFont.google)),
                               SizedBox(width: 20.h),
                               InkWell(
@@ -78,7 +82,8 @@ class LoginPage extends GetView<LoginController> {
                                         print(error);
                                       }),
                                   child: CircleAvatar(
-                                      backgroundColor: AppColors.facebookBlue.withOpacity(0.2),
+                                      backgroundColor: AppColors.facebookBlue
+                                          .withOpacity(0.2),
                                       child: IconFont.facebook))
                             ])
                       ]))))));

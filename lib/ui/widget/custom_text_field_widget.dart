@@ -21,6 +21,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final InputBorder? border;
   final AutovalidateMode autoValidateMode;
   final BoxConstraints? suffixIconConstraints;
+  final bool? obscureText;
 
   const CustomTextFieldWidget({
     Key? key,
@@ -33,7 +34,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.onChanged,
     this.onSaved,
     this.maxLength,
-    this.maxLines,
+    this.maxLines = 1,
     this.minLines = 1,
     this.initialValue,
     this.readOnly = false,
@@ -43,6 +44,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.autoValidateMode = AutovalidateMode.onUserInteraction,
     this.addHint = false,
     this.suffixIconConstraints,
+    this.obscureText = false
   }) : super(key: key);
 
   @override
@@ -60,6 +62,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         maxLines: maxLines,
         onSaved: onSaved,
         enabled: enabled,
+        obscureText: obscureText!,
         inputFormatters: maxLength == null
             ? null
             : [
