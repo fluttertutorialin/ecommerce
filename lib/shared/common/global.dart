@@ -11,6 +11,8 @@ class Global{
 
   static bool isIOS = Platform.isIOS;
 
+  static bool isAndroid = Platform.isAndroid;
+
   static late AndroidDeviceInfo androidDeviceInfo;
 
   static late IosDeviceInfo iosDeviceInfo;

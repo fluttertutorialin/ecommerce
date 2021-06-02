@@ -8,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info/device_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -18,10 +17,10 @@ import 'package:get_storage/get_storage.dart';
 import 'shared/common/dio_helper.dart';
 import 'shared/common/get_storage.dart';
 import 'shared/common/global.dart';
-import 'shared/firebase_notification.dart';
-import 'shared/provider/firebase_provider.dart';
-import 'shared/provider/network_provider.dart';
+import 'shared/notification/firebase_notification.dart';
 import 'shared/repository/firebase_repository.dart';
+import 'shared/provider/network_provider.dart';
+import 'shared/provider/firebase_provider.dart';
 import 'shared/repository/network_repository.dart';
 
 class Initializer {
@@ -69,7 +68,7 @@ class Initializer {
 
       //NOTIFICATION
       _firebaseNotification();
-      //_oneSignalInit();
+      _oneSignalInit();
     } catch (err) {
       rethrow;
     }
@@ -119,10 +118,8 @@ class Initializer {
     Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
     Get.lazyPut<Storage>(() => Storage(Get.find()), fenix: false);
 
-    Get.lazyPut<FireBaseProvider>(() => FireBaseProvider());
-    Get.lazyPut<FirebaseRepository>(
-        () => FirebaseRepository(Get.find(), Get.find()),
-        fenix: false);
+    Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()), fenix: false);
+    Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);
   }
 
   //FIREBASE INIT
@@ -140,44 +137,7 @@ class Initializer {
     }
   }
 
-  /*_oneSignalInit() async {
-    bool allowed =
-        await OneSignal.shared.promptUserForPushNotificationPermission();
+  _oneSignalInit() async {
 
-    if (allowed) {
-      await OneSignal.shared.init("c3c8eba8-fdd7-4d5a-935e-f479d48bd8bb");
-
-      OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-
-      OneSignal.shared
-          .setNotificationReceivedHandler((OSNotification notification) {
-        // will be called whenever a notification is received
-      });
-
-      OneSignal.shared
-          .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-        // will be called whenever a notification is opened/button pressed.
-      });
-
-      OneSignal.shared
-          .setPermissionObserver((OSPermissionStateChanges changes) {
-        // will be called whenever the permission changes
-        // (ie. user taps Allow on the permission prompt in iOS)
-      });
-
-      OneSignal.shared
-          .setSubscriptionObserver((OSSubscriptionStateChanges changes) {
-        // will be called whenever the subscription changes
-        //(ie. user gets registered with OneSignal and gets a user ID)
-      });
-
-      OneSignal.shared.setEmailSubscriptionObserver(
-          (OSEmailSubscriptionStateChanges emailChanges) {
-        // will be called whenever then user's email subscription changes
-        // (ie. OneSignal.setEmail(email) is called and the user gets registered
-      });
-
-      OneSignal.shared.removeExternalUserId();
-    }
-  }*/
+  }
 }

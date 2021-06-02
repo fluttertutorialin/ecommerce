@@ -1,64 +1,42 @@
-import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce/shared/provider/firebase_provider.dart';
+/*
+   DEVELOPED BY: KAMLESH LAKHANI
+   FOR FIREBASE SERVICE
+*/
+
+import 'package:ecommerce/import_package.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class FirebaseRepository implements FireBaseProvider {
-  late FirebaseAuth _firebaseAuth;
-  late FirebaseFirestore _fireStore;
-
-  FirebaseRepository(this._firebaseAuth, this._fireStore);
+class FirebaseRepository implements FirebaseProvider {
+  final _firebaseProvider = Get.find<FirebaseProvider>();
 
   @override
-  void loginFirebaseFacebook({token}) async {
-    AuthCredential credential = FacebookAuthProvider.credential(token);
-    await _firebaseAuth.signInWithCredential(credential);
-  }
-
-  @override
-  Future<User?> loginFirebaseGoogle(
-      {String? idToken, String? accessToken}) async {
-    AuthCredential authCredential = GoogleAuthProvider.credential(
-        accessToken: accessToken, idToken: idToken);
-    final UserCredential userCredential =
-        await _firebaseAuth.signInWithCredential(authCredential);
-    return userCredential.user;
+  Stream<User?> authStateChange() {
+   return _firebaseProvider.authStateChange();
   }
 
   @override
   User? getCurrentUser() {
-    try {
-      return _firebaseAuth.currentUser;
-    } catch (e) {}
+   return _firebaseProvider.getCurrentUser();
   }
 
   @override
-  void signOut() async {
-    await _firebaseAuth.signOut();
-  }
-
-  Stream<User?> authStateChange() {
-    return _firebaseAuth.authStateChanges();
+  void loginFirebaseFacebook({token}) {
+   _firebaseProvider.loginFirebaseFacebook(token: token);
   }
 
   @override
-  void updateUser({required user}) async {
-    await _fireStore
-        .collection('users')
-        .doc(user!.email)
-        .set({'deviceToken': '', 'isOnline': true}, SetOptions(merge: true))
-        .then((value) {})
-        .catchError((error) {});
+  Future<User?> loginFirebaseGoogle({String? idToken, String? accessToken}) {
+    return _firebaseProvider.loginFirebaseGoogle(idToken: idToken, accessToken: accessToken);
   }
 
-/*   Future<String> postFile(
-      {required File imageFile,
-        required String folderPath,
-        required String fileName}) async {
-    Reference reference = FirebaseStorage.instance.ref().child(folderPath).child(fileName);
-    TaskSnapshot storageTaskSnapshot = await reference.putFile(imageFile);
-    String downloadURL = await storageTaskSnapshot.ref.getDownloadURL();
+  @override
+  void signOut() {
+    _firebaseProvider.signOut();
+  }
 
-    return downloadURL;
-  }*/
+  @override
+  void updateUser({required user}) {
+    return _firebaseProvider.updateUser(user: user);
+  }
+
 }
