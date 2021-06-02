@@ -38,8 +38,9 @@ class ValueString {
   static const String loginButton = 'Login';
 
   // VALIDATION LENGTH (MOBILE NO, EMAIL LENGTH ETC.)
-  static int mobileLength = 10;
-  static int emailLength = 50;
-  static int userNameLength = 10;
-  static int passwordLength = 10;
+  static const int splashScreenWait = 3;
+  static const int mobileLength = 10;
+  static const int emailLength = 50;
+  static const int userNameLength = 10;
+  static const int passwordLength = 10;
 }

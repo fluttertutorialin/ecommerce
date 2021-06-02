@@ -49,3 +49,5 @@ FractionallySizedBox(
           )))
 
 List<> dataList = List<>.empty(growable: true);
+
+const EdgeInsets.symmetric(horizontal: 30),

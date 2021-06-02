@@ -20,10 +20,12 @@ class SplashController extends GetxController {
   }
 
   _launchPage() async {
-    await Future.delayed(const Duration(seconds: 3));
-    bool isLogin = _storage.hasData(SessionString.isLoginSession);
+    //SPLASH SCREEN WAIT 3 SECOND
+    await Future.delayed(const Duration(seconds: ValueString.splashScreenWait)).then((value) {
+      final bool isLogin = _storage.hasData(SessionString.isLoginSession);
 
-    //FOR CLEAR SPLASH SCREEN AND CHANGE THE PAGE HOME
-    isLogin ? AppRoute.LOGIN.offAllNamed() : AppRoute.LOGIN.offAllNamed();
+      //FOR CLEAR SPLASH SCREEN AND CHANGE THE PAGE HOME
+      isLogin ? AppRoute.HOME.offAllNamed() : AppRoute.LOGIN.offAllNamed();
+    });
   }
 }
