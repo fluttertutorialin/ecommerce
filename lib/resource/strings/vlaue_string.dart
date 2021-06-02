@@ -37,9 +37,9 @@ class ValueString {
   static const String userNameCantBeEmpty = 'Username $cantBeEmpty';
   static const String fieldOnlyLetterAndNumberAllowed = 'Only letters and numbers allowed';
   static const String enterValidEmail = 'Enter the valid email';
-  static const String enterValidPassword = 'Enter the password minimum 8 characters.';
-  static const String enterValidMobile = 'Enter the mobile number must be 10 digit.';
-  static const String enterValidUserName = 'Enter the username not valid';
+  static const String enterValidPassword = 'Enter the password minimum 8 characters';
+  static const String enterValidMobile = 'Enter the mobile number must be 10 digit';
+  static const String enterValidUserName = 'Enter the username must be 3 digit';
 
   // BUTTON
   static const String loginButton = 'Login';
