@@ -46,6 +46,8 @@ dependencies:
   # FOR FONT
   google_fonts:
 
+  configurable_expansion_tile:
+
   # FOR EVENT HANDLE
   event_bus:
 

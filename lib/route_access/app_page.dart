@@ -25,6 +25,13 @@ class AppPage {
         name: AppRoute.LOGIN,
         page: () => LoginPage(),
         binding: LoginBinding()
+    ),
+
+    GetPage(
+        name: AppRoute.SIGNUP,
+        page: () => SignUpPage(),
+        binding: SignUpBinding()
     )
+
   ];
 }

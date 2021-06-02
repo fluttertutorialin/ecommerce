@@ -21,7 +21,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final InputBorder? border;
   final AutovalidateMode autoValidateMode;
   final BoxConstraints? suffixIconConstraints;
-  final bool? obscureText;
+  final bool obscureText;
 
   const CustomTextFieldWidget({
     Key? key,
@@ -62,7 +62,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         maxLines: maxLines,
         onSaved: onSaved,
         enabled: enabled,
-        obscureText: obscureText!,
+        obscureText: obscureText,
         inputFormatters: maxLength == null
             ? null
             : [

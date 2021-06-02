@@ -12,7 +12,6 @@ import 'package:ecommerce/controller/controller_package.dart';
 import 'package:ecommerce/ui/widget/custom_text_field_widget.dart';
 import 'package:ecommerce/ui/widget/stagger_animation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:line_icons/line_icons.dart';
 import '../../import_package.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -33,14 +32,14 @@ class LoginPage extends GetView<LoginController> {
                         CustomTextFieldWidget(
                             validator: controller.emailValidation,
                             maxLength: ValueString.emailLength,
-                            labelText: ValueString.emailTextLabel),
-                        SizedBox(height: 10.h),
+                            labelText: ValueString.emailFormLabel),
+                        SizedBox(height: 15.h),
                         CustomTextFieldWidget(
                             obscureText: true,
                             suffixIcon: IconFont.passwordSecure,
-                            validator: controller.validatePassword,
+                            validator: controller.passwordValidation,
                             maxLength: ValueString.passwordLength,
-                            labelText: ValueString.passwordLabel),
+                            labelText: ValueString.passwordFormLabel),
                         SizedBox(height: 20.h),
 
                         //LOGIN ANIMATION BUTTON
@@ -64,6 +63,7 @@ class LoginPage extends GetView<LoginController> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
+                                  borderRadius: BorderRadius.circular(25.0),
                                   onTap: () => controller.loginGoogle(
                                           success: (User? user) {
                                         print(user!.displayName);
@@ -76,6 +76,7 @@ class LoginPage extends GetView<LoginController> {
                                       child: IconFont.google)),
                               SizedBox(width: 20.h),
                               InkWell(
+                                  borderRadius: BorderRadius.circular(25.0),
                                   onTap: () => controller.loginGoogle(
                                       success: (User? user) {},
                                       fail: (error) {
@@ -85,6 +86,17 @@ class LoginPage extends GetView<LoginController> {
                                       backgroundColor: AppColors.facebookBlue
                                           .withOpacity(0.2),
                                       child: IconFont.facebook))
+                            ]),
+                        SizedBox(height: 40.h),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(ValueString.doNotHaveAccount,
+                                  style: AppTextStyle.doNotHaveAccountStyle),
+                              GestureDetector(
+                                  onTap: () => controller.signUpNavigation(),
+                                  child: Text(' ${ValueString.signUp}',
+                                      style: AppTextStyle.signUpStyle))
                             ])
                       ]))))));
 }

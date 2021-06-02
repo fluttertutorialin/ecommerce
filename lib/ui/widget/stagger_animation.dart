@@ -35,7 +35,7 @@ class StaggerAnimation extends StatelessWidget {
         onTap: onTap,
         child: Container(
             width: buttonSqueezeAnimation.value,
-            height: 50,
+            height: 45,
             alignment: FractionalOffset.center,
             decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,

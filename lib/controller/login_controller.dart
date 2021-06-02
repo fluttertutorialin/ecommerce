@@ -44,7 +44,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
   String? emailValidation(String? value) => Validator.validateEmail(value);
 
-  String? validatePassword(String? value) => Validator.validatePassword(value);
+  String? passwordValidation(String? value) => Validator.validatePassword(value);
 
   // LOGIN VALIDATION CHECK THE FORM
   Future<void> loginValidateCheck(Function loading) async {
@@ -132,6 +132,9 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     //LOGIN SUCCESS GO TO MAIN SCREEN
     AppRoute.HOME.changeScreen();
   }
+
+
+  signUpNavigation() =>  AppRoute.SIGNUP.changeScreen();
 
   //CLEAR RESOURCE
   @override
