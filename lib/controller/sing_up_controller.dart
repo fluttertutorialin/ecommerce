@@ -11,8 +11,10 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
   final formKey = GlobalKey<FormState>();
 
   //TEXT CLEAR AND GET
+  final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController mobileController = TextEditingController();
 
   // PROGRESSBAR
   /*final _statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA

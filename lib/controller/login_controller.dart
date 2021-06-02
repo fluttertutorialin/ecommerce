@@ -67,6 +67,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
             AppRoute.HOME.changeScreen();
           },
           error: (error) {
+            passwordController.dispose();
             loading(false);
           });
     }

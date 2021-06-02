@@ -8,7 +8,8 @@
     autovalidateMode: AutovalidateMode.onUserInteraction,
 */
 
-import 'package:ecommerce/controller/controller_package.dart' show SignUpController;
+import 'package:ecommerce/controller/controller_package.dart'
+    show SignUpController;
 import 'package:ecommerce/ui/widget/custom_text_field_widget.dart';
 import 'package:ecommerce/ui/widget/stagger_animation.dart';
 import '../../import_package.dart';
@@ -27,16 +28,19 @@ class SignUpPage extends GetView<SignUpController> {
                         SizedBox(height: 90.h),
                         //USERNAME, EMAIL, PASSWORD, MOBILE TEXTFIELD
                         CustomTextFieldWidget(
+                            controller: controller.userNameController,
                             validator: controller.userNameValidation,
                             maxLength: ValueString.userNameLength,
                             labelText: ValueString.userNameFormLabel),
                         SizedBox(height: 15.h),
                         CustomTextFieldWidget(
+                            controller: controller.emailController,
                             validator: controller.emailValidation,
                             maxLength: ValueString.emailLength,
                             labelText: ValueString.emailFormLabel),
                         SizedBox(height: 15.h),
                         CustomTextFieldWidget(
+                            controller: controller.passwordController,
                             obscureText: true,
                             suffixIcon: IconFont.passwordSecure,
                             validator: controller.passwordValidation,
@@ -44,6 +48,7 @@ class SignUpPage extends GetView<SignUpController> {
                             labelText: ValueString.passwordFormLabel),
                         SizedBox(height: 15.h),
                         CustomTextFieldWidget(
+                            controller: controller.mobileController,
                             keyboardType: TextInputType.number,
                             validator: controller.mobileValidation,
                             maxLength: ValueString.mobileLength,

@@ -30,11 +30,13 @@ class LoginPage extends GetView<LoginController> {
 
                         //EMAIL AND PASSWORD
                         CustomTextFieldWidget(
+                            controller: controller.emailController,
                             validator: controller.emailValidation,
                             maxLength: ValueString.emailLength,
                             labelText: ValueString.emailFormLabel),
                         SizedBox(height: 15.h),
                         CustomTextFieldWidget(
+                            controller: controller.passwordController,
                             obscureText: true,
                             suffixIcon: IconFont.passwordSecure,
                             validator: controller.passwordValidation,
