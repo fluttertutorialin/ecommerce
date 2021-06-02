@@ -47,3 +47,5 @@ FractionallySizedBox(
             height: height,
             color: color
           )))
+
+List<> dataList = List<>.empty(growable: true);

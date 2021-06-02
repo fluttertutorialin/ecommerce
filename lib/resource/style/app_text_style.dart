@@ -10,6 +10,9 @@ import '../../import_package.dart';
 class AppTextStyle {
   const AppTextStyle._();
 
+  static final TextStyle _textStyle = GoogleFonts.notoSans(
+      fontStyle: FontStyle.normal, fontSize: Dimens.fontSize16);
+
   static final TextStyle semiBoldStyle = _textStyle.copyWith(
     fontSize: Dimens.fontSize16,
     fontWeight: FontWeight.w600,
@@ -20,25 +23,22 @@ class AppTextStyle {
     fontWeight: FontWeight.w700,
   );
 
-  static final TextStyle regularStyle = GoogleFonts.lato(fontStyle: FontStyle.normal, fontSize: Dimens.fontSize18);
+  static final TextStyle regularStyle = GoogleFonts.notoSans(
+      fontStyle: FontStyle.normal, fontSize: Dimens.fontSize18);
 
   static final TextStyle buttonTextStyle = _textStyle.copyWith(
     fontSize: Dimens.fontSize16,
-    fontWeight: FontWeight.w700,
+    color: Colors.white
   );
 
-  static final TextStyle _textStyle = TextStyle(
-    color: Colors.black,
-    fontSize: Dimens.fontSize14,
-  );
+  static final TextStyle appBarTitleStyle =
+      _textStyle.copyWith(fontSize: Dimens.fontSize20);
 
-  static final TextStyle appBarTitleStyle = _textStyle.copyWith(
-    fontSize: Dimens.fontSize22,
-    fontWeight: FontWeight.w700,
-  );
+  static final TextStyle splashTitleStyle = GoogleFonts.notoSans(
+      fontStyle: FontStyle.normal,
+      fontWeight: FontWeight.bold,
+      fontSize: Dimens.fontSize30);
 
-  static final TextStyle splashTitleStyle = GoogleFonts.lato(fontStyle: FontStyle.normal, fontWeight: FontWeight.bold, fontSize: Dimens.fontSize24);
-
-  static final TextStyle textFieldStyle = GoogleFonts.lato(fontStyle: FontStyle.normal, fontSize: Dimens.fontSize16);
-
+  static final TextStyle textFieldStyle =
+      GoogleFonts.notoSans(fontSize: Dimens.fontSize16);
 }

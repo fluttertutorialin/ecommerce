@@ -2,6 +2,7 @@
    DEVELOPED BY: KAMLESH LAKHANI
    FOR BUTTON PRESS ANIMATION
 */
+import 'package:ecommerce/resource/style/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -41,11 +42,7 @@ class StaggerAnimation extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(25.0))),
             child: buttonSqueezeAnimation.value > 75.0
                 ? Text(titleButton,
-                    style: GoogleFonts.lato(
-                        fontStyle: FontStyle.normal,
-                        color: Colors.white,
-                        fontSize: 16.0,
-                        letterSpacing: 0.2))
+                    style: AppTextStyle.buttonTextStyle)
                 : const CircularProgressIndicator(
                     value: null,
                     strokeWidth: 1.0,

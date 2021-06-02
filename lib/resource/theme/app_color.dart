@@ -34,12 +34,12 @@ class AppColors {
   static const Color mineShaft = Color(0xFF2B2B2B);
   static const Color doveGray = Color(0xFF646464);
   static const Color caribbeanGreen = Color(0xFF06C5AC);
-  static const Color amaranth = Color(0xFFea435d);
+
   static const Color black = Colors.black;
   static const Color white = Colors.white;
 
-  static Color googleRed = Colors.red;
-  static Color facebookBlue = Colors.blue;
+  static Color googleRed =  Color(0xFFea435d);
+  static Color facebookBlue = Color(0xFF1976D2);
 
   static const Color whiteCardBackground = Colors.white;
 }
