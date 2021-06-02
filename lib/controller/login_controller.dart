@@ -30,7 +30,8 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
   late AnimationController loginButtonController;
 
   //CONSTRUCTOR
-  LoginController(this._networkRepository, this._firebaseRepository);
+  LoginController(
+      this._networkRepository, this._firebaseRepository);
 
   //PAGE LAUNCH FIRST SCROLL
   @override
@@ -44,11 +45,11 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
   String? emailValidation(String? value) => Validator.validateEmail(value);
 
-  String? passwordValidation(String? value) => Validator.validatePassword(value);
+  String? passwordValidation(String? value) =>
+      Validator.validatePassword(value);
 
   // LOGIN VALIDATION CHECK THE FORM
   Future<void> loginValidateCheck(Function loading) async {
-
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       loading(true);
@@ -134,8 +135,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     AppRoute.HOME.changeScreen();
   }
 
-
-  signUpNavigation() =>  AppRoute.SIGNUP.changeScreen();
+  signUpNavigation() => AppRoute.SIGNUP.changeScreen();
 
   //CLEAR RESOURCE
   @override

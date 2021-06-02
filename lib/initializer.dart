@@ -110,8 +110,7 @@ class Initializer {
         fenix: false);
 
     //NETWORK BINDING
-    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()),
-        fenix: false);
+    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()), fenix: false);
     Get.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: false);
 
     //LOCAL STORAGE SESSION
