@@ -37,6 +37,7 @@ dependencies:
   firebase_messaging:
   # onesignal_flutter:
   flutter_local_notifications:
+  overlay_support:
 
   # value equality
   equatable:

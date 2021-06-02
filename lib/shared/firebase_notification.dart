@@ -1,3 +1,13 @@
+/*
+showSimpleNotification(
+            Text(_notificationInfo!.title!),
+            leading: NotificationBadge(totalNotifications: _totalNotifications),
+            subtitle: Text(_notificationInfo!.body!),
+            background: Colors.cyan.shade700,
+            duration: Duration(seconds: 2),
+          );
+*/
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'local_notification.dart';
