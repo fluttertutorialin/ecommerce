@@ -70,8 +70,8 @@ class HomeController extends GetxController {
         success: (value) {
           _statusProgressBarRx.value = StatusProgressBar.SUCCESS;
 
+          //STRING CONVERT JSON MODEL CLASS
           //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();
-
           final List<HomeResponse> _homeListFromJson = homeResponseWithoutDecode(value);
 
           _homeListRx.value = _homeListFromJson;
