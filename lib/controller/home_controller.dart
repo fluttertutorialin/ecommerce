@@ -35,7 +35,6 @@ class HomeController extends GetxController with StateMixin<List<dynamic>> {
 
 import '../model/get/home/home_response.dart';
 import '../import_package.dart';
-import '../shared/repository/network_repository.dart';
 
 class HomeController extends GetxController {
   late final NetworkRepository _networkRepository;
