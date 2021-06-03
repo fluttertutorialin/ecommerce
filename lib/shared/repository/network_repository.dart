@@ -3,9 +3,9 @@
    ABSTRACT CLASS (NetworkProvider) API IMPLEMENT
 */
 
-import 'package:get/get.dart';
 import '../common/dio_helper.dart';
 import '../provider/network_provider.dart';
+import 'package:get/get.dart';
 
 class NetworkRepository implements NetworkProvider {
   final _networkProvider = Get.find<NetworkProvider>();

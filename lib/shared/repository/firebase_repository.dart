@@ -3,7 +3,8 @@
    FOR FIREBASE SERVICE
 */
 
-import 'package:ecommerce/import_package.dart';
+import 'package:get/get.dart';
+import '../provider/firebase_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseRepository implements FirebaseProvider {
@@ -38,5 +39,4 @@ class FirebaseRepository implements FirebaseProvider {
   void updateUser({required user}) {
     return _firebaseProvider.updateUser(user: user);
   }
-
 }

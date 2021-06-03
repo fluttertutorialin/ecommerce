@@ -38,14 +38,16 @@ export 'package:ecommerce/util/extensions.dart';
 //VALIDATION
 export 'package:ecommerce/resource/validator.dart';
 
-//SESSION
-export 'package:ecommerce/shared/common/get_storage.dart';
-export 'package:ecommerce/resource/strings/session_string.dart';
-
-export 'package:ecommerce/shared/common/status_progress_bar.dart';
-
-//COMMON
+///COMMON
+//REPOSITORY
 export 'package:ecommerce/shared/repository/network_repository.dart';
 export 'package:ecommerce/shared/repository/firebase_repository.dart';
 
-export 'package:ecommerce/shared/provider/firebase_provider.dart';
+//SESSION
+export 'package:ecommerce/resource/strings/session_string.dart';
+export 'package:ecommerce/shared/common/get_storage.dart';
+
+export 'package:ecommerce/shared/common/status_progress_bar.dart';
+
+
+export 'dart:async';
