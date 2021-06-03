@@ -43,6 +43,9 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       loading(true);
+
+      //HOME SCREEN NAVIGATION
+      AppRoute.HOME.changeScreen();
     }
   }
 
@@ -54,8 +57,6 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
   String? userNameValidation(String? value) => Validator.validateUserName(value);
 
   String? mobileValidation(String? value) => Validator.validateMobile(value);
-
-
 
   //CLEAR RESOURCE
   @override

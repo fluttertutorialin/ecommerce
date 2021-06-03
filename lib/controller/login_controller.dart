@@ -9,7 +9,9 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
   late final Storage _storage;
   late final FirebaseRepository _firebaseRepository;
 
-  late User? user;
+  //CONSTRUCTOR
+  LoginController(
+      this._networkRepository, this._firebaseRepository);
 
   //VALIDATION USE
   final formKey = GlobalKey<FormState>();
@@ -28,10 +30,6 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
   String? get email => _firebaseUser.value?.email;
 
   late AnimationController loginButtonController;
-
-  //CONSTRUCTOR
-  LoginController(
-      this._networkRepository, this._firebaseRepository);
 
   //PAGE LAUNCH FIRST SCROLL
   @override
@@ -82,7 +80,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
         case LoginStatus.success:
           final accessToken = await FacebookAuth.instance.accessToken;
           _firebaseRepository.loginFirebaseFacebook(token: accessToken!.token);
-          success!(user);
+
           break;
 
         case LoginStatus.cancelled:
