@@ -5,9 +5,10 @@
 import 'package:ecommerce/import_package.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SignUpController extends GetxController with SingleGetTickerProviderMixin {
-  late final Storage _storage;
-  late final FirebaseRepository _firebaseRepository;
+class SignUpController extends GetxController
+    with SingleGetTickerProviderMixin {
+  final GetStorageRepository _getStorageRepository;
+  final FirebaseRepository _firebaseRepository;
 
   late User? user;
 
@@ -28,7 +29,7 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
   late AnimationController singUpButtonController;
 
   //CONSTRUCTOR
-  SignUpController(this._firebaseRepository);
+  SignUpController(this._getStorageRepository, this._firebaseRepository);
 
   //PAGE LAUNCH FIRST SCROLL
   @override
@@ -52,9 +53,11 @@ class SignUpController extends GetxController with SingleGetTickerProviderMixin 
   //VALIDATION
   String? emailValidation(String? value) => Validator.validateEmail(value);
 
-  String? passwordValidation(String? value) => Validator.validatePassword(value);
+  String? passwordValidation(String? value) =>
+      Validator.validatePassword(value);
 
-  String? userNameValidation(String? value) => Validator.validateUserName(value);
+  String? userNameValidation(String? value) =>
+      Validator.validateUserName(value);
 
   String? mobileValidation(String? value) => Validator.validateMobile(value);
 

@@ -5,12 +5,12 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginController extends GetxController with SingleGetTickerProviderMixin {
-  late final NetworkRepository _networkRepository;
-  late final Storage _storage;
-  late final FirebaseRepository _firebaseRepository;
+   final NetworkRepository _networkRepository;
+   final GetStorageRepository _getStorageRepository;
+   final FirebaseRepository _firebaseRepository;
 
   //CONSTRUCTOR
-  LoginController(
+  LoginController(this._getStorageRepository,
       this._networkRepository, this._firebaseRepository);
 
   //VALIDATION USE
@@ -26,8 +26,9 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
   */
 
   //RX GET AND SET
-  final Rxn<User> _firebaseUser = Rxn<User>();
-  String? get email => _firebaseUser.value?.email;
+  /*final Rxn<User> _firebaseUser = Rxn<User>();
+    String? get email => _firebaseUser.value?.email;
+  */
 
   late AnimationController loginButtonController;
 
@@ -38,7 +39,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     loginButtonController = AnimationController(
         duration: const Duration(milliseconds: 3000), vsync: this);
 
-    _firebaseUser.bindStream(_firebaseRepository.authStateChange());
+    //_firebaseUser.bindStream(_firebaseRepository.authStateChange());
   }
 
   String? emailValidation(String? value) => Validator.validateEmail(value);
@@ -58,10 +59,10 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
             loading(false);
 
             //SESSION STORE DATA
-            _storage.saveValue(SessionString.isLoginSession, true);
-            _storage.saveValue(SessionString.userIdSession, '');
-            _storage.saveValue(SessionString.userNameSession, '');
-            _storage.saveValue(SessionString.emailSession, '');
+            _getStorageRepository.saveValue(SessionString.isLoginSession, true);
+            _getStorageRepository.saveValue(SessionString.userIdSession, '');
+            _getStorageRepository.saveValue(SessionString.userNameSession, '');
+            _getStorageRepository.saveValue(SessionString.emailSession, '');
 
             AppRoute.HOME.changeScreen();
           },

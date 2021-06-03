@@ -7,9 +7,9 @@ import '../import_package.dart';
 
 class SplashController extends GetxController {
   late String? appName;
-  late final Storage _storage;
+  late final GetStorageRepository _getStorageRepository;
 
-  SplashController(this._storage);
+  SplashController(this._getStorageRepository);
 
   @override
   void onInit() {
@@ -22,10 +22,10 @@ class SplashController extends GetxController {
   _launchPage() async {
     //SPLASH SCREEN WAIT 3 SECOND
     await Future.delayed(const Duration(seconds: ValueString.splashScreenWait)).then((value) {
-      final bool? isLogin = _storage.hasData(SessionString.isLoginSession);
+      final bool? isLogin = _getStorageRepository.hasData(SessionString.isLoginSession);
 
       //FOR CLEAR SPLASH SCREEN AND CHANGE THE PAGE HOME
-      isLogin! ? AppRoute.HOME.offAllNamed() : AppRoute.HOME.offAllNamed();
+      isLogin! ? AppRoute.HOME.offAllNamed() : AppRoute.LOGIN.offAllNamed();
     });
   }
 }

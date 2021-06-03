@@ -1,23 +1,17 @@
-/*
-   DEVELOPED BY: KAMLESH LAKHANI
-*/
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import '../shared/common/dio_helper.dart';
-import '../shared/provider/firebase_provider.dart';
-import '../shared/provider/get_storage_provider.dart';
-import '../shared/provider/network_provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get_storage/get_storage.dart';
-import '../shared/repository/firebase_repository.dart';
-import '../shared/repository/get_storage_repository.dart';
-import '../shared/repository/network_repository.dart';
+import 'package:ecommerce/shared/repository/firebase_repository.dart';
+import 'package:ecommerce/shared/repository/get_storage_repository.dart';
 import 'package:get/get.dart';
-import '../controller/controller_package.dart' show LoginController;
+import 'package:get_storage/get_storage.dart';
+import 'shared/provider/firebase_provider.dart';
+import 'shared/provider/get_storage_provider.dart';
+import 'shared/provider/network_provider.dart';
+import 'shared/common/dio_helper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'shared/repository/network_repository.dart';
 
-class LoginBinding extends Bindings {
-  @override
-  void dependencies() {
+class DependencyInjection {
+  void init() {
     //DIO HELPER
     Get.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
 
@@ -38,7 +32,5 @@ class LoginBinding extends Bindings {
     //FIREBASE PROVIDER AND REPOSITORY
     Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()), fenix: false);
     Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);
-
-    Get.lazyPut<LoginController>(() => LoginController(Get.find(), Get.find(), Get.find()));
   }
 }

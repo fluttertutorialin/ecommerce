@@ -15,4 +15,6 @@ class IconFont {
 
   static const Icon passwordVisible = Icon(LineIcons.eye);
   static const Icon passwordSecure = Icon(LineIcons.eyeSlash);
+
+  static const Icon logout = Icon(LineIcons.lock);
 }

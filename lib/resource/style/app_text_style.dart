@@ -37,6 +37,7 @@ class AppTextStyle {
   static final TextStyle splashTitleStyle = GoogleFonts.notoSans(
       fontStyle: FontStyle.normal,
       fontWeight: FontWeight.bold,
+      color: AppColors.white,
       fontSize: Dimens.fontSize30);
 
   static final TextStyle textFieldStyle =

@@ -17,7 +17,6 @@ import '../../import_package.dart';
 class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) => Scaffold(
-      backgroundColor: AppColors.whiteCardBackground,
       body: SafeArea(
           child: SingleChildScrollView(
               child: Padding(

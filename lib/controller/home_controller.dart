@@ -33,14 +33,16 @@ class HomeController extends GetxController with StateMixin<List<dynamic>> {
 }
 */
 
+import 'package:ecommerce/resource/strings/session_string.dart';
+
 import '../model/get/home/home_response.dart';
 import '../import_package.dart';
 
 class HomeController extends GetxController {
   late final NetworkRepository _networkRepository;
-  late final Storage _storage;
+  late final GetStorageRepository _getStorageRepository;
 
-  HomeController(this._networkRepository, this._storage);
+  HomeController(this._getStorageRepository, this._networkRepository);
 
   // PROGRESSBAR
   final _statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
@@ -62,7 +64,7 @@ class HomeController extends GetxController {
     _statusProgressBarRx.value = StatusProgressBar.LOADING;
 
     //CURRENT USER ID
-    _storage.getValue(SessionString.userIdSession);
+    _getStorageRepository.getValue(SessionString.userIdSession);
 
     _networkRepository.getMethod(
         baseUrl: ServerString.postUrl,
@@ -78,5 +80,16 @@ class HomeController extends GetxController {
         error: (error) {
           _statusProgressBarRx.value = StatusProgressBar.SUCCESS;
         });
+  }
+
+  //LOGOUT
+  logout(){
+    _getStorageRepository.removeValue(SessionString.isLoginSession);
+    _getStorageRepository.removeValue(SessionString.userIdSession);
+    _getStorageRepository.removeValue(SessionString.userNameSession);
+    _getStorageRepository.removeValue(SessionString.emailSession);
+
+    //LOGIN NAVIGATION
+    Get.offAllNamed(AppRoute.LOGIN);
   }
 }

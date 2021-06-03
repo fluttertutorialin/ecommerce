@@ -12,24 +12,75 @@
 
    //ADD INITIALIZER
     await Get.putAsync(() => AppSpController().init());
+
+    //WIDGET FUNCTION
+    final Widget Function(String token) _builder;
+    @override
+    Widget build(BuildContext context) {
+    return widget._builder(_token);
+  }
 */
 
-import 'binding/splash_binding.dart' show SplashBinding;
+import 'package:device_info/device_info.dart';
+import 'package:flutter_config/flutter_config.dart';
+import 'dependency_injection.dart';
+import 'shared/common/global.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
+import 'package:get_storage/get_storage.dart';
 import 'import_package.dart';
-import 'initializer.dart';
 import 'lang/translation_service.dart';
 
-void main() {
+Future<void> main() async {
   //APPLICATION RUN AND INIT THE INSTANCE
-  Initializer.instance.init(() {
-    runApp(MyApp());
-  });
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //APPLICATION PORTRAIT MODE
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarDividerColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarColor: AppColors.kPrimaryColor,
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark));
+
+  //INIT
+  await GetStorage.init();
+  await Firebase.initializeApp();
+  await FlutterConfig.loadEnvVariables();
+
+  //DEVICE INFORMATION
+  DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  if (Global.isIOS) {
+    Global.iosDeviceInfo = await deviceInfoPlugin.iosInfo;
+  } else {
+    Global.androidDeviceInfo = await deviceInfoPlugin.androidInfo;
+  }
+
+  //DI NOT WORKING GET LATEST VERSION
+  //DependencyInjection().init();
+
+  //FIREBASE NOTIFICATION
+  /*await FirebaseNotification.initializeFCM(
+      onNotificationPressed: (Map<String, dynamic> data) {
+        print(data);
+      },
+      onTokenChanged: (String? token) {
+        print(token);
+      },
+      icon: 'icon');*/
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     ScreenUtil.init(
       BoxConstraints(
         maxWidth: Get.width,
@@ -50,14 +101,10 @@ class MyApp extends StatelessWidget {
         translations: TranslationService(),
 
         //FOR FIRST CALL THE SPLASH AND BINDING
-        initialBinding: SplashBinding(),
         initialRoute: AppRoute.SPLASH,
-
         defaultTransition: Transition.fade,
-
         enableLog: true,
         navigatorKey: Get.key,
-
 
         //FOR COLLECTION OF APPLICATION PAGES
         getPages: AppPage.routes);

@@ -13,8 +13,10 @@ class AppPage {
 
   static final routes = [
     GetPage(
-        name: AppRoute.SPLASH,
-        page: () => SplashPage()),
+      name: AppRoute.SPLASH,
+      page: () => SplashPage(),
+      binding: SplashBinding(),
+    ),
 
     GetPage(
         name: AppRoute.HOME,
@@ -24,14 +26,11 @@ class AppPage {
     GetPage(
         name: AppRoute.LOGIN,
         page: () => LoginPage(),
-        binding: LoginBinding()
-    ),
+        binding: LoginBinding()),
 
     GetPage(
         name: AppRoute.SIGNUP,
         page: () => SignUpPage(),
-        binding: SignUpBinding()
-    )
-
+        binding: SignUpBinding())
   ];
 }

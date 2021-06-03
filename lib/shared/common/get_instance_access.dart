@@ -3,6 +3,7 @@
    USE: CONTROLLER WITHOUT INSTANCE CREATE AND USE CONTROLLER FOR ACCESS
 */
 
+/*
 import 'package:get/get.dart';
 
 class GetInstanceAccess {
@@ -48,3 +49,4 @@ class GetInstanceAccess {
     }
   }
 }
+*/

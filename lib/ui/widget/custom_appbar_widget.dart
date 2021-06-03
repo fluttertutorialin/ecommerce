@@ -19,7 +19,7 @@ class CustomAppbarWidget extends PreferredSize {
     Key? key,
     required this.title,
     this.leading,
-    this.showBackButton = true,
+    this.showBackButton = false,
     this.onBackPress,
     this.backgroundColor = AppColors.kPrimaryColor,
     this.backButtonColor = Colors.white,
@@ -44,6 +44,7 @@ class CustomAppbarWidget extends PreferredSize {
     return AppBar(
         elevation: 0,
         actions: actions,
+        automaticallyImplyLeading: false,
         actionsIconTheme: IconThemeData(size: 30.w),
         bottom: bottom == null
             ? null

@@ -15,6 +15,6 @@ class CustomErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: Text(message!, style: Get.textTheme.headline5)));
+        body: Center(child: Text(message!)));
   }
 }
