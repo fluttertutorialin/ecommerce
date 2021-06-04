@@ -63,7 +63,7 @@ Future<void> main() async {
   }
 
   //DI NOT WORKING GET LATEST VERSION
-  DependencyInjection().init();
+  //DependencyInjection().init();
 
   //FIREBASE NOTIFICATION
   /*await FirebaseNotification.initializeFCM(

@@ -146,6 +146,9 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
     super.onClose();
     loginButtonController.dispose();
 
+    emailController.clear();
+    passwordController.clear();
+
     emailController.dispose();
     passwordController.dispose();
   }
