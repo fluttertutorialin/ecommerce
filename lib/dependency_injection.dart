@@ -1,4 +1,4 @@
-/*
+
 import 'package:ecommerce/shared/repository/firebase_repository.dart';
 import 'package:ecommerce/shared/repository/get_storage_repository.dart';
 import 'package:get/get.dart';
@@ -35,4 +35,4 @@ class DependencyInjection {
     Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);
   }
 }
-*/
+

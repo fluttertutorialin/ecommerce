@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginController extends GetxController with SingleGetTickerProviderMixin {
+class LoginController extends FullLifeCycleController with SingleGetTickerProviderMixin {
+  static LoginController get to => Get.find();
+
    final NetworkRepository _networkRepository;
    final GetStorageRepository _getStorageRepository;
    final FirebaseRepository _firebaseRepository;
@@ -14,7 +16,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
       this._networkRepository, this._firebaseRepository);
 
   //VALIDATION USE
-  final formKey = GlobalKey<FormState>();
+   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   //TEXT CLEAR AND GET
   final TextEditingController emailController = TextEditingController();
@@ -41,6 +43,8 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
     //_firebaseUser.bindStream(_firebaseRepository.authStateChange());
   }
+
+
 
   String? emailValidation(String? value) => Validator.validateEmail(value);
 

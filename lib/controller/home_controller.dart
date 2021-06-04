@@ -90,6 +90,6 @@ class HomeController extends GetxController {
     _getStorageRepository.removeValue(SessionString.emailSession);
 
     //LOGIN NAVIGATION
-    Get.offAllNamed(AppRoute.LOGIN);
+    Get.back();
   }
 }
