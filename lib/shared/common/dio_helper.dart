@@ -50,7 +50,7 @@ class DioHelper {
     try {
 
       final baseOptions = BaseOptions(
-          baseUrl: Uri.encodeFull(baseUrl!) ?? ServerString.baseURL,
+          baseUrl: Uri.encodeFull(baseUrl!),
           contentType: contentType,
           headers: headers,
           //responseType: ResponseType.bytes,
