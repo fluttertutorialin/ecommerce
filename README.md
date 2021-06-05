@@ -81,3 +81,91 @@ Image loaderBeforeImage(
       width: width,
       fit: boxFit,
     );
+
+    //SEARCH
+    Container(
+            height: 140.h,
+            child: TextField(
+              textAlignVertical: TextAlignVertical.center,
+              textAlign: TextAlign.left,
+              decoration: InputDecoration(
+                  hintText: '输入商品名或者宝贝标题搜索',
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0), borderSide: BorderSide.none),
+                  alignLabelWithHint: true,
+                  filled: true,
+                  fillColor: Colors.white,
+                  suffixIcon: Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                  ),
+                  hintStyle: TextStyle(height: 1.5),
+                  contentPadding: EdgeInsets.only(top: 30.h, left: 40.w)),
+              style: TextStyle(height: 1, color: Colors.black),
+            ),
+          ),
+
+
+           Container(
+                                  width: ScreenUtil().setWidth(900),
+                                  height: ScreenUtil().setHeight(120),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        padding: EdgeInsets.only(left: 10),
+                                        decoration: BoxDecoration(
+                                            color: Color.fromRGBO(255, 238, 230, 1.0),
+                                            borderRadius: BorderRadius.only(
+                                                topRight: Radius.circular(100.0),
+                                                bottomRight: Radius.circular(100.0))),
+                                        alignment: Alignment.centerLeft,
+                                        child: RichText(
+                                          text: TextSpan(children: [
+                                            TextSpan(
+                                              text: "已售",
+                                              style: TextStyle(
+                                                  fontSize: ScreenUtil().setSp(45),
+                                                  color: Color.fromRGBO(137, 60, 17, 1.0)),
+                                            ),
+                                            TextSpan(
+                                              text: " ${goodsItem.monthSales} ",
+                                              style: TextStyle(
+                                                  fontSize: ScreenUtil().setSp(65),
+                                                  color: Color.fromRGBO(255, 91, 0, 1.0)),
+                                            ),
+                                            TextSpan(
+                                              text: "件",
+                                              style: TextStyle(
+                                                  fontSize: ScreenUtil().setSp(45),
+                                                  color: Color.fromRGBO(137, 60, 17, 1.0)),
+                                            )
+                                          ]),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        right: -3.3,
+                                        top: 0,
+                                        child: Image.asset(
+                                          "assets/images/lijigoumai.png",
+                                          width: ScreenUtil().setWidth(350),
+                                          height: ScreenUtil().setHeight(140),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Positioned(
+                                          right: 0,
+                                          top: 0,
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            width: ScreenUtil().setWidth(280),
+                                            height: ScreenUtil().setHeight(120),
+                                            child: Text(
+                                              "立即购买",
+                                              style: TextStyle(
+                                                  fontSize: ScreenUtil().setSp(40),
+                                                  color: Colors.white),
+                                            ),
+                                          )
+                                      )
+                                    ],
+                                  ),
+                                )

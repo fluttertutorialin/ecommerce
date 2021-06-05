@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:ecommerce/resource/strings/server_string.dart';
 import 'package:ecommerce/shared/common/global.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,7 @@ _parseJson(String text) {
 
 class DioHelper {
   Future request<T>(
-      {String? baseUrl = '',
+      {String? baseUrl,
       Method? method = Method.GET,
       String? path = '',
       Map<String, String>? headers,
@@ -47,8 +48,9 @@ class DioHelper {
       required HttpSuccessCallback<T>? success,
       required HttpFailureCallback? error}) async {
     try {
+
       final baseOptions = BaseOptions(
-          baseUrl: Uri.encodeFull(baseUrl!),
+          baseUrl: Uri.encodeFull(baseUrl!) ?? ServerString.baseURL,
           contentType: contentType,
           headers: headers,
           //responseType: ResponseType.bytes,
@@ -56,6 +58,7 @@ class DioHelper {
           connectTimeout: 60000,
           receiveTimeout: 3000);
 
+      //CREATE INSTANCE
       final dio = Dio(baseOptions)
         ..interceptors.addAll(getDefaultInterceptor());
 
