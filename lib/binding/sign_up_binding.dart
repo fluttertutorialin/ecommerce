@@ -19,7 +19,7 @@ class SignUpBinding extends Bindings {
   @override
   void dependencies() {
     //DIO HELPER
-    Get.lazyPut<DioHelper>(() => Get.find<DioHelper>(), fenix: false);
+    Get.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
 
     //FIREBASE
     Get.lazyPut<FirebaseAuth>(() => FirebaseAuth.instance, fenix: false);
@@ -30,7 +30,7 @@ class SignUpBinding extends Bindings {
     Get.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: false);
 
     //LOCAL STORAGE SESSION PROVIDER AND REPOSITORY
-    Get.lazyPut<GetStorage>(() => Get.find<GetStorage>(), fenix: false);
+    Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
 
     Get.lazyPut<GetStorageProvider>(() => GetStorageProvider(Get.find()), fenix: false);
     Get.lazyPut<GetStorageRepository>(() => GetStorageRepository(), fenix: false);

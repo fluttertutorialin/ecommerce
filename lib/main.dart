@@ -22,7 +22,6 @@
 */
 
 import 'package:device_info/device_info.dart';
-import 'package:ecommerce/app_binding.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'shared/common/global.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -98,7 +97,6 @@ class MyApp extends StatelessWidget {
         translations: TranslationService(),
 
         //FOR FIRST CALL THE SPLASH AND BINDING
-        initialBinding: AppBinding(),
         initialRoute: AppRoute.SPLASH,
         defaultTransition: Transition.fade,
         enableLog: true,
