@@ -21,7 +21,7 @@ class SplashController extends GetxController {
 
   _launchPage() async {
     //SPLASH SCREEN WAIT 3 SECOND
-    await Future.delayed(const Duration(seconds: ValueString.splashScreenWait)).then((value) {
+    await ValueString.splashScreenWait.seconds.delay().then((value) {
       final bool? isLogin = _getStorageRepository.hasData(SessionString.isLoginSession);
 
       //FOR CLEAR SPLASH SCREEN AND CHANGE THE PAGE HOME

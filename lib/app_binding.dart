@@ -1,4 +1,3 @@
-/*
 import 'package:ecommerce/shared/repository/firebase_repository.dart';
 import 'package:ecommerce/shared/repository/get_storage_repository.dart';
 import 'package:get/get.dart';
@@ -11,9 +10,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'shared/repository/network_repository.dart';
 
-class DependencyInjection {
-  void init() {
-    //DIO HELPER
+class AppBinding implements Bindings {
+
+  @override
+  void dependencies() {
     Get.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
 
     //FIREBASE
@@ -35,4 +35,3 @@ class DependencyInjection {
     Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);
   }
 }
-*/

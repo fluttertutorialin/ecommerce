@@ -79,6 +79,8 @@ dependencies:
   uuid:
 
   flutter_config:
+  # SAME LIBRARY
+  #envify:
 
   path_provider:
 

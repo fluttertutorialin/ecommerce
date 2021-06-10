@@ -169,3 +169,6 @@ Image loaderBeforeImage(
                                     ],
                                   ),
                                 )
+
+ {'Content-Type': 'application/json'}
+   body: jsonEncode(data),

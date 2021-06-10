@@ -22,6 +22,7 @@
 */
 
 import 'package:device_info/device_info.dart';
+import 'package:ecommerce/app_binding.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'shared/common/global.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -61,9 +62,6 @@ Future<void> main() async {
     Global.androidDeviceInfo = await deviceInfoPlugin.androidInfo;
   }
 
-  //DI NOT WORKING GET LATEST VERSION
-  //DependencyInjection().init();
-
   //FIREBASE NOTIFICATION
   /*await FirebaseNotification.initializeFCM(
       onNotificationPressed: (Map<String, dynamic> data) {
@@ -100,6 +98,7 @@ class MyApp extends StatelessWidget {
         translations: TranslationService(),
 
         //FOR FIRST CALL THE SPLASH AND BINDING
+        initialBinding: AppBinding(),
         initialRoute: AppRoute.SPLASH,
         defaultTransition: Transition.fade,
         enableLog: true,
