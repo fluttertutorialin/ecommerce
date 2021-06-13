@@ -3,9 +3,7 @@
    completer_ex: This library period call the api. For example every 10 second
 */
 
-import 'dart:async';
-import 'package:ecommerce/import_package.dart';
-export 'package:ecommerce/util/extensions.dart';
+import '../shared/provider/network_provider.dart';
 import '../resource/strings/server_string.dart';
 import '../shared/provider/get_storage_provider.dart';
 import 'package:get/get.dart';
