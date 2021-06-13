@@ -3,38 +3,30 @@
    ABSTRACT CLASS (NetworkProvider) API IMPLEMENT
 */
 
+import 'package:dartz/dartz.dart';
+
 import '../common/dio_helper.dart';
 import '../provider/network_provider.dart';
-import 'package:get/get.dart';
 
 class NetworkRepository implements NetworkProvider {
-  final _networkProvider = Get.find<NetworkProvider>();
+  final DioHelper _dioHelper;
+
+  NetworkRepository(this._dioHelper);
 
   //GET API CALLING
   @override
-  void getMethod(
+  Future<Either<ErrorEntity, dynamic>> getMethod(
       {String? baseUrl,
-      Map<String, dynamic>? parameter,
-      required HttpSuccessCallback success,
-      required HttpFailureCallback error}) {
-     _networkProvider.getMethod(
-        baseUrl: baseUrl!,
-        parameter: parameter,
-        success: success,
-        error: error);
+      Map<String, dynamic>? parameter}) {
+
+    return _dioHelper.request(baseUrl: baseUrl, method: Method.GET, parameter: parameter);
   }
 
   //POST API CALLING
   @override
-  void postMethod<T>(
+  Future<Either<ErrorEntity, dynamic>> postMethod(
       {String? baseUrl,
-      Map<String, dynamic>? parameter,
-      required HttpSuccessCallback success,
-      required HttpFailureCallback error}) {
-     _networkProvider.postMethod(
-        baseUrl: baseUrl!,
-        parameter: parameter,
-        success: success,
-        error: error);
+      Map<String, dynamic>? parameter}) {
+    return _dioHelper.request(baseUrl: baseUrl, method: Method.POST, parameter: parameter);
   }
 }

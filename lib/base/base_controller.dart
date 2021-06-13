@@ -4,6 +4,8 @@
 */
 
 import 'dart:async';
+import 'package:ecommerce/import_package.dart';
+
 import '../resource/strings/server_string.dart';
 import '../shared/provider/get_storage_provider.dart';
 import '../shared/repository/network_repository.dart';
@@ -11,13 +13,13 @@ import 'package:get/get.dart';
 
 class BaseController<T> extends GetxController {
   final isLoading = false.obs;
-  late NetworkRepository networkRepository;
+  late NetworkProvider networkProvider;
   late GetStorageProvider getStorageProvider;
 
   @override
   onInit() {
     super.onInit();
-    networkRepository = Get.find();
+    networkProvider = Get.find();
     getStorageProvider = Get.find();
   }
 
@@ -25,16 +27,16 @@ class BaseController<T> extends GetxController {
     showLoading();
     final completer = Completer<T>();
 
-    networkRepository.getMethod(
-        baseUrl: ServerString.postUrl,
-        success: (value) {
-          hideLoading();
-          completer.complete(value);
-        },
-        error: (error) {
-          hideLoading();
-          completer.completeError(error.message!);
-        });
+    networkProvider.getMethod(baseUrl: ServerString.postUrl).then((value) {
+      value.fold((l) {
+        hideLoading();
+        completer.completeError(l.message!);
+      }, (r) {
+        hideLoading();
+        completer.complete(r);
+      });
+    });
+
     return completer.future;
   }
 

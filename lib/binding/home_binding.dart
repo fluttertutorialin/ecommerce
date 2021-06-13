@@ -16,8 +16,7 @@ class HomeBinding extends Bindings {
     Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance, fenix: false);
 
     //NETWORK BINDING PROVIDER AND REPOSITORY
-    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()), fenix: false);
-    Get.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: false);
+    Get.lazyPut<NetworkProvider>(() => NetworkRepository(Get.find()), fenix: false);
 
     //LOCAL STORAGE SESSION PROVIDER AND REPOSITORY
     Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);

@@ -5,6 +5,7 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:dartz/dartz.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce/shared/common/global.dart';
@@ -22,8 +23,6 @@ const MethodValues = {
   Method.PATCH: 'patch'
 };
 
-typedef HttpSuccessCallback<T> = void Function(T data);
-typedef HttpFailureCallback = void Function(ErrorEntity data);
 final CancelToken _cancelToken = new CancelToken();
 
 _parseAndDecode(String response) {
@@ -41,7 +40,7 @@ class DioHelper {
     return this;
   }
 
-  Future request(
+  Future<Either<ErrorEntity, dynamic>> request(
       {String? baseUrl,
       Method? method = Method.GET,
       String? path = '',
@@ -49,9 +48,7 @@ class DioHelper {
       Options? options,
       String contentType = Headers.jsonContentType,
       dynamic data, //Stream.fromIterable(data.map((e) => [e]))
-      Map<String, dynamic>? parameter,
-      required HttpSuccessCallback? success,
-      required HttpFailureCallback? error}) async {
+      Map<String, dynamic>? parameter}) async {
     try {
       final baseOptions = BaseOptions(
           baseUrl: Uri.encodeFull(baseUrl!),
@@ -104,11 +101,13 @@ class DioHelper {
               Options(method: MethodValues[method!], headers: authorization),
           cancelToken: _cancelToken);
 
-      if (success != null) {
+      return Right(response.data);
+     /* if (success != null) {
         success(response.data);
-      }
+      }*/
     } on DioError catch (e) {
-      error!(_getError(e));
+     return Left(_getError(e));
+      //error!(_getError(e));
     }
   }
 

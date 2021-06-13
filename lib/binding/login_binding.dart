@@ -16,8 +16,7 @@ class LoginBinding extends Bindings {
     Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance);
 
     //NETWORK BINDING PROVIDER AND REPOSITORY
-    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()));
-    Get.lazyPut<NetworkRepository>(() => NetworkRepository());
+    Get.lazyPut<NetworkProvider>(() => NetworkRepository(Get.find()), fenix: false);
 
     //LOCAL STORAGE SESSION PROVIDER AND REPOSITORY
     Get.lazyPut<GetStorage>(() => GetStorage());

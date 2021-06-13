@@ -3,38 +3,18 @@
    DEFINE THE TOTAL API OF APP
 */
 
+import 'package:dartz/dartz.dart';
 import '../common/dio_helper.dart';
 
-class NetworkProvider {
-  final DioHelper _dioHelper;
-
-  NetworkProvider(this._dioHelper);
+abstract class NetworkProvider {
 
   //POST API CALLING
-  void postMethod<T>(
+  Future<Either<ErrorEntity, dynamic>> postMethod(
       {String? baseUrl,
-      Map<String, dynamic>? parameter,
-      required HttpSuccessCallback success,
-      required HttpFailureCallback error}) {
-    _dioHelper.request(
-        baseUrl: baseUrl!,
-        parameter: parameter,
-        method: Method.POST,
-        success: success,
-        error: error);
-  }
+      Map<String, dynamic>? parameter});
 
   //GET API CALLING
-  void getMethod(
+  Future<Either<ErrorEntity, dynamic>> getMethod(
       {String? baseUrl,
-      Map<String, dynamic>? parameter,
-      required HttpSuccessCallback success,
-      required HttpFailureCallback error}) {
-    _dioHelper.request(
-        baseUrl: baseUrl!,
-        parameter: parameter,
-        method: Method.GET,
-        success: success,
-        error: error);
-  }
+      Map<String, dynamic>? parameter});
 }

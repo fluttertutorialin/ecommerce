@@ -28,10 +28,11 @@ dependencies:
 
   #FOR API CALLING
   dio:
+  dartz: 0.10.0-nullsafety.2
 
   #FOR FIREBASE
   firebase_core:
-  firebase_auth:
+  firebase_auth: 1.4.1
   cloud_firestore:
 
   firebase_messaging:
