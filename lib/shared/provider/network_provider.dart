@@ -11,12 +11,12 @@ class NetworkProvider {
   NetworkProvider(this._dioHelper);
 
   //POST API CALLING
-  Future postMethod<T>(
+  void postMethod<T>(
       {String? baseUrl,
       Map<String, dynamic>? parameter,
       required HttpSuccessCallback<T> success,
       required HttpFailureCallback error}) {
-    return _dioHelper.request(
+    _dioHelper.request(
         baseUrl: baseUrl!,
         parameter: parameter,
         method: Method.POST,
@@ -25,12 +25,12 @@ class NetworkProvider {
   }
 
   //GET API CALLING
-  Future getMethod(
+  void getMethod(
       {String? baseUrl,
       Map<String, dynamic>? parameter,
       required HttpSuccessCallback success,
       required HttpFailureCallback error}) {
-   return _dioHelper.request(
+    _dioHelper.request(
         baseUrl: baseUrl!,
         parameter: parameter,
         method: Method.GET,

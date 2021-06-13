@@ -12,12 +12,12 @@ class NetworkRepository implements NetworkProvider {
 
   //GET API CALLING
   @override
-  Future getMethod(
+  void getMethod(
       {String? baseUrl,
       Map<String, dynamic>? parameter,
       required HttpSuccessCallback success,
       required HttpFailureCallback error}) {
-    return _networkProvider.getMethod(
+     _networkProvider.getMethod(
         baseUrl: baseUrl!,
         parameter: parameter,
         success: success,
@@ -26,12 +26,12 @@ class NetworkRepository implements NetworkProvider {
 
   //POST API CALLING
   @override
-  Future postMethod<T>(
+  void postMethod<T>(
       {String? baseUrl,
       Map<String, dynamic>? parameter,
       required HttpSuccessCallback<T> success,
       required HttpFailureCallback error}) {
-    return _networkProvider.postMethod(
+     _networkProvider.postMethod(
         baseUrl: baseUrl!,
         parameter: parameter,
         success: success,
