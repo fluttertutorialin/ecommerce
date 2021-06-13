@@ -1,5 +1,4 @@
-import 'package:ecommerce/import_package.dart';
-import 'package:ecommerce/model/get/home/home_response.dart';
+import 'dart:async';
 import 'package:ecommerce/resource/strings/server_string.dart';
 import 'package:ecommerce/shared/provider/get_storage_provider.dart';
 import 'package:ecommerce/shared/repository/network_repository.dart';
@@ -17,15 +16,15 @@ class BaseController<T> extends GetxController {
     getStorageProvider = Get.find();
   }
 
-  Future<List<HomeResponse>> homeApi() {
+  Future<T> homeApi() {
     showLoading();
-    final completer = Completer<List<HomeResponse>>();
+    final completer = Completer<T>();
 
     networkRepository.getMethod(
         baseUrl: ServerString.postUrl,
         success: (value) {
           hideLoading();
-          completer.complete(homeResponseWithoutDecode(value));
+          completer.complete(value);
         },
         error: (error) {
           hideLoading();

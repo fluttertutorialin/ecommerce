@@ -55,7 +55,7 @@ class HomeController extends BaseController {
     getStorageProvider.getValue(SessionString.userIdSession);
 
     homeApi().then((value) {
-      _homeListRx.value = value;
+      _homeListRx.value = homeResponseWithoutDecode(value);
     });
   }
 
