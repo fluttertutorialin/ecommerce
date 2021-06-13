@@ -12,19 +12,16 @@ import 'package:get/get.dart';
 
 class BaseController<T> extends GetxController {
   final isLoading = false.obs;
-  late NetworkProvider networkProvider;
-  late GetStorageProvider getStorageProvider;
+  final NetworkProvider networkProvider = Get.find();
+  final GetStorageProvider getStorageProvider = Get.find();
 
   @override
   onInit() {
     super.onInit();
-    networkProvider = Get.find();
-    getStorageProvider = Get.find();
   }
 
-  Future getMethod<T>({required Function success, required Function error}) {
+  getMethod<T>({required Function success, required Function error}) {
     showLoading();
-    final completer = Completer<T>();
 
     networkProvider
         .getMethod(baseUrl: ServerString.postUrl)
@@ -35,8 +32,6 @@ class BaseController<T> extends GetxController {
               hideLoading();
               success(r);
             }));
-
-    return completer.future;
   }
 
   showLoading() {
