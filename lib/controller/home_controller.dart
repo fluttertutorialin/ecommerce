@@ -35,15 +35,16 @@ class HomeController extends GetxController with StateMixin<List<dynamic>> {
 
 import 'package:ecommerce/base/base_controller.dart';
 import 'package:ecommerce/resource/strings/session_string.dart';
+import 'package:ecommerce/shared/provider/get_storage_provider.dart';
 
 import '../model/get/home/home_response.dart';
 import '../import_package.dart';
 
 class HomeController extends BaseController {
   late final NetworkRepository _networkRepository;
-  late final GetStorageRepository _getStorageRepository;
+  late final GetStorageProvider getStorageProvider;
 
-  HomeController(this._getStorageRepository, this._networkRepository);
+  HomeController(this.getStorageProvider, this._networkRepository);
 
   //FROM API DATA STORE AND GET LIST
   final _homeListRx = <HomeResponse>[].obs; // SET DATA
@@ -61,7 +62,7 @@ class HomeController extends BaseController {
     showLoading();
 
     //CURRENT USER ID
-    _getStorageRepository.getValue(SessionString.userIdSession);
+    getStorageProvider.getValue(SessionString.userIdSession);
 
     _networkRepository.getMethod(
         success: (value) {
@@ -81,10 +82,10 @@ class HomeController extends BaseController {
 
   //LOGOUT
   logout() {
-    _getStorageRepository.removeValue(SessionString.isLoginSession);
-    _getStorageRepository.removeValue(SessionString.userIdSession);
-    _getStorageRepository.removeValue(SessionString.userNameSession);
-    _getStorageRepository.removeValue(SessionString.emailSession);
+    getStorageProvider.removeValue(SessionString.isLoginSession);
+    getStorageProvider.removeValue(SessionString.userIdSession);
+    getStorageProvider.removeValue(SessionString.userNameSession);
+    getStorageProvider.removeValue(SessionString.emailSession);
 
     //LOGIN NAVIGATION
     AppRoute.LOGIN.offAllNamed();

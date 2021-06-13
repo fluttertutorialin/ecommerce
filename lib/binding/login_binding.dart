@@ -29,8 +29,7 @@ class LoginBinding extends Bindings {
     //LOCAL STORAGE SESSION PROVIDER AND REPOSITORY
     Get.lazyPut<GetStorage>(() => GetStorage());
 
-    Get.lazyPut<GetStorageProvider>(() => GetStorageProvider(Get.find()));
-    Get.lazyPut<GetStorageRepository>(() => GetStorageRepository());
+    Get.lazyPut<GetStorageProvider>(() => GetStorageRepository(Get.find()), fenix: false);
 
     //FIREBASE PROVIDER AND REPOSITORY
     Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()));

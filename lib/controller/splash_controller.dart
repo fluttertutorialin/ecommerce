@@ -3,13 +3,15 @@
 
 */
 
+import 'package:ecommerce/shared/provider/get_storage_provider.dart';
+
 import '../import_package.dart';
 
 class SplashController extends GetxController {
   late String? appName;
-  late final GetStorageRepository _getStorageRepository;
+  final GetStorageProvider getStorageProvider;
 
-  SplashController(this._getStorageRepository);
+  SplashController(this.getStorageProvider);
 
   @override
   void onInit() {
@@ -22,7 +24,7 @@ class SplashController extends GetxController {
   _launchPage() async {
     //SPLASH SCREEN WAIT 3 SECOND
     await ValueString.splashScreenWait.seconds.delay().then((value) {
-      final bool? isLogin = _getStorageRepository.hasData(SessionString.isLoginSession);
+      final bool? isLogin = getStorageProvider.hasData(SessionString.isLoginSession);
 
       //FOR CLEAR SPLASH SCREEN AND CHANGE THE PAGE HOME
       isLogin! ? AppRoute.HOME.offAllNamed() : AppRoute.LOGIN.offAllNamed();

@@ -30,9 +30,8 @@ class HomeBinding extends Bindings {
     //LOCAL STORAGE SESSION PROVIDER AND REPOSITORY
     Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
 
-    Get.lazyPut<GetStorageProvider>(() => GetStorageProvider(Get.find()), fenix: false);
-    Get.lazyPut<GetStorageRepository>(() => GetStorageRepository(), fenix: false);
-
+    Get.lazyPut<GetStorageProvider>(() => GetStorageRepository(Get.find()), fenix: false);
+    
     //FIREBASE PROVIDER AND REPOSITORY
     Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()), fenix: false);
     Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);

@@ -14,8 +14,7 @@ class SplashBinding extends Bindings {
     //LOCAL STORAGE SESSION PROVIDER AND REPOSITORY
     Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
 
-    Get.lazyPut<GetStorageProvider>(() => GetStorageProvider(Get.find()), fenix: false);
-    Get.lazyPut<GetStorageRepository>(() => GetStorageRepository(), fenix: false);
+    Get.lazyPut<GetStorageProvider>(() => GetStorageRepository(Get.find()), fenix: false);
 
     Get.lazyPut<SplashController>(() => SplashController(Get.find()));
   }

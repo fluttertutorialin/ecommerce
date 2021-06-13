@@ -3,11 +3,12 @@
 */
 
 import 'package:ecommerce/import_package.dart';
+import 'package:ecommerce/shared/provider/get_storage_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpController extends GetxController
     with SingleGetTickerProviderMixin {
-  final GetStorageRepository _getStorageRepository;
+  final GetStorageProvider getStorageProvider;
   final FirebaseRepository _firebaseRepository;
 
   late User? user;
@@ -29,7 +30,7 @@ class SignUpController extends GetxController
   late AnimationController singUpButtonController;
 
   //CONSTRUCTOR
-  SignUpController(this._getStorageRepository, this._firebaseRepository);
+  SignUpController(this.getStorageProvider, this._firebaseRepository);
 
   //PAGE LAUNCH FIRST SCROLL
   @override

@@ -1,5 +1,6 @@
 import 'package:ecommerce/import_package.dart';
 import 'package:ecommerce/model/sent/sent_package.dart' show LoginParameter;
+import 'package:ecommerce/shared/provider/get_storage_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,11 +9,11 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
   static LoginController get to => Get.find();
 
    final NetworkRepository _networkRepository;
-   final GetStorageRepository _getStorageRepository;
+   final GetStorageProvider getStorageProvider;
    final FirebaseRepository _firebaseRepository;
 
   //CONSTRUCTOR
-  LoginController(this._getStorageRepository,
+  LoginController(this.getStorageProvider,
       this._networkRepository, this._firebaseRepository);
 
   //TEXT CLEAR AND GET
@@ -57,10 +58,10 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
             loading(false);
 
             //SESSION STORE DATA
-            _getStorageRepository.saveValue(SessionString.isLoginSession, true);
-            _getStorageRepository.saveValue(SessionString.userIdSession, '');
-            _getStorageRepository.saveValue(SessionString.userNameSession, '');
-            _getStorageRepository.saveValue(SessionString.emailSession, '');
+            getStorageProvider.saveValue(SessionString.isLoginSession, true);
+            getStorageProvider.saveValue(SessionString.userIdSession, '');
+            getStorageProvider.saveValue(SessionString.userNameSession, '');
+            getStorageProvider.saveValue(SessionString.emailSession, '');
 
             AppRoute.HOME.offAllNamed();
           },
