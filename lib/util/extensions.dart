@@ -27,7 +27,11 @@ extension NumExt on num {
 
   InputBorder outlineInputBorder({
     BorderSide borderSide = BorderSide.none,
-  }) => OutlineInputBorder(borderRadius: this.borderRadius, borderSide: borderSide,);
+  }) =>
+      OutlineInputBorder(
+        borderRadius: this.borderRadius,
+        borderSide: borderSide,
+      );
 
   BorderSide borderSide({
     Color? color,
@@ -71,7 +75,7 @@ extension StringExt on String {
   concatWithSpace(String right) {
     return '$this $right';
   }
-  
+
   /// crypto library
   getHMacMd5Str(String message) {
     //'secretKey'.getHMacMd5Str('message');
@@ -143,14 +147,14 @@ extension GlobalKeyExtension on GlobalKey {
   }
 }
 
-extension voidExt on void{
+extension voidExt on void {
   back() {
     Get.back();
   }
 }
 
 extension DynamicExt on dynamic {
-  offAllNamed(){
+  offAllNamed() {
     Get.offAllNamed(this);
   }
 
@@ -158,12 +162,12 @@ extension DynamicExt on dynamic {
     Get.toNamed(this);
   }
 
-  getArgument(){
+  getArgument() {
     return Get.arguments;
   }
 }
 
-extension futureExt on Future{
+extension futureExt on Future {
   changeScreenGetArgument(String routeName, {dynamic arguments}) async {
     return Get.toNamed(routeName, arguments: arguments)!.then((value) => value);
   }
