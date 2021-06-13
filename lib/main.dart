@@ -50,7 +50,7 @@ Future<void> main() async {
       statusBarIconBrightness: Brightness.dark));
 
   //INIT
-  await GetStorage.init();
+  await Get.putAsync(() => GetStorage.init());
   await Firebase.initializeApp();
   await FlutterConfig.loadEnvVariables();
 
@@ -72,7 +72,12 @@ Future<void> main() async {
       },
       icon: 'icon');*/
 
+  initServices();
   runApp(MyApp());
+}
+
+initServices() async {
+  await Get.putAsync(() => DioHelper().init());
 }
 
 class MyApp extends StatelessWidget {

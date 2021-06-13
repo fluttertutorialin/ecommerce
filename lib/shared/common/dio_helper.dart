@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:ecommerce/resource/strings/server_string.dart';
 import 'package:ecommerce/shared/common/global.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -35,8 +36,15 @@ _parseJson(String text) {
 }
 
 class DioHelper {
+  late Dio _dio;
+
+  Future<DioHelper> init() async {
+    _dio = Dio(BaseOptions(baseUrl: Uri.encodeFull(ServerString.postUrl)));
+    return this;
+  }
+
   Future request<T>(
-      {String? baseUrl,
+      {
       Method? method = Method.GET,
       String? path = '',
       Map<String, String>? headers,
@@ -49,7 +57,6 @@ class DioHelper {
     try {
 
       final baseOptions = BaseOptions(
-          baseUrl: Uri.encodeFull(baseUrl!),
           contentType: contentType,
           headers: headers,
           //responseType: ResponseType.bytes,
@@ -58,8 +65,7 @@ class DioHelper {
           receiveTimeout: 3000);
 
       //CREATE INSTANCE
-      final dio = Dio(baseOptions)
-        ..interceptors.addAll(getDefaultInterceptor());
+      _dio.interceptors.addAll(getDefaultInterceptor());
 
       Options requestOptions = options ?? Options();
       requestOptions.headers = requestOptions.headers ?? Map();
@@ -76,7 +82,7 @@ class DioHelper {
         dio.interceptors.add(CookieManager(cookieJar));
       */
 
-      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+      (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (client) {
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) {
@@ -84,8 +90,8 @@ class DioHelper {
         };
       };
 
-      (dio.transformer as DefaultTransformer).jsonDecodeCallback = _parseJson;
-      var response = await dio.request(path!, data: data,
+      (_dio.transformer as DefaultTransformer).jsonDecodeCallback = _parseJson;
+      var response = await _dio.request(path!, data: data,
           onSendProgress: (received, total) {
         if (total != -1) {
           print((received / total * 100).toStringAsFixed(0) + '%');

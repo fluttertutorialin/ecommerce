@@ -18,9 +18,6 @@ import '../controller/controller_package.dart' show SignUpController;
 class SignUpBinding extends Bindings {
   @override
   void dependencies() {
-    //DIO HELPER
-    Get.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
-
     //FIREBASE
     Get.lazyPut<FirebaseAuth>(() => FirebaseAuth.instance, fenix: false);
     Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance, fenix: false);

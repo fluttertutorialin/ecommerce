@@ -53,7 +53,6 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
       loading(true);
 
       _networkRepository.postMethod(
-          baseUrl: ServerString.postUrl,
           success: (value) {
             loading(false);
 
