@@ -14,7 +14,7 @@ class NetworkProvider {
   void postMethod<T>(
       {String? baseUrl,
       Map<String, dynamic>? parameter,
-      required HttpSuccessCallback<T> success,
+      required HttpSuccessCallback success,
       required HttpFailureCallback error}) {
     _dioHelper.request(
         baseUrl: baseUrl!,

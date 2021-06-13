@@ -41,7 +41,7 @@ class DioHelper {
     return this;
   }
 
-  Future request<T>(
+  Future request(
       {String? baseUrl,
       Method? method = Method.GET,
       String? path = '',
@@ -50,7 +50,7 @@ class DioHelper {
       String contentType = Headers.jsonContentType,
       dynamic data, //Stream.fromIterable(data.map((e) => [e]))
       Map<String, dynamic>? parameter,
-      required HttpSuccessCallback<T>? success,
+      required HttpSuccessCallback? success,
       required HttpFailureCallback? error}) async {
     try {
       final baseOptions = BaseOptions(
