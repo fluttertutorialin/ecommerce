@@ -96,7 +96,8 @@ class DioHelper {
         }
       },
           queryParameters: parameter,
-          options: Options(method: MethodValues[method!], headers: authorization),
+          options:
+              Options(method: MethodValues[method!], headers: authorization),
           cancelToken: _cancelToken);
 
       if (success != null) {
