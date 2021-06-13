@@ -13,26 +13,18 @@ class NetworkRepository implements NetworkProvider {
   //GET API CALLING
   @override
   void getMethod(
-      {
-      Map<String, dynamic>? parameter,
+      {Map<String, dynamic>? parameter,
       required HttpSuccessCallback success,
       required HttpFailureCallback error}) {
-    _networkProvider.getMethod(
-        parameter: parameter,
-        success: success,
-        error: error);
+    _networkProvider.getMethod(parameter: parameter, success: success, error: error);
   }
 
   //POST API CALLING
   @override
   void postMethod(
-      {
-      Map<String, dynamic>? parameter,
+      {Map<String, dynamic>? parameter,
       required HttpSuccessCallback success,
       required HttpFailureCallback error}) {
-    _networkProvider.postMethod(
-        parameter: parameter,
-        success: success,
-        error: error);
+    _networkProvider.postMethod(parameter: parameter, success: success, error: error);
   }
 }

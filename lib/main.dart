@@ -50,7 +50,7 @@ Future<void> main() async {
       statusBarIconBrightness: Brightness.dark));
 
   //INIT
-  await Get.putAsync(() => GetStorage.init());
+  await Get.putAsync(() => GetStorage.init(ValueString.appName));
   await Firebase.initializeApp();
   await FlutterConfig.loadEnvVariables();
 
