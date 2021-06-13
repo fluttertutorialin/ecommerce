@@ -147,17 +147,6 @@ extension GlobalKeyExtension on GlobalKey {
   }
 }
 
-extension FutureExt<T> on Future<T> {
-  void futureValue(
-    Function(T data) response, {
-    Function(String? error)? onError,
-    VoidCallback? retryFunction,
-  }) {
-    this.then((value) {
-      response(value!);
-    }).catchError((e) {});
-  }
-}
 
 extension voidExt on void {
   back() {

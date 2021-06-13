@@ -5,10 +5,9 @@
 
 import 'dart:async';
 import 'package:ecommerce/import_package.dart';
-
+export 'package:ecommerce/util/extensions.dart';
 import '../resource/strings/server_string.dart';
 import '../shared/provider/get_storage_provider.dart';
-import '../shared/repository/network_repository.dart';
 import 'package:get/get.dart';
 
 class BaseController<T> extends GetxController {
@@ -27,15 +26,15 @@ class BaseController<T> extends GetxController {
     showLoading();
     final completer = Completer<T>();
 
-    networkProvider.getMethod(baseUrl: ServerString.postUrl).then((value) {
-      value.fold((l) {
-        hideLoading();
-        completer.completeError(l.message!);
-      }, (r) {
-        hideLoading();
-        completer.complete(r);
-      });
-    });
+    networkProvider
+        .getMethod(baseUrl: ServerString.postUrl)
+        .then((data) => data.fold((l) {
+              hideLoading();
+              completer.completeError(l.message!);
+            }, (r) {
+              hideLoading();
+              completer.complete(r);
+            }));
 
     return completer.future;
   }
