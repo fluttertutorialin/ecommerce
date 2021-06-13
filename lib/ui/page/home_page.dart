@@ -17,7 +17,7 @@ class HomePage extends GetView<HomeController> {
             onPressed: () =>controller.logout(),
             icon: IconFont.logout)
       ]),
-      body: Obx(() => controller.statusProgressBar == StatusProgressBar.LOADING
+      body: Obx(() =>  controller.isLoading.value
           ? circularProgressIndicator()
           : ListView(children: [
               ...controller.homeList

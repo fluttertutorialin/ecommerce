@@ -23,6 +23,7 @@
 
 import 'package:device_info/device_info.dart';
 import 'package:flutter_config/flutter_config.dart';
+import 'shared/common/dio_helper.dart';
 import 'shared/common/global.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';

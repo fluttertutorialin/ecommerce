@@ -47,7 +47,5 @@ export 'package:ecommerce/shared/repository/firebase_repository.dart';
 export 'package:ecommerce/resource/strings/session_string.dart';
 export 'package:ecommerce/shared/repository/get_storage_repository.dart';
 
-export 'package:ecommerce/shared/common/status_progress_bar.dart';
-
 
 export 'dart:async';
