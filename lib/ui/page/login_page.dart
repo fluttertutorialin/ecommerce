@@ -15,6 +15,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../import_package.dart';
 
 class LoginPage extends GetView<LoginController> {
+  //VALIDATION USE
+  var formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) => Scaffold(
       body: SafeArea(
@@ -22,7 +25,7 @@ class LoginPage extends GetView<LoginController> {
               child: Padding(
                   padding: EdgeInsets.all(15.sp),
                   child: Form(
-                      key: controller.formKey,
+                      key: formKey,
                       child: Column(children: [
                         SizedBox(height: 90.h),
                         SizedBox(height: 90.h),
@@ -49,13 +52,16 @@ class LoginPage extends GetView<LoginController> {
                             titleButton: ValueString.loginButton,
                             buttonController: controller.loginButtonController,
                             onTap: () {
-                              controller.loginValidateCheck((loading) {
-                                if (loading) {
-                                  controller.loginButtonController.forward();
-                                } else {
-                                  controller.loginButtonController.reverse();
-                                }
-                              });
+                              if (formKey.currentState!.validate()) {
+                                formKey.currentState!.save();
+                                controller.loginResponse((loading) {
+                                  if (loading) {
+                                    controller.loginButtonController.forward();
+                                  } else {
+                                    controller.loginButtonController.reverse();
+                                  }
+                                });
+                              }
                             }),
                         SizedBox(height: 40.h),
 

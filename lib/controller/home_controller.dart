@@ -49,7 +49,7 @@ class HomeController extends GetxController {
   get statusProgressBar => _statusProgressBarRx.value; //GET DATA
 
   //FROM API DATA STORE AND GET LIST
-  var _homeListRx = RxList<HomeResponse>([]); // SET DATA
+  final _homeListRx = <HomeResponse>[].obs; // SET DATA
   get homeList => _homeListRx; // GET DATA
 
   @override
@@ -90,6 +90,6 @@ class HomeController extends GetxController {
     _getStorageRepository.removeValue(SessionString.emailSession);
 
     //LOGIN NAVIGATION
-    Get.offAllNamed(AppRoute.LOGIN);
+    AppRoute.LOGIN.offAllNamed();
   }
 }

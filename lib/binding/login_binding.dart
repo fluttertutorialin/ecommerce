@@ -19,25 +19,25 @@ class LoginBinding extends Bindings {
   @override
   void dependencies() {
     //DIO HELPER
-    Get.lazyPut<DioHelper>(() => DioHelper(), fenix: false);
+    Get.lazyPut<DioHelper>(() => DioHelper());
 
     //FIREBASE
-    Get.lazyPut<FirebaseAuth>(() => FirebaseAuth.instance, fenix: false);
-    Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance, fenix: false);
+    Get.lazyPut<FirebaseAuth>(() => FirebaseAuth.instance);
+    Get.lazyPut<FirebaseFirestore>(() => FirebaseFirestore.instance);
 
     //NETWORK BINDING PROVIDER AND REPOSITORY
-    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()), fenix: false);
-    Get.lazyPut<NetworkRepository>(() => NetworkRepository(), fenix: false);
+    Get.lazyPut<NetworkProvider>(() => NetworkProvider(Get.find()));
+    Get.lazyPut<NetworkRepository>(() => NetworkRepository());
 
     //LOCAL STORAGE SESSION PROVIDER AND REPOSITORY
-    Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
+    Get.lazyPut<GetStorage>(() => GetStorage());
 
-    Get.lazyPut<GetStorageProvider>(() => GetStorageProvider(Get.find()), fenix: false);
-    Get.lazyPut<GetStorageRepository>(() => GetStorageRepository(), fenix: false);
+    Get.lazyPut<GetStorageProvider>(() => GetStorageProvider(Get.find()));
+    Get.lazyPut<GetStorageRepository>(() => GetStorageRepository());
 
     //FIREBASE PROVIDER AND REPOSITORY
-    Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()), fenix: false);
-    Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);
+    Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()));
+    Get.lazyPut<FirebaseRepository>(() => FirebaseRepository());
 
     Get.lazyPut<LoginController>(() => LoginController(Get.find(), Get.find(), Get.find()));
   }

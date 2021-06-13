@@ -15,9 +15,6 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
   LoginController(this._getStorageRepository,
       this._networkRepository, this._firebaseRepository);
 
-  //VALIDATION USE
-   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   //TEXT CLEAR AND GET
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -52,9 +49,7 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
       Validator.validatePassword(value);
 
   // LOGIN VALIDATION CHECK THE FORM
-  Future<void> loginValidateCheck(Function loading) async {
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
+  Future<void> loginResponse(Function loading) async {
       loading(true);
 
       _networkRepository.postMethod(
@@ -68,13 +63,12 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
             _getStorageRepository.saveValue(SessionString.userNameSession, '');
             _getStorageRepository.saveValue(SessionString.emailSession, '');
 
-            AppRoute.HOME.changeScreen();
+            AppRoute.HOME.offAllNamed();
           },
           error: (error) {
             passwordController.dispose();
             loading(false);
           });
-    }
   }
 
   //LOGIN BY FACEBOOK
@@ -135,7 +129,7 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
     loginParameter.toJson();
 
     //LOGIN SUCCESS GO TO MAIN SCREEN
-    AppRoute.HOME.changeScreen();
+    Get.offAllNamed(AppRoute.HOME);
   }
 
   signUpNavigation() => AppRoute.SIGNUP.changeScreen();

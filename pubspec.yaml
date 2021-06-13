@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.13.1 <3.1.0' #">=2.14.0-136.0 <3.0.0"
+  sdk: '>=2.14.0-136.0 <3.1.0'
 
 dependencies:
   flutter:
@@ -18,7 +18,7 @@ dependencies:
 
   #FOR STATE MANAGEMENT AND SESSION MANAGE
   get:
-  get_storage: 2.0.2
+  get_storage:
 
   image_picker:
   image_cropper:
@@ -27,14 +27,14 @@ dependencies:
   intl:
 
   #FOR API CALLING
-  dio: 4.0.0
+  dio:
 
   #FOR FIREBASE
-  firebase_core: 1.2.1
-  firebase_auth: 1.3.0
-  cloud_firestore: 2.2.1
+  firebase_core:
+  firebase_auth:
+  cloud_firestore:
 
-  firebase_messaging: 10.0.1
+  firebase_messaging:
   notification_permissions:
   flutter_local_notifications:
   overlay_support:
@@ -45,7 +45,7 @@ dependencies:
 
   # AUTHENTICATION
   flutter_facebook_auth:
-  google_sign_in: ^5.0.4
+  google_sign_in:
 
   # FOR FONT
   google_fonts:
