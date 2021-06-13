@@ -21,7 +21,7 @@ class BaseController<T> extends GetxController {
     getStorageProvider = Get.find();
   }
 
-  Future<T> homeApi() {
+  Future<T> getMethod() {
     showLoading();
     final completer = Completer<T>();
 
@@ -33,7 +33,7 @@ class BaseController<T> extends GetxController {
         },
         error: (error) {
           hideLoading();
-          completer.completeError(error);
+          completer.completeError(error.message!);
         });
     return completer.future;
   }

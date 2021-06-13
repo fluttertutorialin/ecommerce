@@ -54,8 +54,12 @@ class HomeController extends BaseController {
     //CURRENT USER ID
     getStorageProvider.getValue(SessionString.userIdSession);
 
-    homeApi().then((value) {
+    getMethod().then((value) {
+      //STRING CONVERT JSON MODEL CLASS
+      //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();
       _homeListRx.value = homeResponseWithoutDecode(value);
+    }).onError((error, stackTrace) {
+
     });
   }
 
