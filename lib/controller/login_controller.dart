@@ -39,19 +39,18 @@ class LoginController extends BaseController
 
   // LOGIN VALIDATION CHECK THE FORM
   Future<void> loginResponse(Function loading) async {
-    loading(true);
+    loading(false);
 
-    getMethod().then((value) {
-      loading(false);
+    //SESSION STORE DATA
+    getStorageProvider.saveValue(SessionString.isLoginSession, true);
+    getStorageProvider.saveValue(SessionString.userIdSession, '');
+    getStorageProvider.saveValue(SessionString.userNameSession, '');
+    getStorageProvider.saveValue(SessionString.emailSession, '');
 
-      //SESSION STORE DATA
-      getStorageProvider.saveValue(SessionString.isLoginSession, true);
-      getStorageProvider.saveValue(SessionString.userIdSession, '');
-      getStorageProvider.saveValue(SessionString.userNameSession, '');
-      getStorageProvider.saveValue(SessionString.emailSession, '');
+    AppRoute.HOME.offAllNamed();
 
-      AppRoute.HOME.offAllNamed();
-    }).onError((error, stackTrace) {
+    getMethod(success: (value){
+    }, error: (error){
       passwordController.clear();
       loading(false);
     });

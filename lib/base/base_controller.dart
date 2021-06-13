@@ -22,7 +22,7 @@ class BaseController<T> extends GetxController {
     getStorageProvider = Get.find();
   }
 
-  Future<T> getMethod() {
+  Future getMethod<T>({required Function success, required Function error}) {
     showLoading();
     final completer = Completer<T>();
 
@@ -30,10 +30,10 @@ class BaseController<T> extends GetxController {
         .getMethod(baseUrl: ServerString.postUrl)
         .then((data) => data.fold((l) {
               hideLoading();
-              completer.completeError(l.message!);
+              error(l.message);
             }, (r) {
               hideLoading();
-              completer.complete(r);
+              success(r);
             }));
 
     return completer.future;
