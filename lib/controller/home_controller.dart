@@ -59,7 +59,7 @@ class HomeController extends BaseController {
       //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();
       _homeListRx.value = homeResponseWithoutDecode(value);
     }).onError((error, stackTrace) {
-
+      error.toast();
     });
   }
 

@@ -147,7 +147,6 @@ extension GlobalKeyExtension on GlobalKey {
   }
 }
 
-
 extension voidExt on void {
   back() {
     Get.back();
@@ -155,6 +154,32 @@ extension voidExt on void {
 }
 
 extension DynamicExt on dynamic {
+  void toast(
+      {String title = ValueString.appName,
+      message,
+      Color backgroundColor = AppColors.toastBackground,
+      Color textColor = AppColors.black,
+      SnackPosition flushBarPosition = SnackPosition.BOTTOM}) {
+    Get.rawSnackbar(
+        animationDuration: Duration(seconds: 2),
+        isDismissible: true,
+        snackStyle: SnackStyle.FLOATING,
+        backgroundColor: backgroundColor,
+        duration: Duration(milliseconds: 2000),
+        overlayColor: Colors.black,
+        leftBarIndicatorColor: backgroundColor,
+        overlayBlur: 0,
+        backgroundGradient: LinearGradient(
+            colors: [Colors.white, backgroundColor],
+            begin: const FractionalOffset(0.0, 0.0),
+            end: const FractionalOffset(0.0, 2.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.clamp),
+        barBlur: 6,
+        titleText: Text(title, style: TextStyle(color: AppColors.toastTitle)),
+        messageText: Text(this, style: TextStyle(color: textColor)));
+  }
+
   offAllNamed() {
     Get.offAllNamed(this);
   }
