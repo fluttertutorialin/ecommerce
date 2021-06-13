@@ -82,6 +82,10 @@ class DioHelper {
 
       (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (client) {
+        /*client.findProxy = (uri) {
+          return 'PROXY 10.0.0.103:6152';
+        };*/
+
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) {
           return true;
@@ -103,8 +107,6 @@ class DioHelper {
       if (success != null) {
         success(response.data);
       }
-
-      return response.data;
     } on DioError catch (e) {
       error!(_getError(e));
     }
@@ -117,7 +119,7 @@ class DioHelper {
 
   // LOG DISPLAY
   List<Interceptor> getDefaultInterceptor() {
-    return [LogInterceptor(requestBody: true, responseBody: true)];
+    return []; //[LogInterceptor(requestBody: true, responseBody: true)];
   }
 
   /// AUTHORIZATION HEADER

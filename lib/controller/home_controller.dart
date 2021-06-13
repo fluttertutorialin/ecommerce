@@ -51,26 +51,12 @@ class HomeController extends BaseController {
 
   //API CALL
   _postResponseApi() {
-    showLoading();
-
     //CURRENT USER ID
     getStorageProvider.getValue(SessionString.userIdSession);
 
-    networkRepository.getMethod(
-      baseUrl: ServerString.postUrl,
-        success: (value) {
-          hideLoading();
-
-          //STRING CONVERT JSON MODEL CLASS
-          //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();
-          final List<HomeResponse> _homeListFromJson =
-              homeResponseWithoutDecode(value);
-
-          _homeListRx.value = _homeListFromJson;
-        },
-        error: (error) {
-          hideLoading();
-        });
+    homeApi().then((value) {
+      _homeListRx.value = value;
+    });
   }
 
   //LOGOUT
