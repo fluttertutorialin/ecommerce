@@ -5,16 +5,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginController extends FullLifeCycleController with SingleGetTickerProviderMixin {
+class LoginController extends FullLifeCycleController
+    with SingleGetTickerProviderMixin {
   static LoginController get to => Get.find();
 
-   final NetworkRepository _networkRepository;
-   final GetStorageProvider getStorageProvider;
-   final FirebaseRepository _firebaseRepository;
+  final NetworkRepository _networkRepository;
+  final GetStorageProvider getStorageProvider;
+  final FirebaseRepository _firebaseRepository;
 
   //CONSTRUCTOR
-  LoginController(this.getStorageProvider,
-      this._networkRepository, this._firebaseRepository);
+  LoginController(this.getStorageProvider, this._networkRepository,
+      this._firebaseRepository);
 
   //TEXT CLEAR AND GET
   final TextEditingController emailController = TextEditingController();
@@ -42,8 +43,6 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
     //_firebaseUser.bindStream(_firebaseRepository.authStateChange());
   }
 
-
-
   String? emailValidation(String? value) => Validator.validateEmail(value);
 
   String? passwordValidation(String? value) =>
@@ -51,24 +50,25 @@ class LoginController extends FullLifeCycleController with SingleGetTickerProvid
 
   // LOGIN VALIDATION CHECK THE FORM
   Future<void> loginResponse(Function loading) async {
-      loading(true);
+    loading(true);
 
-      _networkRepository.postMethod(
-          success: (value) {
-            loading(false);
+    _networkRepository.postMethod(
+        baseUrl: ServerString.postUrl,
+        success: (value) {
+          loading(false);
 
-            //SESSION STORE DATA
-            getStorageProvider.saveValue(SessionString.isLoginSession, true);
-            getStorageProvider.saveValue(SessionString.userIdSession, '');
-            getStorageProvider.saveValue(SessionString.userNameSession, '');
-            getStorageProvider.saveValue(SessionString.emailSession, '');
+          //SESSION STORE DATA
+          getStorageProvider.saveValue(SessionString.isLoginSession, true);
+          getStorageProvider.saveValue(SessionString.userIdSession, '');
+          getStorageProvider.saveValue(SessionString.userNameSession, '');
+          getStorageProvider.saveValue(SessionString.emailSession, '');
 
-            AppRoute.HOME.offAllNamed();
-          },
-          error: (error) {
-            passwordController.dispose();
-            loading(false);
-          });
+          AppRoute.HOME.offAllNamed();
+        },
+        error: (error) {
+          passwordController.dispose();
+          loading(false);
+        });
   }
 
   //LOGIN BY FACEBOOK

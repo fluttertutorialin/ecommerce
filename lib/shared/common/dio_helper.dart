@@ -39,12 +39,11 @@ class DioHelper {
   late Dio _dio;
 
   Future<DioHelper> init() async {
-    _dio = Dio(BaseOptions(baseUrl: Uri.encodeFull(ServerString.postUrl)));
     return this;
   }
 
   Future request<T>(
-      {
+      {String? baseUrl,
       Method? method = Method.GET,
       String? path = '',
       Map<String, String>? headers,
@@ -55,8 +54,8 @@ class DioHelper {
       required HttpSuccessCallback<T>? success,
       required HttpFailureCallback? error}) async {
     try {
-
       final baseOptions = BaseOptions(
+          baseUrl: Uri.encodeFull(baseUrl!),
           contentType: contentType,
           headers: headers,
           //responseType: ResponseType.bytes,
@@ -65,7 +64,7 @@ class DioHelper {
           receiveTimeout: 3000);
 
       //CREATE INSTANCE
-      _dio.interceptors.addAll(getDefaultInterceptor());
+      _dio = Dio(baseOptions)..interceptors.addAll(getDefaultInterceptor());
 
       Options requestOptions = options ?? Options();
       requestOptions.headers = requestOptions.headers ?? Map();
@@ -98,7 +97,8 @@ class DioHelper {
         }
       },
           queryParameters: parameter,
-          options: Options(method: MethodValues[method!], headers: authorization),
+          options:
+              Options(method: MethodValues[method!], headers: authorization),
           cancelToken: _cancelToken);
 
       if (success != null) {

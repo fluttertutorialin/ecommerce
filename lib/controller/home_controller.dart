@@ -65,6 +65,7 @@ class HomeController extends BaseController {
     getStorageProvider.getValue(SessionString.userIdSession);
 
     _networkRepository.getMethod(
+      baseUrl: ServerString.postUrl,
         success: (value) {
           hideLoading();
 
