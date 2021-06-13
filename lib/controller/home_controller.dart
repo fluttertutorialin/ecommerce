@@ -35,17 +35,10 @@ class HomeController extends GetxController with StateMixin<List<dynamic>> {
 
 import 'package:ecommerce/base/base_controller.dart';
 import 'package:ecommerce/resource/strings/session_string.dart';
-import 'package:ecommerce/shared/provider/get_storage_provider.dart';
-
 import '../model/get/home/home_response.dart';
 import '../import_package.dart';
 
 class HomeController extends BaseController {
-  late final NetworkRepository _networkRepository;
-  late final GetStorageProvider getStorageProvider;
-
-  HomeController(this.getStorageProvider, this._networkRepository);
-
   //FROM API DATA STORE AND GET LIST
   final _homeListRx = <HomeResponse>[].obs; // SET DATA
   get homeList => _homeListRx; // GET DATA
@@ -64,7 +57,7 @@ class HomeController extends BaseController {
     //CURRENT USER ID
     getStorageProvider.getValue(SessionString.userIdSession);
 
-    _networkRepository.getMethod(
+    networkRepository.getMethod(
       baseUrl: ServerString.postUrl,
         success: (value) {
           hideLoading();

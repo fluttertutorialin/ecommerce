@@ -3,7 +3,6 @@
 */
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../shared/common/dio_helper.dart';
 import '../shared/provider/firebase_provider.dart';
 import '../shared/provider/get_storage_provider.dart';
 import '../shared/provider/network_provider.dart';
@@ -35,6 +34,6 @@ class LoginBinding extends Bindings {
     Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()));
     Get.lazyPut<FirebaseRepository>(() => FirebaseRepository());
 
-    Get.lazyPut<LoginController>(() => LoginController(Get.find(), Get.find(), Get.find()));
+    Get.lazyPut<LoginController>(() => LoginController());
   }
 }

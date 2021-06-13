@@ -1,21 +1,10 @@
 import 'package:ecommerce/import_package.dart';
 import 'package:ecommerce/model/sent/sent_package.dart' show LoginParameter;
-import 'package:ecommerce/shared/provider/get_storage_provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ecommerce/base/base_controller.dart';
 
-class LoginController extends FullLifeCycleController
+class LoginController extends BaseController
     with SingleGetTickerProviderMixin {
   static LoginController get to => Get.find();
-
-  final NetworkRepository _networkRepository;
-  final GetStorageProvider getStorageProvider;
-  final FirebaseRepository _firebaseRepository;
-
-  //CONSTRUCTOR
-  LoginController(this.getStorageProvider, this._networkRepository,
-      this._firebaseRepository);
 
   //TEXT CLEAR AND GET
   final TextEditingController emailController = TextEditingController();
@@ -52,7 +41,7 @@ class LoginController extends FullLifeCycleController
   Future<void> loginResponse(Function loading) async {
     loading(true);
 
-    _networkRepository.postMethod(
+    networkRepository.postMethod(
         baseUrl: ServerString.postUrl,
         success: (value) {
           loading(false);
@@ -73,12 +62,12 @@ class LoginController extends FullLifeCycleController
 
   //LOGIN BY FACEBOOK
   Future<void> loginFB({Function? success, Function? fail, context}) async {
-    try {
+    /*try {
       final result = await FacebookAuth.instance.login();
       switch (result.status) {
         case LoginStatus.success:
           final accessToken = await FacebookAuth.instance.accessToken;
-          _firebaseRepository.loginFirebaseFacebook(token: accessToken!.token);
+          firebaseRepository.loginFirebaseFacebook(token: accessToken!.token);
 
           break;
 
@@ -90,12 +79,12 @@ class LoginController extends FullLifeCycleController
       }
     } catch (error) {
       fail!(error);
-    }
+    }*/
   }
 
   //LOGIN BY GOOGLE
   Future<void> loginGoogle({Function? success, Function? fail, context}) async {
-    try {
+    /*try {
       var _googleSignIn = GoogleSignIn(scopes: ['email']);
       final GoogleSignInAccount? _signIn = await _googleSignIn.signIn();
 
@@ -116,7 +105,7 @@ class LoginController extends FullLifeCycleController
       } else if (error.code == 'invalid-credential') {}
     } catch (error) {
       fail!(error.toString());
-    }
+    }*/
   }
 
   //LOGIN BY APPLICATION

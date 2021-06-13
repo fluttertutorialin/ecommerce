@@ -3,14 +3,12 @@
 */
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce/shared/common/dio_helper.dart';
 import 'package:ecommerce/shared/provider/firebase_provider.dart';
 import 'package:ecommerce/shared/provider/get_storage_provider.dart';
 import 'package:ecommerce/shared/provider/network_provider.dart';
 import 'package:ecommerce/shared/repository/firebase_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_storage/get_storage.dart';
-
 import '../shared/repository/get_storage_repository.dart';
 import '../shared/repository/network_repository.dart';
 import 'package:get/get.dart';
@@ -31,12 +29,12 @@ class HomeBinding extends Bindings {
     Get.lazyPut<GetStorage>(() => GetStorage(), fenix: false);
 
     Get.lazyPut<GetStorageProvider>(() => GetStorageRepository(Get.find()), fenix: false);
-    
+
     //FIREBASE PROVIDER AND REPOSITORY
     Get.lazyPut<FirebaseProvider>(() => FirebaseProvider(Get.find(), Get.find()), fenix: false);
     Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: false);
 
     //CONTROLLER
-    Get.lazyPut<HomeController>(() => HomeController(Get.find(), Get.find()));
+    Get.lazyPut<HomeController>(() => HomeController());
   }
 }

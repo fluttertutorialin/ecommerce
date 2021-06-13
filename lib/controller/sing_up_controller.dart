@@ -2,15 +2,12 @@
    DEVELOPED BY: KAMLESH LAKHANI
 */
 
+import 'package:ecommerce/base/base_controller.dart';
 import 'package:ecommerce/import_package.dart';
-import 'package:ecommerce/shared/provider/get_storage_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SignUpController extends GetxController
+class SignUpController extends BaseController
     with SingleGetTickerProviderMixin {
-  final GetStorageProvider getStorageProvider;
-  final FirebaseRepository _firebaseRepository;
-
   late User? user;
 
   //VALIDATION USE
@@ -28,9 +25,6 @@ class SignUpController extends GetxController
   */
 
   late AnimationController singUpButtonController;
-
-  //CONSTRUCTOR
-  SignUpController(this.getStorageProvider, this._firebaseRepository);
 
   //PAGE LAUNCH FIRST SCROLL
   @override
