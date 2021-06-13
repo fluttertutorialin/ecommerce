@@ -3,8 +3,6 @@
 
 */
 
-import 'package:ecommerce/shared/provider/get_storage_provider.dart';
-
 import '../import_package.dart';
 
 class SplashController extends GetxController {

@@ -2,11 +2,8 @@
    DEVELOPED BY: KAMLESH LAKHANI
 */
 
-import '../shared/provider/get_storage_provider.dart';
-import 'package:get_storage/get_storage.dart';
-import '../shared/repository/get_storage_repository.dart';
+import '../import_package.dart';
 import '../controller/controller_package.dart' show SplashController;
-import 'package:get/get.dart';
 
 class SplashBinding extends Bindings {
   @override

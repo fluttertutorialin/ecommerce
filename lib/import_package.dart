@@ -7,8 +7,6 @@ export 'package:flutter/material.dart';
 //STATE MANAGEMENT
 export 'package:get/get.dart';
 export 'package:get/get_state_manager/get_state_manager.dart';
-//BINDING
-export 'package:ecommerce/shared/common/get_instance_access.dart';
 
 //SCREEN UTIL
 export 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +41,13 @@ export 'package:ecommerce/resource/validator.dart';
 export 'package:ecommerce/shared/repository/network_repository.dart';
 export 'package:ecommerce/shared/repository/firebase_repository.dart';
 
+//PROVIDER
+export 'shared/provider/get_storage_provider.dart';
+export 'shared/provider/network_provider.dart';
+
 //SESSION
+export 'package:get_storage/get_storage.dart';
+
 export 'package:ecommerce/resource/strings/session_string.dart';
 export 'package:ecommerce/shared/repository/get_storage_repository.dart';
 

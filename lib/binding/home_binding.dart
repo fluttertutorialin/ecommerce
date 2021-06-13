@@ -3,15 +3,9 @@
 */
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce/shared/provider/firebase_provider.dart';
-import 'package:ecommerce/shared/provider/get_storage_provider.dart';
-import 'package:ecommerce/shared/provider/network_provider.dart';
-import 'package:ecommerce/shared/repository/firebase_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get_storage/get_storage.dart';
-import '../shared/repository/get_storage_repository.dart';
-import '../shared/repository/network_repository.dart';
-import 'package:get/get.dart';
+import '../import_package.dart';
+import '../shared/provider/firebase_provider.dart';
 import '../controller/controller_package.dart' show HomeController;
 
 class HomeBinding extends Bindings {

@@ -1,6 +1,6 @@
-import 'package:ecommerce/import_package.dart';
-import 'package:ecommerce/model/sent/sent_package.dart' show LoginParameter;
-import 'package:ecommerce/base/base_controller.dart';
+import '../import_package.dart';
+import '../model/sent/sent_package.dart' show LoginParameter;
+import '../base/base_controller.dart';
 
 class LoginController extends BaseController
     with SingleGetTickerProviderMixin {

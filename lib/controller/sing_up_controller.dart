@@ -2,8 +2,8 @@
    DEVELOPED BY: KAMLESH LAKHANI
 */
 
-import 'package:ecommerce/base/base_controller.dart';
-import 'package:ecommerce/import_package.dart';
+import '../base/base_controller.dart';
+import '../import_package.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpController extends BaseController

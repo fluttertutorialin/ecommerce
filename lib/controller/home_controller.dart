@@ -33,8 +33,7 @@ class HomeController extends GetxController with StateMixin<List<dynamic>> {
 }
 */
 
-import 'package:ecommerce/base/base_controller.dart';
-import 'package:ecommerce/resource/strings/session_string.dart';
+import '../base/base_controller.dart';
 import '../model/get/home/home_response.dart';
 import '../import_package.dart';
 
