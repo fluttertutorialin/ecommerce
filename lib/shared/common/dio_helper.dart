@@ -7,7 +7,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:ecommerce/resource/strings/server_string.dart';
 import 'package:ecommerce/shared/common/global.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';

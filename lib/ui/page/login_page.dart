@@ -16,7 +16,7 @@ import '../../import_package.dart';
 
 class LoginPage extends GetView<LoginController> {
   //VALIDATION USE
-  var formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) => Scaffold(
