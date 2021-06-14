@@ -51,5 +51,7 @@ export 'package:get_storage/get_storage.dart';
 export 'package:ecommerce/resource/strings/session_string.dart';
 export 'package:ecommerce/shared/repository/get_storage_repository.dart';
 
-
 export 'dart:async';
+
+//UI DATA FROM API
+export 'package:ecommerce/ui/widget/empty_widget.dart';

@@ -15,17 +15,13 @@ class HomePage extends GetView<HomeController> {
           CustomAppbarWidget(title: 'Home', showBackButton: false, actions: [
         IconButton(onPressed: () => controller.logout(), icon: IconFont.logout)
       ]),
-      body: Obx(() => controller.isLoading
-          ? circularProgressIndicator()
-          : controller.error != ''
-              ? Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Center(
-                      child: Text(controller.error,
-                          style: AppTextStyle.errorStyle)))
-              : ListView(children: [
-                  ...controller.homeList
-                      .map((value) => CustomItemHome(homeResponse: value))
-                      .toList()
-                ])));
+      body: Obx(() => EmptyWidget(
+          listData: controller.homeList,
+          isLoading: controller.isLoading,
+          error: controller.error,
+          widget: ListView(children: [
+            ...controller.homeList
+                .map((value) => CustomItemHome(homeResponse: value))
+                .toList()
+          ]))));
 }
