@@ -41,13 +41,13 @@ class LoginController extends BaseController
   Future<void> loginResponse(Function loading) async {
     loading(true);
 
-    getMethod(success: (value){
+    getAPI(success: (value){
       loading(false);
       loginSignUpSession();
       AppRoute.HOME.offAllNamed();
     }, error: (error){
-      passwordController.clear();
       loading(false);
+      passwordController.clear();
     });
   }
 

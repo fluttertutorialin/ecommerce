@@ -13,7 +13,7 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) => Scaffold(
       appBar:
           CustomAppbarWidget(title: 'Home', showBackButton: false, actions: [
-        IconButton(onPressed: () => controller.logout(), icon: IconFont.logout)
+        IconButton(onPressed: () => controller.applicationLogout(), icon: IconFont.logout)
       ]),
       body: Obx(() => EmptyWidget(
           listData: controller.homeList,

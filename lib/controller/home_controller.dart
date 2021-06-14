@@ -52,7 +52,7 @@ class HomeController extends BaseController {
 
   //API CALL
   _postResponseApi() {
-    getMethod(success: (value) {
+    getAPI(success: (value) {
       //STRING CONVERT JSON MODEL CLASS
       //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();
       _homeListRx.value = homeResponseWithoutDecode(value);
@@ -62,7 +62,7 @@ class HomeController extends BaseController {
   }
 
   //LOGOUT
-  logout() {
+  applicationLogout() {
     logout();
   }
 }

@@ -25,10 +25,10 @@ class BaseController<T> extends GetxController {
     super.onInit();
   }
 
-  getMethod({required Function success, required Function(String? error) error}) {
+  getAPI({required Function success, required Function(String? error) error}) {
     _isLoadingRx.value = true;
 
-    _networkProvider.getMethod(baseUrl: ServerString.postUrl).futureValue((value) {
+    _networkProvider.getAPI(baseUrl: ServerString.postUrl).futureValue((value) {
       _isLoadingRx.value = false;
       success(value);
     }, onError: ((value) {
@@ -38,14 +38,28 @@ class BaseController<T> extends GetxController {
     }));
   }
 
+  postAPI({required Function success, required Function(String? error) error}) {
+    _isLoadingRx.value = true;
+
+    _networkProvider.postAPI(baseUrl: ServerString.postUrl).futureValue((value) {
+      _isLoadingRx.value = false;
+      success(value);
+    }, onError: ((value) {
+      _isLoadingRx.value = false;
+      _errorRx.value = value!;
+      error(value);
+    }));
+  }
+
+  //SESSION STORE DATA
   loginSignUpSession({String? userId, String? userName, String? email}){
-    //SESSION STORE DATA
     _getStorageProvider.saveValue(SessionString.isLoginSession, true);
     _getStorageProvider.saveValue(SessionString.userIdSession, '');
     _getStorageProvider.saveValue(SessionString.userNameSession, '');
     _getStorageProvider.saveValue(SessionString.emailSession, '');
   }
 
+  //SESSION CLEAR
   logout(){
     _getStorageProvider.removeValue(SessionString.isLoginSession);
     _getStorageProvider.removeValue(SessionString.userIdSession);
@@ -54,5 +68,8 @@ class BaseController<T> extends GetxController {
 
     //LOGIN NAVIGATION
     AppRoute.LOGIN.offAllNamed();
+
+    //NOT CLEAR SESSION
+
   }
 }

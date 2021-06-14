@@ -15,7 +15,7 @@ class NetworkRepository implements NetworkProvider {
 
   //GET API CALLING
   @override
-  Future<Either<ErrorEntity, dynamic>> getMethod(
+  Future<Either<ErrorEntity, dynamic>> getAPI(
       {String? baseUrl,
       Map<String, dynamic>? parameter}) {
 
@@ -24,7 +24,7 @@ class NetworkRepository implements NetworkProvider {
 
   //POST API CALLING
   @override
-  Future<Either<ErrorEntity, dynamic>> postMethod(
+  Future<Either<ErrorEntity, dynamic>> postAPI(
       {String? baseUrl,
       Map<String, dynamic>? parameter}) {
     return _dioHelper.request(baseUrl: baseUrl, method: Method.POST, parameter: parameter);

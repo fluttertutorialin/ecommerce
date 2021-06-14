@@ -9,12 +9,12 @@ import '../common/dio_helper.dart';
 abstract class NetworkProvider {
 
   //POST API CALLING
-  Future<Either<ErrorEntity, dynamic>> postMethod(
+  Future<Either<ErrorEntity, dynamic>> postAPI(
       {String? baseUrl,
       Map<String, dynamic>? parameter});
 
   //GET API CALLING
-  Future<Either<ErrorEntity, dynamic>> getMethod(
+  Future<Either<ErrorEntity, dynamic>> getAPI(
       {String? baseUrl,
       Map<String, dynamic>? parameter});
 }
