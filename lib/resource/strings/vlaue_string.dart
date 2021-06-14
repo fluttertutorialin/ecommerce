@@ -31,6 +31,8 @@ class ValueString {
   static const String unknownMistakeDio = 'Unknown mistake';
   static const String  unknownErrorDio = 'Unknown error';
 
+  static const String dataNotFound = 'Data not found!';
+
   // TEXT-FIELD LABEL
   static const String userNameFormLabel = 'Username';
   static const String emailFormLabel = 'Email';
