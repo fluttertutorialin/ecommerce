@@ -13,15 +13,15 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) => Scaffold(
       appBar:
           CustomAppbarWidget(title: 'Home', showBackButton: false, actions: [
-        IconButton(
-            onPressed: () =>controller.logout(),
-            icon: IconFont.logout)
+        IconButton(onPressed: () => controller.logout(), icon: IconFont.logout)
       ]),
-      body: Obx(() =>  controller.isLoading.value
+      body: Obx(() => controller.isLoading.value
           ? circularProgressIndicator()
-          : ListView(children: [
-              ...controller.homeList
-                  .map((value) => CustomItemHome(homeResponse: value))
-                  .toList()
-            ])));
+          : controller.error == ''
+              ? ListView(children: [
+                  ...controller.homeList
+                      .map((value) => CustomItemHome(homeResponse: value))
+                      .toList()
+                ])
+              : Text(controller.error)));
 }

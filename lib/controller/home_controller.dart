@@ -38,8 +38,9 @@ import '../model/get/home/home_response.dart';
 import '../import_package.dart';
 
 class HomeController extends BaseController {
-  //FROM API DATA STORE AND GET LIST
+  //GET THE DATA API STORE THE DATA RX-LIST
   final _homeListRx = <HomeResponse>[].obs; // SET DATA
+
   get homeList => _homeListRx; // GET DATA
 
   @override
