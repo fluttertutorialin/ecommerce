@@ -44,4 +44,6 @@ class AppColors {
   static const Color whiteCardBackground = Colors.white;
   static const Color toastBackground = Color(0xFF1976D2);
   static const Color toastTitle =  Color(0xFF1976D2);
+
+  static Color error =  Color(0xFFea435d);
 }

@@ -23,5 +23,5 @@ class HomePage extends GetView<HomeController> {
                       .map((value) => CustomItemHome(homeResponse: value))
                       .toList()
                 ])
-              : Text(controller.error)));
+              : Text(controller.error, style: AppTextStyle.errorStyle)));
 }

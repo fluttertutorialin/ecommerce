@@ -26,10 +26,8 @@ class AppTextStyle {
   static final TextStyle regularStyle = GoogleFonts.notoSans(
       fontStyle: FontStyle.normal, fontSize: Dimens.fontSize18);
 
-  static final TextStyle buttonTextStyle = _textStyle.copyWith(
-    fontSize: Dimens.fontSize16,
-    color: Colors.white
-  );
+  static final TextStyle buttonTextStyle =
+      _textStyle.copyWith(fontSize: Dimens.fontSize16, color: Colors.white);
 
   static final TextStyle appBarTitleStyle =
       _textStyle.copyWith(fontSize: Dimens.fontSize18);
@@ -43,6 +41,11 @@ class AppTextStyle {
   static final TextStyle textFieldStyle =
       GoogleFonts.notoSans(fontSize: Dimens.fontSize16);
 
-  static final TextStyle doNotHaveAccountStyle = _textStyle.copyWith(fontSize: Dimens.fontSize14);
-  static final TextStyle signUpStyle = semiBoldStyle.copyWith(fontSize: Dimens.fontSize14, color: AppColors.kPrimaryColor);
+  static final TextStyle doNotHaveAccountStyle =
+      _textStyle.copyWith(fontSize: Dimens.fontSize14);
+  static final TextStyle signUpStyle = semiBoldStyle.copyWith(
+      fontSize: Dimens.fontSize14, color: AppColors.kPrimaryColor);
+
+  static final TextStyle errorStyle =
+      _textStyle.copyWith(fontSize: Dimens.fontSize14, color: AppColors.error);
 }
