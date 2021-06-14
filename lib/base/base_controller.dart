@@ -59,7 +59,7 @@ class BaseController<T> extends GetxController {
     _getStorageProvider.saveValue(SessionString.emailSession, '');
   }
 
-  //SESSION CLEAR
+  //SESSION CLEAR 4
   logout(){
     _getStorageProvider.removeValue(SessionString.isLoginSession);
     _getStorageProvider.removeValue(SessionString.userIdSession);

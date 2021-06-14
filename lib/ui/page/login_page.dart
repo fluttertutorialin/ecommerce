@@ -54,7 +54,7 @@ class LoginPage extends GetView<LoginController> {
                             onTap: () {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
-                                controller.loginResponse((loading) {
+                                controller.loginResponseAPI((loading) {
                                   if (loading) {
                                     controller.loginButtonController.forward();
                                   } else {

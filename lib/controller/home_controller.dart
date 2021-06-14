@@ -47,11 +47,11 @@ class HomeController extends BaseController {
   void onInit() {
     super.onInit();
 
-    _postResponseApi();
+    _postResponseAPI();
   }
 
   //API CALL
-  _postResponseApi() {
+  _postResponseAPI() {
     getAPI(success: (value) {
       //STRING CONVERT JSON MODEL CLASS
       //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();

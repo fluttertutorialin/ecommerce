@@ -38,7 +38,7 @@ class LoginController extends BaseController
       Validator.validatePassword(value);
 
   // LOGIN VALIDATION CHECK THE FORM
-  Future<void> loginResponse(Function loading) async {
+  Future<void> loginResponseAPI(Function loading) async {
     loading(true);
 
     getAPI(success: (value){
