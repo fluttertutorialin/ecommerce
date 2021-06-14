@@ -52,25 +52,17 @@ class HomeController extends BaseController {
 
   //API CALL
   _postResponseApi() {
-    //CURRENT USER ID
-    getStorageProvider.getValue(SessionString.userIdSession);
-    getMethod(success: (value){
+    getMethod(success: (value) {
       //STRING CONVERT JSON MODEL CLASS
       //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();
       _homeListRx.value = homeResponseWithoutDecode(value);
-    }, error: (error){
+    }, error: (error) {
       //error.toast();
     });
   }
 
   //LOGOUT
   logout() {
-    getStorageProvider.removeValue(SessionString.isLoginSession);
-    getStorageProvider.removeValue(SessionString.userIdSession);
-    getStorageProvider.removeValue(SessionString.userNameSession);
-    getStorageProvider.removeValue(SessionString.emailSession);
-
-    //LOGIN NAVIGATION
-    AppRoute.LOGIN.offAllNamed();
+    logout();
   }
 }
