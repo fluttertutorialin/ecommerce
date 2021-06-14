@@ -16,6 +16,20 @@ class ValueString {
   static const String eventAlreadyFavouriteToast = 'This event is already in your favorite!';
 
   // DIO ERROR
+  static const String requestCancellationDio = 'Request cancellation';
+  static const String connectionTimeOutDio = 'Connection timed out';
+  static const String requestTimeOutDio = 'Request timed out';
+  static const String responseTimeoutDio = 'Response timeout';
+  static const String requestSyntaxErrorDio = 'Request syntax error';
+  static const String serverRefusedToExecuteDio = 'Server refused to execute';
+  static const String notConnectServerDio = 'Can not connect to the server';
+  static const String requestForbiddenDio = 'Request method is forbidden';
+  static const String serverInternalErrorDio = 'Server internal error';
+  static const String invalidRequestDio = 'Invalid request';
+  static const String serverDownDio = 'Server is down';
+  static const String httpNotSupportDio = 'Does not support HTTP protocol request';
+  static const String unknownMistakeDio = 'Unknown mistake';
+  static const String  unknownErrorDio = 'Unknown error';
 
   // TEXT-FIELD LABEL
   static const String userNameFormLabel = 'Username';

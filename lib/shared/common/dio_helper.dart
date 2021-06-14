@@ -8,9 +8,9 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import '../../resource/strings/vlaue_string.dart';
 import 'package:ecommerce/shared/common/global.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 
 enum Method { GET, POST, DELETE, PUT, HEAD, PATCH }
 
@@ -102,11 +102,11 @@ class DioHelper {
           cancelToken: _cancelToken);
 
       return Right(response.data);
-     /* if (success != null) {
+      /* if (success != null) {
         success(response.data);
       }*/
     } on DioError catch (e) {
-     return Left(_getError(e));
+      return Left(_getError(e));
       //error!(_getError(e));
     }
   }
@@ -135,19 +135,21 @@ class DioHelper {
     switch (error.type) {
       case DioErrorType.cancel:
         {
-          return ErrorEntity(code: -1, message: 'dioRequestCancellation'.tr);
+          return ErrorEntity(
+              code: -1, message: ValueString.requestCancellationDio);
         }
       case DioErrorType.connectTimeout:
         {
-          return ErrorEntity(code: -1, message: 'dioConnectionTimeOut'.tr);
+          return ErrorEntity(
+              code: -1, message: ValueString.connectionTimeOutDio);
         }
       case DioErrorType.sendTimeout:
         {
-          return ErrorEntity(code: -1, message: 'dioRequestTimeOut'.tr);
+          return ErrorEntity(code: -1, message: ValueString.requestTimeOutDio);
         }
       case DioErrorType.receiveTimeout:
         {
-          return ErrorEntity(code: -1, message: 'dioResponseTimeout'.tr);
+          return ErrorEntity(code: -1, message: ValueString.responseTimeoutDio);
         }
       case DioErrorType.response:
         {
@@ -156,40 +158,42 @@ class DioHelper {
             switch (errCode) {
               case 400:
                 return ErrorEntity(
-                    code: errCode, message: 'dioRequestSyntaxError'.tr);
+                    code: errCode, message: ValueString.requestSyntaxErrorDio);
 
               case 403:
                 return ErrorEntity(
-                    code: errCode, message: 'dioServerRefusedToExecute'.tr);
+                    code: errCode,
+                    message: ValueString.serverRefusedToExecuteDio);
 
               case 404:
                 return ErrorEntity(
-                    code: errCode, message: 'dioNotConnectServer'.tr);
+                    code: errCode, message: ValueString.notConnectServerDio);
 
               case 405:
                 return ErrorEntity(
-                    code: errCode, message: 'dioRequestForbidden'.tr);
+                    code: errCode, message: ValueString.requestForbiddenDio);
 
               case 500:
                 return ErrorEntity(
-                    code: errCode, message: 'dioServerInternalError'.tr);
+                    code: errCode, message: ValueString.serverInternalErrorDio);
 
               case 502:
                 return ErrorEntity(
-                    code: errCode, message: 'dioInvalidRequest'.tr);
+                    code: errCode, message: ValueString.invalidRequestDio);
 
               case 503:
-                return ErrorEntity(code: errCode, message: 'dioServerDown'.tr);
+                return ErrorEntity(
+                    code: errCode, message: ValueString.serverDownDio);
 
               case 505:
                 return ErrorEntity(
-                    code: errCode, message: 'dioHttpNotSupport'.tr);
+                    code: errCode, message: ValueString.httpNotSupportDio);
               default:
                 return ErrorEntity(
-                    code: errCode, message: 'dioUnknownMistake'.tr);
+                    code: errCode, message: ValueString.unknownMistakeDio);
             }
           } on Exception catch (_) {
-            return ErrorEntity(code: -1, message: 'dioUnknownError'.tr);
+            return ErrorEntity(code: -1, message: ValueString.unknownErrorDio);
           }
         }
 
