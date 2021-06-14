@@ -18,6 +18,8 @@
 
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
+import 'package:dartz/dartz.dart';
+import 'package:ecommerce/shared/common/dio_helper.dart';
 import 'package:intl/intl.dart';
 import '../../import_package.dart';
 
@@ -190,6 +192,16 @@ extension DynamicExt on dynamic {
 
   getArgument() {
     return Get.arguments;
+  }
+}
+
+extension FutureExt on Future<Either<ErrorEntity, dynamic>> {
+  void futureValue(Function onResponse, {Function(String? error)? onError}) {
+    this.then((value) => value.fold((l) {
+          onError!(l.message!);
+        }, (r) {
+          onResponse(r);
+        }));
   }
 }
 

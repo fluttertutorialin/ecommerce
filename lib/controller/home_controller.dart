@@ -54,7 +54,6 @@ class HomeController extends BaseController {
   _postResponseApi() {
     //CURRENT USER ID
     getStorageProvider.getValue(SessionString.userIdSession);
-
     getMethod(success: (value){
       //STRING CONVERT JSON MODEL CLASS
       //final List<HomeResponse> _homeListFromJson = value?.map<HomeResponse>((u) => HomeResponse.fromJson(u),)?.toList();

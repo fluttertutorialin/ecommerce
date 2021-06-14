@@ -7,13 +7,13 @@ import '../shared/provider/network_provider.dart';
 import '../resource/strings/server_string.dart';
 import '../shared/provider/get_storage_provider.dart';
 import 'package:get/get.dart';
+import 'package:ecommerce/util/extensions.dart';
 
 class BaseController<T> extends GetxController {
   final _isLoadingRx = false.obs;
-  Rx<String?> _errorRx = ''.obs;
-
-  get isLoading => _isLoadingRx;
-  get error => _errorRx;
+  get isLoading => _isLoadingRx.value;
+  final _errorRx = ''.obs;
+  get error => _errorRx.value;
 
   final NetworkProvider networkProvider = Get.find();
   final GetStorageProvider getStorageProvider = Get.find();
@@ -23,28 +23,17 @@ class BaseController<T> extends GetxController {
     super.onInit();
   }
 
-  getMethod<T>({required Function success, required Function error}) {
-    _showLoading();
-    _errorRx.value = '';
-
-    networkProvider
-        .getMethod(baseUrl: ServerString.postUrl)
-        .then((data) => data.fold((l) {
-              _hideLoading();
-              _errorRx.value = l.message;
-
-              error(l.message);
-            }, (r) {
-              _hideLoading();
-              success(r);
-            }));
-  }
-
-  _showLoading() {
+  getMethod(
+      {required Function success, required Function(String? error) error}) {
     _isLoadingRx.value = true;
-  }
 
-  _hideLoading() {
-    _isLoadingRx.value = false;
+    networkProvider.getMethod(baseUrl: ServerString.postUrl).futureValue((value) {
+      _isLoadingRx.value = false;
+      success(value);
+    }, onError: ((value) {
+      _isLoadingRx.value = false;
+      _errorRx.value = value!;
+      error(value);
+    }));
   }
 }
