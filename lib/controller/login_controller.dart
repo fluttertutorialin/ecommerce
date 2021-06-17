@@ -43,7 +43,7 @@ class LoginController extends BaseController
     //_firebaseUser.bindStream(_firebaseRepository.authStateChange());
   }
 
-  //STORE TEXTFIELD ON CHANGE VALUE
+  //STORE TEXT-FIELD ON CHANGE VALUE
   void setEmail(String? value) => email = value;
   void setPassword(String? value) => password = value;
 
