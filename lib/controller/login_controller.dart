@@ -10,6 +10,11 @@ class LoginController extends BaseController
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  //PASSWORD VISIBLE OR NOT
+  final _passwordVisible = false.obs;
+  get passwordVisible => this._passwordVisible.value;
+  set passwordVisible(value) => this._passwordVisible.value = value;
+
   // PROGRESSBAR
   /*final _statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
     get statusProgressBar => _statusProgressBarRx.value; //GET DATA

@@ -64,6 +64,8 @@ dependencies:
   # IMAGE
   cached_network_image:
 
+  flare_flutter:
+
   # FOR KEYSTORE GENERATE ANDROID (GET SH1)
   flutter_automation:
 
@@ -93,6 +95,8 @@ flutter:
   uses-material-design: true
 
   # FOR IMAGE
+  assets:
+    - assets/flare/
 
   # FOR FONT
 

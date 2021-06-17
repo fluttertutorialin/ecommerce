@@ -19,9 +19,13 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce/shared/common/dio_helper.dart';
+import '../resource/strings/vlaue_string.dart';
+import '../resource/theme/app_color.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../shared/common/dio_helper.dart';
 import 'package:intl/intl.dart';
-import '../../import_package.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // NUM (BORDER RADIUS) EXTENSION
 extension NumExt on num {
@@ -112,9 +116,12 @@ extension DateTimeFormatterExt on DateTime {
 
 // WIDGET EXTENSION
 extension WidgetExt on Widget {
-  circularProgressIndicator() => Container(
-      alignment: FractionalOffset.center,
-      child: CircularProgressIndicator(strokeWidth: 1));
+  circularProgressIndicator() => Center(child: Container(
+      width: 200,
+      height: 200,
+      child: Container(
+          alignment: FractionalOffset.center,
+          child: CircularProgressIndicator(strokeWidth: 1))));
 
   align({Alignment alignment = Alignment.center}) =>
       Align(alignment: alignment, child: this);
