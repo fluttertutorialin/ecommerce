@@ -15,10 +15,16 @@ class LoginController extends BaseController
   get passwordVisible => this._passwordVisible.value;
   set passwordVisible(value) => this._passwordVisible.value = value;
 
-  // PROGRESSBAR
-  /*final _statusProgressBarRx = Rx<StatusProgressBar>(StatusProgressBar.INITIAL); // SET DATA
-    get statusProgressBar => _statusProgressBarRx.value; //GET DATA
-  */
+  final _email = "".obs;
+  get email => this._email.value;
+  set email(value) => this._email.value = value;
+
+  final _password = "".obs;
+  get password => this._password.value;
+  set password(value) => this._password.value = value;
+
+  ///ON PRESS VALIDATION CHECK
+  //bool get isEmailValid => RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(email);
 
   //RX GET AND SET
   /*final Rxn<User> _firebaseUser = Rxn<User>();
@@ -37,15 +43,19 @@ class LoginController extends BaseController
     //_firebaseUser.bindStream(_firebaseRepository.authStateChange());
   }
 
-  String? emailValidation(String? value) => Validator.validateEmail(value);
+  //STORE TEXTFIELD ON CHANGE VALUE
+  void setEmail(String? value) => email = value;
+  void setPassword(String? value) => password = value;
 
-  String? passwordValidation(String? value) =>
-      Validator.validatePassword(value);
+  //VALIDATION
+  String? emailValidation(String? value) => Validator.validateEmail(value);
+  String? passwordValidation(String? value) => Validator.validatePassword(value);
 
   // LOGIN VALIDATION CHECK THE FORM
   Future<void> loginResponseAPI(Function loading) async {
     loading(true);
 
+    //LOGIN API CALL
     getAPI(success: (value){
       loading(false);
       loginSignUpSession();
@@ -107,8 +117,8 @@ class LoginController extends BaseController
   //LOGIN BY APPLICATION
   loginApplication() async {
     var loginParameter = LoginParameter(
-        email: emailController.value.text,
-        password: passwordController.value.text.duSHA256());
+        email: email,
+        password: password.duSHA256());
 
     // SENT API PARAMETER (FOR EXAMPLE BODY) JSON FORMAT
     loginParameter.toJson();
